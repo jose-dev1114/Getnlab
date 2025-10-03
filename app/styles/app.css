@@ -423,10 +423,6 @@ button.reset:hover:not(:has(> *)) {
 /* Style the header when on early access page */
 body:has(.early-access-page) header {
   background-color: #3F3F3D;
-  background-image: url('/svg/white_grid.svg');
-  background-size: 60px 60px;
-  background-repeat: repeat;
-  background-position: center;
   position: relative;
 }
 
@@ -437,7 +433,22 @@ body:has(.early-access-page) header::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(63, 63, 61, 0.3);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 49px,
+      rgba(255, 255, 255, 0.08) 49px,
+      rgba(255, 255, 255, 0.08) 50px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 49px,
+      rgba(255, 255, 255, 0.08) 49px,
+      rgba(255, 255, 255, 0.08) 50px
+    );
+  background-size: 50px 50px;
   pointer-events: none;
   z-index: 0;
 }
@@ -481,10 +492,6 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 .early-access-page {
   min-height: calc(100vh - 80px);
   background-color: #3F3F3D;
-  background-image: url('/svg/white_grid.svg');
-  background-size: 60px 60px;
-  background-repeat: repeat;
-  background-position: center;
   padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 6vw, 4rem);
   position: relative;
 }
@@ -496,7 +503,22 @@ body:has(.early-access-page) .get-early-access-btn:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(63, 63, 61, 0.3);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 49px,
+      rgba(255, 255, 255, 0.08) 49px,
+      rgba(255, 255, 255, 0.08) 50px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 49px,
+      rgba(255, 255, 255, 0.08) 49px,
+      rgba(255, 255, 255, 0.08) 50px
+    );
+  background-size: 50px 50px;
   pointer-events: none;
   z-index: 0;
 }
