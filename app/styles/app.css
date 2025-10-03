@@ -641,6 +641,7 @@ body:has(.early-access-page) .get-early-access-btn:hover {
   line-height: 100%;
   color: #1E1E1E;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .form-group input::placeholder,
@@ -658,8 +659,10 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 
 .form-group select {
   cursor: pointer;
-  padding: 12px 12px 12px 16px;
+  padding: 10px 12px 10px 16px;
   gap: 8px;
+  height: 44px;
+  line-height: 1.4;
 }
 
 .form-group textarea {
@@ -713,21 +716,26 @@ body:has(.early-access-page) .get-early-access-btn:hover {
   margin: 0;
 }
 
-.early-access-images-section {
+.early-access-features-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  gap: clamp(2rem, 4vw, 4rem);
+  gap: clamp(3rem, 6vw, 6rem);
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto clamp(3rem, 6vh, 4rem);
+  max-width: 1400px;
+  margin: 0 auto clamp(4rem, 8vh, 6rem);
   padding: 0 clamp(2rem, 6vw, 4rem);
 }
 
-.access-image-container {
+.feature-block {
   flex: 1;
-  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vh, 3rem);
+}
+
+.access-image-container {
+  width: 100%;
   position: relative;
 }
 
@@ -737,6 +745,53 @@ body:has(.early-access-page) .get-early-access-btn:hover {
   display: block;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.benefits-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vh, 2rem);
+}
+
+.benefits-title {
+  font-family: 'TitlingGothicFB Comp', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0 0 clamp(1rem, 2vh, 1.5rem) 0;
+}
+
+.benefit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.benefit-item h4 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.benefit-item p {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  line-height: 1.5;
+  color: #FFFFFF;
+  opacity: 0.9;
+  margin: 0;
 }
 
 .early-access-info {
@@ -850,14 +905,34 @@ body:has(.early-access-page) .get-early-access-btn:hover {
     line-height: 22px;
   }
 
-  .early-access-images-section {
+  .early-access-features-wrapper {
     flex-direction: column;
-    gap: clamp(1.5rem, 4vw, 2rem);
+    gap: clamp(3rem, 8vw, 4rem);
     padding: 0 clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .feature-block {
+    gap: clamp(1.5rem, 4vh, 2rem);
   }
 
   .access-image-container {
     max-width: 100%;
+  }
+
+  .benefits-column {
+    gap: clamp(1.2rem, 3vh, 1.5rem);
+  }
+
+  .benefits-title {
+    font-size: clamp(1.3rem, 5vw, 1.6rem);
+  }
+
+  .benefit-item h4 {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+  }
+
+  .benefit-item p {
+    font-size: clamp(0.85rem, 3vw, 0.95rem);
   }
 
   .early-access-info {
@@ -880,6 +955,7 @@ body:has(.early-access-page) .get-early-access-btn:hover {
   overflow: hidden;
   margin-top: -1px;
   line-height: 0;
+  background-color: #3F3F3D;
 }
 
 .footer-pattern-top img {
