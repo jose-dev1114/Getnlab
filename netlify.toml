@@ -9,10 +9,9 @@
   PUBLIC_STOREFRONT_API_VERSION = "2024-10"
   SESSION_SECRET = "dummy-secret-for-build"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[[edge_functions]]
+  function = "server"
+  path = "/*"
 
 [[headers]]
   for = "/*"
