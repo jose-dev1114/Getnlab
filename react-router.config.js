@@ -1,15 +1,11 @@
-import {hydrogenPreset} from '@shopify/hydrogen/react-router-preset';
-
 /**
- * React Router 7.9.x Configuration for Hydrogen
+ * React Router 7.9.x Configuration for Static Build
  *
- * This configuration uses the official Hydrogen preset to provide optimal
- * React Router settings for Shopify Oxygen deployment. The preset enables
- * validated performance optimizations while ensuring compatibility.
+ * This configuration builds a static SPA for Netlify deployment.
+ * For production Shopify deployment, use the hydrogenPreset.
  */
 export default {
-  presets: [hydrogenPreset()],
-  ssr: true,
+  ssr: false,
   buildDirectory: 'build',
 };
 

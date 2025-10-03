@@ -18,6 +18,14 @@ export const meta = () => {
  * @param {Route.LoaderArgs} args
  */
 export async function loader(args) {
+  // For static builds without Shopify backend, return empty data
+  if (!args.context?.storefront) {
+    return {
+      featuredCollection: null,
+      recommendedProducts: null,
+    };
+  }
+
   // Start fetching non-critical data without blocking time to first byte
   const deferredData = loadDeferredData(args);
 

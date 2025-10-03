@@ -1,7 +1,6 @@
 [build]
   command = "npm install && npm run build"
   publish = "build/client"
-  functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
@@ -12,13 +11,8 @@
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
+  to = "/index.html"
   status = 200
-  force = true
-
-[functions]
-  node_bundler = "esbuild"
-  external_node_modules = ["@shopify/hydrogen", "@shopify/mini-oxygen"]
 
 [[headers]]
   for = "/*"
