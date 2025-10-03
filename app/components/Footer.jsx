@@ -16,10 +16,10 @@ export function Footer() {
             <img src="/svg/nLab_logo.svg" alt="nLab" />
           </div>
           <div className="footer-social">
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <a href="https://www.youtube.com/@get-nlab" target="_blank" rel="noopener noreferrer" className="social-icon">
               <img src="/svg/youtube.svg" alt="YouTube" />
             </a>
-            <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <a href="https://discord.gg/PTZGpAkj" target="_blank" rel="noopener noreferrer" className="social-icon">
               <img src="/svg/discord.svg" alt="Discord" />
             </a>
             <a href="https://kickstarter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
@@ -52,8 +52,8 @@ export function Footer() {
           <h3 className="footer-column-title">SUPPORT</h3>
           <ul className="footer-links">
             <li><a href="/pages/faq">FAQ</a></li>
-            <li><a href="/account">Get Early Access</a></li>
-            <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">Subscribe to YouTube</a></li>
+            <li><a href="/early-access">Get Early Access</a></li>
+            <li><a href="https://www.youtube.com/@get-nlab" target="_blank" rel="noopener noreferrer">Subscribe to YouTube</a></li>
             <li><a href="/pages/community">Community</a></li>
           </ul>
         </div>
