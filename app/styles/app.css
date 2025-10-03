@@ -465,33 +465,33 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 .early-access-page {
   min-height: calc(100vh - 80px);
   background-color: #3F3F3D;
-  padding: 0;
+  padding: 70px;
   position: relative;
 }
 
 .early-access-page::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 70px;
+  left: 70px;
+  right: 70px;
+  bottom: 70px;
   background-image:
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 49px,
-      rgba(255, 255, 255, 0.08) 49px,
-      rgba(255, 255, 255, 0.08) 50px
+      transparent 29px,
+      rgba(255, 255, 255, 0.08) 29px,
+      rgba(255, 255, 255, 0.08) 30px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
-      transparent 49px,
-      rgba(255, 255, 255, 0.08) 49px,
-      rgba(255, 255, 255, 0.08) 50px
+      transparent 29px,
+      rgba(255, 255, 255, 0.08) 29px,
+      rgba(255, 255, 255, 0.08) 30px
     );
-  background-size: 50px 50px;
+  background-size: 30px 30px;
   pointer-events: none;
   z-index: 0;
 }
@@ -501,7 +501,7 @@ body:has(.early-access-page) .get-early-access-btn:hover {
   z-index: 1;
   max-width: 900px;
   margin: 0 auto;
-  padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 6vw, 4rem);
+  padding: 0;
   color: #FFFFFF;
 }
 
@@ -658,11 +658,18 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 /* Mobile Styles */
 @media (max-width: 767px) {
   .early-access-page {
-    padding: 0;
+    padding: 40px 20px;
+  }
+
+  .early-access-page::before {
+    top: 40px;
+    left: 20px;
+    right: 20px;
+    bottom: 40px;
   }
 
   .early-access-content {
-    padding: clamp(2rem, 5vh, 3rem) clamp(1.5rem, 5vw, 2rem);
+    padding: 0;
   }
 
   .early-access-form,
