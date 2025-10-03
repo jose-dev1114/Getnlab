@@ -416,6 +416,247 @@ button.reset:hover:not(:has(> *)) {
 
 /*
 * --------------------------------------------------
+* routes/early-access
+* --------------------------------------------------
+*/
+.early-access-header-wrapper {
+  background-color: #3F3F3D;
+  background-image: url('/svg/grid.svg');
+  background-size: 100px 100px;
+  background-repeat: repeat;
+  background-position: center;
+  position: relative;
+}
+
+.early-access-header-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(63, 63, 61, 0.85);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.early-access-header-wrapper header {
+  position: relative;
+  z-index: 1;
+}
+
+.early-access-header-wrapper .header-logo img {
+  filter: brightness(0) invert(1);
+}
+
+.early-access-header-wrapper .menu-toggle {
+  color: #FFFFFF;
+}
+
+.early-access-header-wrapper .get-early-access-btn {
+  background: transparent;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+}
+
+.early-access-header-wrapper .get-early-access-btn:hover {
+  background: #FFFFFF;
+  color: #3F3F3D;
+}
+
+.early-access-page {
+  min-height: 100vh;
+  background-color: #3F3F3D;
+  background-image: url('/svg/grid.svg');
+  background-size: 100px 100px;
+  background-repeat: repeat;
+  background-position: center;
+  padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 5vw, 2rem);
+  position: relative;
+}
+
+.early-access-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(63, 63, 61, 0.85);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.early-access-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #FFFFFF;
+}
+
+.early-access-content h1 {
+  font-family: 'TitlingGothicFB Comp', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(1rem, 3vh, 1.5rem);
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.early-access-content > p {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vh, 3rem);
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+
+.early-access-form {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 5vh, 3rem);
+  backdrop-filter: blur(10px);
+}
+
+.form-group {
+  margin-bottom: clamp(1.5rem, 3vh, 2rem);
+}
+
+.form-group label {
+  display: block;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #FFFFFF;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: clamp(0.75rem, 2vw, 1rem);
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00AEEF;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: clamp(1rem, 2.5vw, 1.25rem) clamp(1.5rem, 4vw, 2rem);
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #00AEEF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #0098D1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 174, 239, 0.3);
+}
+
+.early-access-info {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 5vh, 3rem);
+}
+
+.early-access-info h2 {
+  font-family: 'TitlingGothicFB Comp', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: clamp(1rem, 2vh, 1.5rem);
+  color: #FFFFFF;
+}
+
+.early-access-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.early-access-info li {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-weight: 500;
+  color: #00AEEF;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  color: #FFFFFF;
+  transform: translateX(-4px);
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .early-access-page {
+    padding: clamp(1.5rem, 4vh, 2rem) clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .early-access-form,
+  .early-access-info {
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+}
+
+/*
+* --------------------------------------------------
 * components/Footer
 * --------------------------------------------------
 */

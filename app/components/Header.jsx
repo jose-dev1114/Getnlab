@@ -87,7 +87,7 @@ function HeaderCtas({isLoggedIn, cart}) {
   return (
     <nav className="header-ctas" role="navigation">
       <HeaderMenuMobileToggle />
-      <NavLink prefetch="intent" to="/account" className="get-early-access-btn">
+      <NavLink prefetch="intent" to="/early-access" className="get-early-access-btn">
         Get Early Access
       </NavLink>
     </nav>

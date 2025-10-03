@@ -16,7 +16,7 @@ export function HeroSection() {
             projects, no matter your experience level.
           </p>
           
-          <Link to="/collections/all" className="hero-cta-button">
+          <Link to="/early-access" className="hero-cta-button">
             <span>Get Early Access</span>
             <span className="lightning-icon">⚡</span>
           </Link>
