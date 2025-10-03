@@ -1,17 +1,18 @@
 [build]
-  command = "npm run build"
-  publish = "build/client"
-  functions = "netlify/functions"
+  command = "npm install && npm run build"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
+  PUBLIC_STORE_DOMAIN = "quickstart-12345678.myshopify.com"
+  PUBLIC_STOREFRONT_API_TOKEN = "dummy-token-for-build"
+  PUBLIC_STOREFRONT_API_VERSION = "2024-10"
+  SESSION_SECRET = "dummy-secret-for-build"
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
+  to = "/index.html"
   status = 200
-  force = false
-  conditions = {Role = ["admin"]}
 
 [[headers]]
   for = "/*"
@@ -22,7 +23,12 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
 
 [[headers]]
-  for = "/build/*"
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/svg/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
