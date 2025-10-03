@@ -5,6 +5,7 @@ import {ProductItem} from '~/components/ProductItem';
 import {HeroSection} from '~/components/HeroSection';
 import {ProductShowcase} from '~/components/ProductShowcase';
 import {PatternSection} from '~/components/PatternSection';
+import {GridSection} from '~/components/GridSection';
 
 /**
  * @type {Route.MetaFunction}
@@ -69,8 +70,7 @@ export default function Homepage() {
     <div className="home">
       <HeroSection />
       <PatternSection />
-      <ProductShowcase />
-      <RecommendedProducts products={data.recommendedProducts} />
+      <GridSection />
     </div>
   );
 }

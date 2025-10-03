@@ -15,6 +15,7 @@ export function HeroSection() {
             app that make it easy to start building real<br />
             projects, no matter your experience level.
           </p>
+          
           <Link to="/collections/all" className="hero-cta-button">
             <span>Get Early Access</span>
             <span className="lightning-icon">⚡</span>

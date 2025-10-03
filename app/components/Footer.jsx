@@ -1,130 +1,85 @@
-import {Suspense} from 'react';
-import {Await, NavLink} from 'react-router';
-
-/**
- * @param {FooterProps}
- */
-export function Footer({footer: footerPromise, header, publicStoreDomain}) {
+export function Footer() {
   return (
-    <Suspense>
-      <Await resolve={footerPromise}>
-        {(footer) => (
-          <footer className="footer">
-            {footer?.menu && header.shop.primaryDomain?.url && (
-              <FooterMenu
-                menu={footer.menu}
-                primaryDomainUrl={header.shop.primaryDomain.url}
-                publicStoreDomain={publicStoreDomain}
-              />
-            )}
-          </footer>
-        )}
-      </Await>
-    </Suspense>
+    <>
+      <div className="footer-pattern-top">
+        <img src="/svg/footer_black_pattern.svg" alt="" />
+      </div>
+
+      <footer className="nlab-footer">
+        <div className="footer-pattern-bg">
+          <img src="/svg/footer_light.svg" alt="" />
+        </div>
+
+        <div className="footer-main">
+        <div className="footer-column footer-brand">
+          <div className="footer-logo">
+            <img src="/svg/nLab_logo.svg" alt="nLab" />
+          </div>
+          <div className="footer-social">
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <img src="/svg/youtube.svg" alt="YouTube" />
+            </a>
+            <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <img src="/svg/discord.svg" alt="Discord" />
+            </a>
+            <a href="https://kickstarter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <img src="/svg/kickstarter.svg" alt="Kickstarter" />
+            </a>
+          </div>
+        </div>
+
+        <div className="footer-column">
+          <h3 className="footer-column-title">EXPLORE</h3>
+          <ul className="footer-links">
+            <li><a href="/collections/starter-kit">Starter Kit</a></li>
+            <li><a href="/collections/projects">Projects</a></li>
+            <li><a href="/pages/download">Download the App</a></li>
+            <li><a href="/pages/support">Support</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-column">
+          <h3 className="footer-column-title">DESIGNED FOR</h3>
+          <ul className="footer-links">
+            <li><a href="/pages/career-changers">Career Changers</a></li>
+            <li><a href="/pages/future-engineers">Future Engineers</a></li>
+            <li><a href="/pages/learners">Self-Directed Learners</a></li>
+            <li><a href="/pages/builders">Builders & Influencers</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-column">
+          <h3 className="footer-column-title">SUPPORT</h3>
+          <ul className="footer-links">
+            <li><a href="/pages/faq">FAQ</a></li>
+            <li><a href="/account">Get Early Access</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">Subscribe to YouTube</a></li>
+            <li><a href="/pages/community">Community</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-column">
+          <h3 className="footer-column-title">ABOUT</h3>
+          <ul className="footer-links">
+            <li><a href="/pages/why-nlab">Why nLab?</a></li>
+            <li><a href="/pages/team">Meet Angie & Nick</a></li>
+            <li><a href="/pages/news">News & Updates</a></li>
+            <li><a href="/pages/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <div className="footer-bottom-content">
+          <p className="footer-copyright">© 2025, nLab All Rights reserved</p>
+          <a href="/policies/privacy-policy" className="footer-legal-link">Privacy Policy</a>
+          <a href="/policies/terms-of-service" className="footer-legal-link">Terms of Service</a>
+          <a href="/policies/refund-policy" className="footer-legal-link">Refund Policy</a>
+        </div>
+      </div>
+    </footer>
+    </>
   );
 }
 
-/**
- * @param {{
- *   menu: FooterQuery['menu'];
- *   primaryDomainUrl: FooterProps['header']['shop']['primaryDomain']['url'];
- *   publicStoreDomain: string;
- * }}
- */
-function FooterMenu({menu, primaryDomainUrl, publicStoreDomain}) {
-  return (
-    <nav className="footer-menu" role="navigation">
-      {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
-        if (!item.url) return null;
-        // if the url is internal, we strip the domain
-        const url =
-          item.url.includes('myshopify.com') ||
-          item.url.includes(publicStoreDomain) ||
-          item.url.includes(primaryDomainUrl)
-            ? new URL(item.url).pathname
-            : item.url;
-        const isExternal = !url.startsWith('/');
-        return isExternal ? (
-          <a href={url} key={item.id} rel="noopener noreferrer" target="_blank">
-            {item.title}
-          </a>
-        ) : (
-          <NavLink
-            end
-            key={item.id}
-            prefetch="intent"
-            style={activeLinkStyle}
-            to={url}
-          >
-            {item.title}
-          </NavLink>
-        );
-      })}
-    </nav>
-  );
-}
 
-const FALLBACK_FOOTER_MENU = {
-  id: 'gid://shopify/Menu/199655620664',
-  items: [
-    {
-      id: 'gid://shopify/MenuItem/461633060920',
-      resourceId: 'gid://shopify/ShopPolicy/23358046264',
-      tags: [],
-      title: 'Privacy Policy',
-      type: 'SHOP_POLICY',
-      url: '/policies/privacy-policy',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461633093688',
-      resourceId: 'gid://shopify/ShopPolicy/23358013496',
-      tags: [],
-      title: 'Refund Policy',
-      type: 'SHOP_POLICY',
-      url: '/policies/refund-policy',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461633126456',
-      resourceId: 'gid://shopify/ShopPolicy/23358111800',
-      tags: [],
-      title: 'Shipping Policy',
-      type: 'SHOP_POLICY',
-      url: '/policies/shipping-policy',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461633159224',
-      resourceId: 'gid://shopify/ShopPolicy/23358079032',
-      tags: [],
-      title: 'Terms of Service',
-      type: 'SHOP_POLICY',
-      url: '/policies/terms-of-service',
-      items: [],
-    },
-  ],
-};
-
-/**
- * @param {{
- *   isActive: boolean;
- *   isPending: boolean;
- * }}
- */
-function activeLinkStyle({isActive, isPending}) {
-  return {
-    fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'white',
-  };
-}
-
-/**
- * @typedef {Object} FooterProps
- * @property {Promise<FooterQuery|null>} footer
- * @property {HeaderQuery} header
- * @property {string} publicStoreDomain
- */
-
-/** @typedef {import('storefrontapi.generated').FooterQuery} FooterQuery */
-/** @typedef {import('storefrontapi.generated').HeaderQuery} HeaderQuery */
