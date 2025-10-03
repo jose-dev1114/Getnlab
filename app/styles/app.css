@@ -419,7 +419,9 @@ button.reset:hover:not(:has(> *)) {
 * routes/early-access
 * --------------------------------------------------
 */
-.early-access-header-wrapper {
+
+/* Style the header when on early access page */
+body:has(.early-access-page) header {
   background-color: #3F3F3D;
   background-image: url('/svg/grid.svg');
   background-size: 100px 100px;
@@ -428,7 +430,7 @@ button.reset:hover:not(:has(> *)) {
   position: relative;
 }
 
-.early-access-header-wrapper::before {
+body:has(.early-access-page) header::before {
   content: '';
   position: absolute;
   top: 0;
@@ -440,32 +442,33 @@ button.reset:hover:not(:has(> *)) {
   z-index: 0;
 }
 
-.early-access-header-wrapper header {
+body:has(.early-access-page) header > * {
   position: relative;
   z-index: 1;
 }
 
-.early-access-header-wrapper .header-logo img {
+body:has(.early-access-page) .header-logo img {
   filter: brightness(0) invert(1);
 }
 
-.early-access-header-wrapper .menu-toggle {
+body:has(.early-access-page) .menu-toggle {
   color: #FFFFFF;
+  font-weight: 900;
 }
 
-.early-access-header-wrapper .get-early-access-btn {
+body:has(.early-access-page) .get-early-access-btn {
   background: transparent;
   color: #FFFFFF;
   border: 2px solid #FFFFFF;
 }
 
-.early-access-header-wrapper .get-early-access-btn:hover {
+body:has(.early-access-page) .get-early-access-btn:hover {
   background: #FFFFFF;
   color: #3F3F3D;
 }
 
 .early-access-page {
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   background-color: #3F3F3D;
   background-image: url('/svg/grid.svg');
   background-size: 100px 100px;

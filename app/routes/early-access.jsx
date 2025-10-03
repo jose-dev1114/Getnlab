@@ -1,20 +1,12 @@
-import {Link, useRouteLoaderData} from 'react-router';
-import {Header} from '~/components/Header';
-import {Footer} from '~/components/Footer';
+import {Link} from 'react-router';
 
 export const meta = () => {
   return [{title: 'Get Early Access | nLab'}];
 };
 
 export default function EarlyAccess() {
-  const data = useRouteLoaderData('root');
-
   return (
-    <>
-      <div className="early-access-header-wrapper">
-        {data && <Header header={data.header} cart={data.cart} publicStoreDomain={data.publicStoreDomain} />}
-      </div>
-      <div className="early-access-page">
+    <div className="early-access-page">
       <div className="early-access-content">
         <h1>Get Early Access</h1>
         <p>Be the first to experience nLab - the revolutionary electronics learning kit.</p>
@@ -86,8 +78,6 @@ export default function EarlyAccess() {
         </Link>
       </div>
     </div>
-    {data && <Footer />}
-    </>
   );
 }
 

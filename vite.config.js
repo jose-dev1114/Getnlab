@@ -10,21 +10,13 @@ export default defineConfig({
     tailwindcss(),
     hydrogen(),
     oxygen(),
-    reactRouter({
-      ssr: false,
-    }),
+    reactRouter(),
     tsconfigPaths(),
   ],
   build: {
     // Allow a strict Content-Security-Policy
     // withtout inlining assets as base64:
     assetsInlineLimit: 0,
-    outDir: 'dist',
-    rollupOptions: {
-      output: {
-        manualChunks: undefined,
-      },
-    },
   },
   ssr: {
     optimizeDeps: {

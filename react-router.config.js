@@ -9,6 +9,8 @@ import {hydrogenPreset} from '@shopify/hydrogen/react-router-preset';
  */
 export default {
   presets: [hydrogenPreset()],
+  ssr: true,
+  buildDirectory: 'build',
 };
 
 /** @typedef {import('@react-router/dev/config').Config} Config */
