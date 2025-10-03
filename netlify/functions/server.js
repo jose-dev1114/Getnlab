@@ -1,7 +1,9 @@
+import { createRequestHandler } from '@shopify/hydrogen/oxygen';
+
 export const handler = async (event, context) => {
   try {
     // Dynamically import the server build
-    const { default: handler } = await import("../../dist/server/index.js");
+    const serverBuild = await import("../../dist/server/index.js");
 
     // Create a Web Request from the Netlify event
     const url = new URL(event.rawUrl || `https://${event.headers.host}${event.path}`);
@@ -14,12 +16,36 @@ export const handler = async (event, context) => {
         : undefined,
     });
 
-    // Call the React Router handler
-    const response = await handler(request, {
-      context: {
-        netlify: { event, context }
-      }
+    // Create mock env object for Hydrogen
+    const env = {
+      PUBLIC_STORE_DOMAIN: process.env.PUBLIC_STORE_DOMAIN || 'quickstart-12345678.myshopify.com',
+      PUBLIC_STOREFRONT_API_TOKEN: process.env.PUBLIC_STOREFRONT_API_TOKEN || 'dummy-token',
+      PUBLIC_STOREFRONT_API_VERSION: process.env.PUBLIC_STOREFRONT_API_VERSION || '2024-10',
+      SESSION_SECRET: process.env.SESSION_SECRET || 'dummy-secret',
+    };
+
+    // Create Hydrogen request handler
+    const handleRequest = createRequestHandler({
+      build: serverBuild,
+      mode: process.env.NODE_ENV || 'production',
+      getLoadContext: () => ({
+        env,
+        waitUntil: () => {},
+        session: {
+          get: async () => ({}),
+          set: async () => {},
+          unset: async () => {},
+          commit: async () => '',
+          isPending: false,
+        },
+        storefront: {
+          query: async () => ({ data: null }),
+        },
+      }),
     });
+
+    // Call the handler
+    const response = await handleRequest(request);
 
     // Convert Response to Netlify format
     const headers = {};
