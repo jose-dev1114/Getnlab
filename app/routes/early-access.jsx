@@ -8,8 +8,8 @@ export default function EarlyAccess() {
   return (
     <div className="early-access-page">
       <div className="early-access-content">
-        <h1>Get Early Access</h1>
-        <p>Be the first to experience nLab - the revolutionary electronics learning kit.</p>
+        <h1>Get Early Access FOR 10% Off at Launch</h1>
+        <p>Be among the first to build, learn, and create with nLab — now before the Kickstarter goes live.</p>
         
         <form className="early-access-form">
           <div className="form-group">

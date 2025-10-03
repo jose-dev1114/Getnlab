@@ -465,17 +465,17 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 .early-access-page {
   min-height: calc(100vh - 80px);
   background-color: #3F3F3D;
-  padding: 300px 60px;
+  padding: 70px 60px;
   position: relative;
 }
 
 .early-access-page::before {
   content: '';
   position: absolute;
-  top: 300px;
+  top: 70px;
   left: 60px;
   right: 60px;
-  bottom: 300px;
+  bottom: 70px;
   background-image:
     repeating-linear-gradient(
       0deg,
@@ -658,14 +658,14 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 /* Mobile Styles */
 @media (max-width: 767px) {
   .early-access-page {
-    padding: 150px 30px;
+    padding: 50px 30px;
   }
 
   .early-access-page::before {
-    top: 150px;
+    top: 50px;
     left: 30px;
     right: 30px;
-    bottom: 150px;
+    bottom: 50px;
   }
 
   .early-access-content {
