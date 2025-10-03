@@ -19,22 +19,25 @@ export default async function handleRequest(
 ) {
   const {nonce, header, NonceProvider} = createContentSecurityPolicy({
     shop: {
-      checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
-      storeDomain: context.env.PUBLIC_STORE_DOMAIN,
+      checkoutDomain: context?.env?.PUBLIC_CHECKOUT_DOMAIN || '',
+      storeDomain: context?.env?.PUBLIC_STORE_DOMAIN || '',
     },
     styleSrc: [
       "'self'",
       "'unsafe-inline'",
       'https://fonts.googleapis.com',
+      'https://fonts.cdnfonts.com',
     ],
     fontSrc: [
       "'self'",
       'https://fonts.gstatic.com',
+      'https://fonts.cdnfonts.com',
     ],
     connectSrc: [
       "'self'",
       'https://fonts.googleapis.com',
       'https://fonts.gstatic.com',
+      'https://fonts.cdnfonts.com',
     ],
   });
 
