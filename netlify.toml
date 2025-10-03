@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && npm run build && cp build/client/index.html build/client/404.html"
+  command = "npm install && npm run build"
   publish = "build/client"
 
 [build.environment]
