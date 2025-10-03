@@ -426,33 +426,6 @@ body:has(.early-access-page) header {
   position: relative;
 }
 
-body:has(.early-access-page) header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 49px,
-      rgba(255, 255, 255, 0.08) 49px,
-      rgba(255, 255, 255, 0.08) 50px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 49px,
-      rgba(255, 255, 255, 0.08) 49px,
-      rgba(255, 255, 255, 0.08) 50px
-    );
-  background-size: 50px 50px;
-  pointer-events: none;
-  z-index: 0;
-}
-
 body:has(.early-access-page) header > * {
   position: relative;
   z-index: 1;
@@ -492,7 +465,7 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 .early-access-page {
   min-height: calc(100vh - 80px);
   background-color: #3F3F3D;
-  padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 6vw, 4rem);
+  padding: 0;
   position: relative;
 }
 
@@ -528,7 +501,7 @@ body:has(.early-access-page) .get-early-access-btn:hover {
   z-index: 1;
   max-width: 900px;
   margin: 0 auto;
-  padding: clamp(1rem, 3vw, 2rem);
+  padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 6vw, 4rem);
   color: #FFFFFF;
 }
 
@@ -685,11 +658,11 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 /* Mobile Styles */
 @media (max-width: 767px) {
   .early-access-page {
-    padding: clamp(2rem, 5vh, 3rem) clamp(1.5rem, 5vw, 2rem);
+    padding: 0;
   }
 
   .early-access-content {
-    padding: clamp(0.5rem, 2vw, 1rem);
+    padding: clamp(2rem, 5vh, 3rem) clamp(1.5rem, 5vw, 2rem);
   }
 
   .early-access-form,
