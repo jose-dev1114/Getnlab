@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && npm run build"
+  command = "npm install && npm run build && cp build/client/index.html build/client/404.html"
   publish = "build/client"
 
 [build.environment]
@@ -9,9 +9,10 @@
   PUBLIC_STOREFRONT_API_VERSION = "2024-10"
   SESSION_SECRET = "dummy-secret-for-build"
 
-[[edge_functions]]
-  function = "server"
-  path = "/*"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
 [[headers]]
   for = "/*"
