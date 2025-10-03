@@ -1,6 +1,17 @@
 import * as build from "../../build/server/index.js";
 
 export default async (request, context) => {
+  const url = new URL(request.url);
+
+  // Let static assets pass through to be served from build/client
+  if (
+    url.pathname.startsWith('/assets/') ||
+    url.pathname.startsWith('/svg/') ||
+    url.pathname.match(/\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)$/)
+  ) {
+    return context.next();
+  }
+
   try {
     // The build exports a handler function
     const handler = build.default || build.handler || build;
