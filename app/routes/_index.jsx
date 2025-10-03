@@ -6,6 +6,7 @@ import {HeroSection} from '~/components/HeroSection';
 import {ProductShowcase} from '~/components/ProductShowcase';
 import {PatternSection} from '~/components/PatternSection';
 import {GridSection} from '~/components/GridSection';
+import {BuildTogetherSection} from '~/components/BuildTogetherSection';
 
 /**
  * @type {Route.MetaFunction}
@@ -79,6 +80,7 @@ export default function Homepage() {
       <HeroSection />
       <PatternSection />
       <GridSection />
+      <BuildTogetherSection />
     </div>
   );
 }
