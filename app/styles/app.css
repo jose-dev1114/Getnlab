@@ -423,8 +423,8 @@ button.reset:hover:not(:has(> *)) {
 /* Style the header when on early access page */
 body:has(.early-access-page) header {
   background-color: #3F3F3D;
-  background-image: url('/svg/grid.svg');
-  background-size: 100px 100px;
+  background-image: url('/svg/white_grid.svg');
+  background-size: 60px 60px;
   background-repeat: repeat;
   background-position: center;
   position: relative;
@@ -437,7 +437,7 @@ body:has(.early-access-page) header::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(63, 63, 61, 0.85);
+  background: rgba(63, 63, 61, 0.3);
   pointer-events: none;
   z-index: 0;
 }
@@ -456,25 +456,36 @@ body:has(.early-access-page) .menu-toggle {
   font-weight: 900;
 }
 
+/* Menu items white text */
+body:has(.early-access-page) .header-menu-desktop a,
+body:has(.early-access-page) .header-menu-mobile a {
+  color: #FFFFFF !important;
+}
+
+body:has(.early-access-page) .header-menu-desktop a:hover,
+body:has(.early-access-page) .header-menu-mobile a:hover {
+  color: #00AEEF !important;
+}
+
 body:has(.early-access-page) .get-early-access-btn {
   background: transparent;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   border: 2px solid #FFFFFF;
 }
 
 body:has(.early-access-page) .get-early-access-btn:hover {
   background: #FFFFFF;
-  color: #3F3F3D;
+  color: #3F3F3D !important;
 }
 
 .early-access-page {
   min-height: calc(100vh - 80px);
   background-color: #3F3F3D;
-  background-image: url('/svg/grid.svg');
-  background-size: 100px 100px;
+  background-image: url('/svg/white_grid.svg');
+  background-size: 60px 60px;
   background-repeat: repeat;
   background-position: center;
-  padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 5vw, 2rem);
+  padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 6vw, 4rem);
   position: relative;
 }
 
@@ -485,7 +496,7 @@ body:has(.early-access-page) .get-early-access-btn:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(63, 63, 61, 0.85);
+  background: rgba(63, 63, 61, 0.3);
   pointer-events: none;
   z-index: 0;
 }
@@ -493,8 +504,9 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 .early-access-content {
   position: relative;
   z-index: 1;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem);
   color: #FFFFFF;
 }
 
@@ -520,12 +532,13 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 }
 
 .early-access-form {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: clamp(2rem, 4vw, 3rem);
-  margin-bottom: clamp(2rem, 5vh, 3rem);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: clamp(3rem, 6vh, 4rem);
   backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .form-group {
@@ -600,11 +613,12 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 }
 
 .early-access-info {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: clamp(2rem, 4vw, 3rem);
-  margin-bottom: clamp(2rem, 5vh, 3rem);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: clamp(3rem, 6vh, 4rem);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .early-access-info h2 {
@@ -649,12 +663,16 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 /* Mobile Styles */
 @media (max-width: 767px) {
   .early-access-page {
-    padding: clamp(1.5rem, 4vh, 2rem) clamp(1rem, 4vw, 1.5rem);
+    padding: clamp(2rem, 5vh, 3rem) clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .early-access-content {
+    padding: clamp(0.5rem, 2vw, 1rem);
   }
 
   .early-access-form,
   .early-access-info {
-    padding: clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(2rem, 4vw, 2.5rem);
   }
 }
 
