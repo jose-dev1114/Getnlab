@@ -169,7 +169,7 @@ const FALLBACK_HEADER_MENU = {
       tags: [],
       title: 'Starter Kit',
       type: 'HTTP',
-      url: '/collections/starter-kit',
+      url: '/starter-kit',
       items: [],
     },
     {

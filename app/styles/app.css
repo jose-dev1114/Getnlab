@@ -2827,6 +2827,453 @@ body:has(.early-access-page) .get-early-access-btn:hover {
 
 /*
 * --------------------------------------------------
+* Starter Kit Page
+* --------------------------------------------------
+*/
+.starter-kit-page {
+  background-color: #3F3F3D;
+  color: #FFFFFF;
+}
+
+/* Light header for starter kit page */
+body:has(.starter-kit-page) .nlab-header {
+  background-color: #FFF5E4 !important;
+}
+
+body:has(.starter-kit-page) .nlab-logo img {
+  content: url('/svg/blue_logo.svg');
+}
+
+body:has(.starter-kit-page) .header-menu-item {
+  color: #2B2B2B !important;
+}
+
+body:has(.starter-kit-page) .header-menu-item:hover {
+  opacity: 0.7;
+}
+
+body:has(.starter-kit-page) .header-menu-item[aria-current="page"],
+body:has(.starter-kit-page) .header-menu-item.active {
+  border-bottom: 3px solid #2B2B2B;
+  padding-bottom: 2px;
+}
+
+body:has(.starter-kit-page) .get-early-access-btn {
+  color: #2B2B2B !important;
+  border-color: #2B2B2B !important;
+  background: transparent;
+}
+
+body:has(.starter-kit-page) .get-early-access-btn:hover {
+  background-color: #2B2B2B !important;
+  color: #FFF5E4 !important;
+}
+
+body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
+  color: #2B2B2B;
+}
+
+.starter-kit-hero {
+  position: relative;
+  background-color: #FFF5E4;
+  padding: clamp(6rem, 12vh, 10rem) clamp(2rem, 4vw, 4rem) clamp(4rem, 8vh, 6rem);
+  text-align: center;
+  overflow: hidden;
+}
+
+.starter-kit-hero-pattern-right {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  width: clamp(250px, 30vw, 450px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.starter-kit-hero-pattern-right img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.starter-kit-hero-pattern-left {
+  position: absolute;
+  left: 0;
+  bottom: clamp(1rem, 2vh, 2rem);
+  width: clamp(150px, 18vw, 250px);
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.starter-kit-hero-pattern-left img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.starter-kit-hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.starter-kit-title {
+  /* Your all-in-one electronics lab */
+  font-family: 'titling-gothic-fb-compressed', 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 77px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  color: #2B2B2B;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0 0 clamp(1rem, 2vh, 1.5rem) 0;
+}
+
+.starter-kit-subtitle {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  line-height: 1.5;
+  color: #2B2B2B;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.starter-kit-hero-image {
+  position: relative;
+  width: 100%;
+  padding: clamp(3rem, 6vh, 5rem) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.starter-kit-hero-image img {
+  width: 100%;
+  height: 505px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.starter-kit-explore {
+  background-color: #3F3F3D;
+  padding: clamp(4rem, 8vh, 6rem) clamp(2rem, 4vw, 4rem);
+}
+
+.starter-kit-explore-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.explore-section-title {
+  font-family: 'titling-gothic-fb-compressed', 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0 0 clamp(3rem, 6vh, 5rem) 0;
+}
+
+.explore-content {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: center;
+  margin-bottom: clamp(4rem, 8vh, 6rem);
+}
+
+.explore-content:last-child {
+  margin-bottom: 0;
+}
+
+.explore-content-reverse {
+  flex-direction: row-reverse;
+}
+
+.explore-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vh, 1.5rem);
+}
+
+.explore-badge {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(0.85rem, 1.6vw, 1rem);
+  line-height: 1.3;
+  color: #00AEEF;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.explore-title {
+  font-family: 'titling-gothic-fb-compressed', 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.explore-description {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.6;
+  color: #FFFFFF;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.explore-image {
+  flex: 1;
+  max-width: 600px;
+}
+
+.explore-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+/* Responsive styles for explore section */
+@media (max-width: 768px) {
+  .explore-content,
+  .explore-content-reverse {
+    flex-direction: column-reverse;
+  }
+
+  .explore-image {
+    max-width: 100%;
+  }
+
+  .starter-kit-features {
+    grid-template-columns: 1fr;
+  }
+
+  .components-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .starter-kit-hero-pattern-right {
+    width: 100%;
+    right: 0;
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .starter-kit-overview .starter-kit-container {
+    flex-direction: column;
+  }
+
+  .components-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/*
+* --------------------------------------------------
+* Starter Kit Banner Section
+* --------------------------------------------------
+*/
+.starter-kit-banner {
+  background-color: #3F3F3D;
+  padding: 0 clamp(2rem, 4vw, 4rem) clamp(4rem, 8vh, 6rem);
+}
+
+.starter-kit-banner-container {
+  position: relative;
+  width: 100%;
+  max-width: 1299px;
+  height: 416px;
+  margin: 0 auto;
+  background: #2B2B2B;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.banner-pattern {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 55%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.banner-pattern img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: right center;
+}
+
+.banner-text {
+  position: relative;
+  flex: 0 0 50%;
+  padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 4rem) clamp(3rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vh, 1.5rem);
+  z-index: 3;
+  background: linear-gradient(to right, rgba(43, 43, 43, 0.95) 0%, rgba(43, 43, 43, 0.85) 70%, transparent 100%);
+}
+
+.banner-title {
+  font-family: 'titling-gothic-fb-compressed', 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.banner-description {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  line-height: 1.5;
+  color: #FFFFFF;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.banner-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: clamp(0.75rem, 1.5vh, 1rem) clamp(1.5rem, 3vw, 2rem);
+  background: #FFFFFF;
+  color: #2B2B2B;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.banner-button:hover {
+  background: #F0F0F0;
+  transform: translateX(4px);
+}
+
+.banner-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+  filter: invert(1);
+}
+
+.banner-button:hover .banner-arrow {
+  transform: translateX(4px);
+}
+
+.banner-image {
+  position: relative;
+  flex: 0 0 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 4vw, 3rem);
+  z-index: 2;
+}
+
+.banner-image img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+  .starter-kit-banner-container {
+    height: auto;
+    min-height: 400px;
+    flex-direction: column;
+  }
+
+  .banner-text {
+    flex: 1;
+    padding: clamp(2rem, 5vw, 3rem);
+  }
+
+  .banner-image {
+    flex: 1;
+    min-height: 300px;
+    padding: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .banner-image img {
+    max-width: 280px;
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .starter-kit-banner-container {
+    height: auto;
+    min-height: 380px;
+  }
+
+  .banner-image img {
+    max-width: 300px;
+  }
+}
+
+/*
+* --------------------------------------------------
 * NLAB Product Showcase Sections
 * --------------------------------------------------
 */

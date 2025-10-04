@@ -31,7 +31,7 @@ export function Footer() {
         <div className="footer-column">
           <h3 className="footer-column-title">EXPLORE</h3>
           <ul className="footer-links">
-            <li><a href="/collections/starter-kit">Starter Kit</a></li>
+            <li><a href="/starter-kit">Starter Kit</a></li>
             <li><a href="/collections/projects">Projects</a></li>
             <li><a href="/pages/download">Download the App</a></li>
             <li><a href="/pages/support">Support</a></li>

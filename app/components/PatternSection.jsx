@@ -36,7 +36,7 @@ export function PatternSection() {
               components, guided lessons, and projects that grow with you — from your very<br />
               first LED to advanced robotics and coding.
             </p>
-            <Link to="/collections/all" className="pattern-cta-button">
+            <Link to="/starter-kit" className="pattern-cta-button">
               <span>Explore the Starter Kit</span>
               <img src="/svg/arrow_right.svg" alt="Arrow" className="arrow-icon" />
             </Link>
