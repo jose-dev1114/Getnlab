@@ -178,7 +178,7 @@ const FALLBACK_HEADER_MENU = {
       tags: [],
       title: 'Explore Projects',
       type: 'HTTP',
-      url: '/collections/projects',
+      url: '/explore-projects',
       items: [],
     },
     {
@@ -187,7 +187,7 @@ const FALLBACK_HEADER_MENU = {
       tags: [],
       title: 'Download App',
       type: 'HTTP',
-      url: '/pages/download',
+      url: '/download',
       items: [],
     },
     {
