@@ -512,7 +512,7 @@ body:has(.early-access-page) .get-early-access-btn:hover {
   font-weight: 600;
   font-stretch: condensed;
   text-transform: uppercase;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.02em;
   margin-bottom: clamp(1rem, 3vh, 1.5rem);
   text-align: center;
   color: #FFFFFF;
@@ -3578,7 +3578,7 @@ body:has(.about-page) .get-early-access-btn {
 .about-story-pattern-left {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -1px;
   width: clamp(250px, 30vw, 450px);
   height: auto;
   z-index: 1;
@@ -3594,7 +3594,7 @@ body:has(.about-page) .get-early-access-btn {
 .about-story-pattern-right {
   position: absolute;
   right: 0;
-  bottom: -1px;
+  bottom: -2px;
   width: clamp(150px, 20vw, 300px);
   height: auto;
   z-index: 1;
@@ -3694,5 +3694,138 @@ body:has(.about-page) .get-early-access-btn {
   .about-hero-pattern-right {
     width: 100%;
     right: 0;
+  }
+}
+
+/* About Makers Section */
+.about-makers {
+  background-color: #4a4a4a;
+  padding: clamp(3rem, 8vh, 6rem) 0;
+  color: #ffffff;
+}
+
+.about-makers-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+.about-makers-intro {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vh, 5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-makers-title {
+  font-family: 'TitlingGothicFB Compressed', 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: clamp(1rem, 2vh, 1.5rem);
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.about-makers-description {
+  font-family: 'Roboto Condensed', 'Roboto', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.6;
+  max-width: 800px;
+  color: #ffffff;
+}
+
+.about-makers-profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  margin-bottom: clamp(3rem, 6vh, 5rem);
+}
+
+.about-makers-profile-reverse {
+  direction: ltr;
+}
+
+.about-makers-profile-text {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 2vh, 1rem);
+}
+
+.about-makers-profile-name {
+  font-family: 'TitlingGothicFB Compressed', 'Bebas Neue', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.about-makers-profile-role {
+  font-family: 'Roboto Condensed', 'Roboto', sans-serif;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  margin-bottom: clamp(0.5rem, 1vh, 0.75rem);
+  font-weight: 500;
+}
+
+.about-makers-profile-role-nick {
+  color: #00AEEF;
+}
+
+.about-makers-profile-role-angie {
+  color: #FFC928;
+}
+
+.about-makers-profile-bio {
+  font-family: 'Roboto Condensed', 'Roboto', sans-serif;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.6;
+  color: #ffffff;
+  margin: 0;
+}
+
+.about-makers-profile-image {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-makers-profile-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.about-makers-footer {
+  text-align: center;
+  margin-top: clamp(3rem, 6vh, 5rem);
+  padding: clamp(2rem, 4vh, 3rem) 0;
+}
+
+.about-makers-footer p {
+  font-family: 'Roboto Condensed', 'Roboto', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Responsive Styles for Makers Section */
+@media (max-width: 768px) {
+  .about-makers-profile {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vh, 3rem);
+  }
+
+  .about-makers-profile-image {
+    order: -1;
+  }
+
+  .about-makers-profile-reverse .about-makers-profile-image {
+    order: -1;
   }
 }
