@@ -2255,6 +2255,7 @@ body:has(.early-access-page) .get-early-access-btn:hover {
   font-weight: 700;
   font-size: clamp(1.5rem, 3vw, 2rem);
   line-height: 1.2;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: #2B2B2B;
   margin: 0;
@@ -3042,6 +3043,7 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
   font-weight: 700;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   line-height: 1.2;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: #FFFFFF;
   margin: 0;
