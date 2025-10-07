@@ -13,7 +13,7 @@ export function Footer() {
         <div className="footer-main">
         <div className="footer-column footer-brand">
           <div className="footer-logo">
-            <img src="/svg/nLab_logo.svg" alt="nLab" />
+            <img src="/svg/nlab_logo.svg?v=2025" alt="nLab" />
           </div>
           <div className="footer-social">
             <a href="https://www.youtube.com/@get-nlab" target="_blank" rel="noopener noreferrer" className="social-icon">
@@ -72,9 +72,11 @@ export function Footer() {
       <div className="footer-bottom">
         <div className="footer-bottom-content">
           <p className="footer-copyright">© 2025, nLab All Rights reserved</p>
-          <a href="/policies/privacy-policy" className="footer-legal-link">Privacy Policy</a>
-          <a href="/policies/terms-of-service" className="footer-legal-link">Terms of Service</a>
-          <a href="/policies/refund-policy" className="footer-legal-link">Refund Policy</a>
+          <div className="footer-legal-links">
+            <a href="/policies/privacy-policy" className="footer-legal-link">Privacy Policy</a>
+            <a href="/policies/terms-of-service" className="footer-legal-link">Terms of Service</a>
+            <a href="/policies/refund-policy" className="footer-legal-link">Refund Policy</a>
+          </div>
         </div>
       </div>
     </footer>

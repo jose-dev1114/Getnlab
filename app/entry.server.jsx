@@ -39,6 +39,13 @@ export default async function handleRequest(
       'https://fonts.gstatic.com',
       'https://fonts.cdnfonts.com',
     ],
+    frameSrc: [
+      "'self'",
+      'https://www.youtube.com',
+      'https://www.youtube-nocookie.com',
+      'https://youtube.com',
+      'https://youtube-nocookie.com',
+    ],
   });
 
   const body = await renderToReadableStream(

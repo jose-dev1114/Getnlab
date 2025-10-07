@@ -34,6 +34,6 @@ export default defineConfig({
     },
   },
   server: {
-    allowedHosts: ['.tryhydrogen.dev'],
+    allowedHosts: ['.tryhydrogen.dev', '3ae571dcee81.ngrok-free.app'],
   },
 });

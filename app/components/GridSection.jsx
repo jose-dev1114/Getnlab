@@ -1,3 +1,5 @@
+import {Link} from 'react-router';
+
 export function GridSection() {
   return (
     <section className="grid-section">
@@ -157,10 +159,10 @@ export function GridSection() {
 
         <div className="grid-cta-section">
           <h2 className="grid-cta-title">ALL THESE PROJECTS ARE IN YOUR KIT</h2>
-          <a href="/collections/all" className="grid-cta-button">
+          <Link to="/explore-projects" className="grid-cta-button">
             View All Projects
             <img src="/svg/arrow_right.svg" alt="Arrow" className="arrow-icon" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

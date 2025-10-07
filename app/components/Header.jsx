@@ -13,13 +13,12 @@ export function Header({header, isLoggedIn, cart, publicStoreDomain}) {
       <NavLink prefetch="intent" to="/" className="nlab-logo" end>
         <img src="/svg/logo.svg" alt="NLAB" />
       </NavLink>
-      <HeaderMenu
-        menu={menu}
-        viewport="desktop"
+      <HeaderCtas
+        isLoggedIn={isLoggedIn}
+        cart={cart}
         primaryDomainUrl={header.shop.primaryDomain.url}
         publicStoreDomain={publicStoreDomain}
       />
-      <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
     </header>
   );
 }
@@ -41,20 +40,26 @@ export function HeaderMenu({
   const className = `header-menu-${viewport}`;
   const {close} = useAside();
 
+  // Only render for mobile viewport since desktop is now in HeaderCtas
+  if (viewport !== 'mobile') {
+    return null;
+  }
+
   return (
     <nav className={className} role="navigation">
-      {viewport === 'mobile' && (
-        <NavLink
-          end
-          onClick={close}
-          prefetch="intent"
-          to="/"
-        >
-          Home
-        </NavLink>
-      )}
+      <NavLink
+        end
+        onClick={close}
+        prefetch="intent"
+        to="/"
+      >
+        Home
+      </NavLink>
       {FALLBACK_HEADER_MENU.items.map((item) => {
         if (!item.url) return null;
+
+        // Check if URL is external
+        const isExternal = item.url.startsWith('http://') || item.url.startsWith('https://');
 
         // if the url is internal, we strip the domain
         const url =
@@ -63,6 +68,24 @@ export function HeaderMenu({
           item.url.includes(primaryDomainUrl)
             ? new URL(item.url).pathname
             : item.url;
+
+        // Render external links as regular anchor tags
+        if (isExternal) {
+          return (
+            <a
+              className="header-menu-item"
+              key={item.id}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={close}
+            >
+              {item.title}
+            </a>
+          );
+        }
+
+        // Render internal links as NavLinks
         return (
           <NavLink
             className="header-menu-item"
@@ -81,12 +104,59 @@ export function HeaderMenu({
 }
 
 /**
- * @param {Pick<HeaderProps, 'isLoggedIn' | 'cart'>}
+ * @param {Pick<HeaderProps, 'isLoggedIn' | 'cart'> & {primaryDomainUrl: string, publicStoreDomain: string}}
  */
-function HeaderCtas({isLoggedIn, cart}) {
+function HeaderCtas({isLoggedIn, cart, primaryDomainUrl, publicStoreDomain}) {
   return (
     <nav className="header-ctas" role="navigation">
       <HeaderMenuMobileToggle />
+
+      {/* Desktop Menu Items */}
+      <div className="header-menu-desktop">
+        {FALLBACK_HEADER_MENU.items.map((item) => {
+          if (!item.url) return null;
+
+          // Check if URL is external
+          const isExternal = item.url.startsWith('http://') || item.url.startsWith('https://');
+
+          // if the url is internal, we strip the domain
+          const url =
+            item.url.includes('myshopify.com') ||
+            item.url.includes(publicStoreDomain) ||
+            item.url.includes(primaryDomainUrl)
+              ? new URL(item.url).pathname
+              : item.url;
+
+          // Render external links as regular anchor tags
+          if (isExternal) {
+            return (
+              <a
+                className="header-menu-item"
+                key={item.id}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {item.title}
+              </a>
+            );
+          }
+
+          // Render internal links as NavLinks
+          return (
+            <NavLink
+              className="header-menu-item"
+              end
+              key={item.id}
+              prefetch="intent"
+              to={url}
+            >
+              {item.title}
+            </NavLink>
+          );
+        })}
+      </div>
+
       <NavLink prefetch="intent" to="/early-access" className="get-early-access-btn">
         Get Early Access
       </NavLink>
@@ -197,6 +267,15 @@ const FALLBACK_HEADER_MENU = {
       title: 'About Us',
       type: 'HTTP',
       url: '/about',
+      items: [],
+    },
+    {
+      id: 'gid://shopify/MenuItem/461609599033',
+      resourceId: null,
+      tags: [],
+      title: 'Join Our Community',
+      type: 'HTTP',
+      url: '/community',
       items: [],
     },
   ],

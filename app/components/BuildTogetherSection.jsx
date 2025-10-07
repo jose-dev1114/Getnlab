@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export function BuildTogetherSection() {
   return (
     <>
@@ -21,10 +23,10 @@ export function BuildTogetherSection() {
           </div>
           <div className="build-card-content">
             <h3 className="build-card-title">YOUR LAB,<br />POWERED BY SOFTWARE</h3>
-            <button className="build-card-button">
+            <Link to="/download" className="build-card-button">
               Learn More About The App
               <img src="/svg/green-arrow.svg" alt="" className="button-arrow" />
-            </button>
+            </Link>
 
             <div className="build-card-features">
               <div className="build-feature">
@@ -51,10 +53,10 @@ export function BuildTogetherSection() {
           </div>
           <div className="build-card-content">
             <h3 className="build-card-title">CAREER-READY,<br />PROJECT BY PROJECT</h3>
-            <button className="build-card-button">
+            <a href="https://discord.gg/PTZGpAkj" target="_blank" rel="noopener noreferrer" className="build-card-button">
               Join our Discord Community
               <img src="/svg/arrow_right.svg" alt="" className="button-arrow" />
-            </button>
+            </a>
 
             <div className="build-card-features">
               <div className="build-feature build-feature-underline">

@@ -24,7 +24,7 @@ export function HeroSection() {
 
         <div className="hero-image-container">
           <div className="hero-pattern">
-            <img src="/svg/header_image_pattern.svg" alt="Pattern" className="pattern-svg" />
+            <img src="/svg/img/header_image_pattern.webp" alt="Pattern" className="pattern-svg" />
           </div>
         </div>
       </div>

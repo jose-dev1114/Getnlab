@@ -23,12 +23,7 @@ export async function createHydrogenRouterContext(
   env,
   executionContext,
 ) {
-  /**
-   * Open a cache instance in the worker and a custom session instance.
-   */
-  if (!env?.SESSION_SECRET) {
-    throw new Error('SESSION_SECRET environment variable is not set');
-  }
+  console.log('🚀 Creating Hydrogen context with API credentials');
 
   const waitUntil = executionContext.waitUntil.bind(executionContext);
   const [cache, session] = await Promise.all([
@@ -36,23 +31,19 @@ export async function createHydrogenRouterContext(
     AppSession.init(request, [env.SESSION_SECRET]),
   ]);
 
-  const hydrogenContext = createHydrogenContext(
-    {
-      env,
-      request,
-      cache,
-      waitUntil,
-      session,
-      // Or detect from URL path based on locale subpath, cookies, or any other strategy
-      i18n: {language: 'EN', country: 'US'},
-      cart: {
-        queryFragment: CART_QUERY_FRAGMENT,
-      },
+  // Use the standard Hydrogen context creation
+  return createHydrogenContext({
+    env,
+    request,
+    cache,
+    waitUntil,
+    session,
+    i18n: {language: 'EN', country: 'US'},
+    cart: {
+      queryFragment: CART_QUERY_FRAGMENT,
     },
-    additionalContext,
-  );
-
-  return hydrogenContext;
+    ...additionalContext,
+  });
 }
 
 /** @typedef {Class<additionalContext>} AdditionalContextType */
