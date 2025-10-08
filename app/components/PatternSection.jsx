@@ -26,7 +26,8 @@ export function PatternSection() {
 
         <div className="pattern-content-wrapper">
           <div className="pattern-image-container">
-            <img src="/svg/img/access_main.png" alt="Product" className="pattern-main-image" />
+            <img src="/svg/img/pc_main.png" alt="Product" className="pattern-main-image pattern-desktop-image" />
+            <img src="/svg/img/mobile_main.png" alt="Product" className="pattern-main-image pattern-mobile-image" />
           </div>
 
           <div className="pattern-text-section">

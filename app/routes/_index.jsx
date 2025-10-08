@@ -7,6 +7,7 @@ import {ProductShowcase} from '~/components/ProductShowcase';
 import {PatternSection} from '~/components/PatternSection';
 import {GridSection} from '~/components/GridSection';
 import {BuildTogetherSection} from '~/components/BuildTogetherSection';
+import {KlaviyoPopup} from '~/components/KlaviyoPopup';
 
 /**
  * @type {Route.MetaFunction}
@@ -81,6 +82,7 @@ export default function Homepage() {
       <PatternSection />
       <GridSection />
       <BuildTogetherSection />
+      <KlaviyoPopup />
     </div>
   );
 }

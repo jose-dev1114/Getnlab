@@ -42,7 +42,6 @@ export function Footer() {
           <ul className="footer-links">
             <li><a href="/early-access">Get Early Access</a></li>
             <li><a href="https://www.youtube.com/@get-nlab" target="_blank" rel="noopener noreferrer">Subscribe to YouTube</a></li>
-            <li><a href="/community">Community</a></li>
           </ul>
         </div>
 
@@ -50,7 +49,6 @@ export function Footer() {
           <h3 className="footer-column-title">ABOUT</h3>
           <ul className="footer-links">
             <li><a href="/about">Meet Angie & Nick</a></li>
-            <li><a href="/community">News & Updates</a></li>
             <li><a href="/about">Contact Us</a></li>
           </ul>
         </div>

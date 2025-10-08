@@ -269,15 +269,6 @@ const FALLBACK_HEADER_MENU = {
       url: '/about',
       items: [],
     },
-    {
-      id: 'gid://shopify/MenuItem/461609599033',
-      resourceId: null,
-      tags: [],
-      title: 'Join Our Community',
-      type: 'HTTP',
-      url: '/community',
-      items: [],
-    },
   ],
 };
 

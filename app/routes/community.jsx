@@ -122,117 +122,146 @@ export default function Community() {
       </section>
 
       <section className="community-discord-section">
-        {/* First Section: Image Left, Text Right */}
-        <div className="community-section-content">
-          <div className="community-kickstarter-preview">
-            <div className="kickstarter-image-placeholder">
-              <img src="/svg/img/access_main.png" alt="Kickstarter Campaign" className="kickstarter-image" />
+        {/* Clean Kickstarter Hero Section */}
+        <div className="kickstarter-hero-section">
+          <div className="kickstarter-hero-content">
+            <div className="kickstarter-hero-header">
+              <h1 className="kickstarter-hero-title">
+                Back us on
+                <img src="/svg/kickstarter-logo.svg" alt="Kickstarter" className="kickstarter-hero-logo" />
+              </h1>
+              <p className="kickstarter-hero-subtitle">
+                Join the revolution in electronics education. Get exclusive early access and help us make learning engineering accessible to everyone.
+              </p>
             </div>
-          </div>
 
-          <div className="community-text-content kickstarter-centered">
-            <h2 className="community-section-title">KICKSTARTER LAUNCHING SOON</h2>
-            <p className="community-section-description">
-              We're about to launch our Kickstarter campaign and we need the Resistors to help us revolutionize how people learn engineering. Join our pre-launch giveaway for exclusive perks and be part of the mission to help others think like an engineer.
-            </p>
+            <div className="kickstarter-hero-image">
+              <img src="/svg/img/access_main.png" alt="nLab Electronics Kit" className="hero-product-image" />
+              <div className="hero-image-badge">
+                <span className="badge-text">Coming Soon</span>
+              </div>
+            </div>
 
-            <div className="community-features">
-              <div className="community-feature">
-                <div className="community-feature-icon">⚡</div>
-                <div className="community-feature-text">
+            <div className="kickstarter-value-props">
+              <div className="value-prop">
+                <div className="value-icon">⚡</div>
+                <div className="value-content">
                   <h3>Early Bird Pricing</h3>
-                  <p>Get the nLab Starter Kit at the lowest price ever offered</p>
+                  <p>Lowest price ever offered</p>
                 </div>
               </div>
 
-              <div className="community-feature">
-                <div className="community-feature-icon">🎁</div>
-                <div className="community-feature-text">
+              <div className="value-prop">
+                <div className="value-icon">🎁</div>
+                <div className="value-content">
                   <h3>Exclusive Rewards</h3>
-                  <p>Limited edition items and special recognition for founding backers</p>
+                  <p>Limited founder perks</p>
                 </div>
               </div>
 
-              <div className="community-feature">
-                <div className="community-feature-icon">🚀</div>
-                <div className="community-feature-text">
+              <div className="value-prop">
+                <div className="value-icon">🚀</div>
+                <div className="value-content">
                   <h3>Shape the Future</h3>
-                  <p>Your backing helps us create the next generation of engineering education</p>
+                  <p>Revolutionary education</p>
                 </div>
               </div>
             </div>
 
-            <div className="community-cta-buttons">
-              <a
-                href="/early-access"
-                className="community-kickstarter-btn"
-              >
-                Join Pre-Launch Giveaway
+            <div className="kickstarter-hero-cta">
+              <a href="/early-access" className="hero-cta-button">
+                <span className="cta-text">Join Pre-Launch Giveaway</span>
+                <span className="cta-subtext">Get notified when we launch + exclusive perks</span>
               </a>
             </div>
           </div>
         </div>
-        <div className="community-section-content">
-          <div className="community-text-content">
-            <h2 className="community-section-title">Connect on Discord</h2>
-            <p className="community-section-description">
-              Join a vibrant community of creatives, professionals, and hobbyists who share your passion for building and learning. Our Discord is where connections turn into collaborations, ideas become projects, and everyone pushes each other to succeed.
-            </p>
+        {/* Modern Discord Community Section */}
+        <div className="discord-hero-section">
+          <div className="discord-hero-content">
+            <div className="discord-hero-header">
+              <h1 className="discord-hero-title">
+                Connect on
+                <span className="discord-brand">Discord</span>
+              </h1>
+              <p className="discord-hero-subtitle">
+                Join thousands of makers, engineers, and creators building the future together. Where ideas spark, projects come to life, and lifelong connections are made.
+              </p>
+            </div>
 
-            <div className="community-features">
-              <div className="community-feature">
-                <div className="community-feature-icon">🤝</div>
-                <div className="community-feature-text">
+            <div className="discord-hero-visual">
+              <div className="discord-video-container">
+                <img src="/svg/img/access_main.png" alt="Community Video" className="video-thumbnail" />
+                <div className="video-play-overlay">
+                  <div className="play-button">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <div className="video-info">
+                    <h3>Meet the Resistors Community</h3>
+                    <p>See how our community connects and collaborates</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="community-stats">
+                <div className="stat-item">
+                  <div className="stat-number">2.5K+</div>
+                  <div className="stat-label">Active Members</div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-number">500+</div>
+                  <div className="stat-label">Projects Shared</div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-number">24/7</div>
+                  <div className="stat-label">Support & Help</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="discord-features-grid">
+              <div className="discord-feature">
+                <div className="feature-icon">🤝</div>
+                <div className="feature-content">
                   <h3>Network & Connect</h3>
                   <p>Build meaningful relationships with makers worldwide</p>
                 </div>
               </div>
 
-              <div className="community-feature">
-                <div className="community-feature-icon">🎨</div>
-                <div className="community-feature-text">
+              <div className="discord-feature">
+                <div className="feature-icon">🎨</div>
+                <div className="feature-content">
                   <h3>Showcase Projects</h3>
                   <p>Share your work and get feedback from experienced engineers</p>
                 </div>
               </div>
 
-              <div className="community-feature">
-                <div className="community-feature-icon">📈</div>
-                <div className="community-feature-text">
+              <div className="discord-feature">
+                <div className="feature-icon">�</div>
+                <div className="feature-content">
                   <h3>Learn & Grow</h3>
                   <p>Daily discussions, tips, and insights to accelerate your learning</p>
                 </div>
               </div>
             </div>
 
-            <div className="community-cta-buttons">
+            <div className="discord-hero-cta">
               <a
                 href="https://discord.gg/PTZGpAkj"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="community-discord-btn"
+                className="discord-cta-button"
               >
-                <img src="/svg/discord.svg" alt="Discord" className="community-icon" />
-                Join Discord Community
+                <svg className="discord-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                </svg>
+                <span className="cta-content">
+                  <span className="cta-main">Join Discord Community</span>
+                  <span className="cta-sub">Free • 2.5K+ members • Always active</span>
+                </span>
               </a>
-            </div>
-          </div>
-
-          <div className="community-discord-preview">
-            <div className="discord-video-placeholder">
-              <img src="/svg/img/access_main.png" alt="Community Video" className="video-thumbnail" />
-              <div className="video-play-overlay">
-                <div className="play-button-large">
-                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                    <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.9)" />
-                    <path d="M25 20L40 30L25 40V20Z" fill="#2B2B2B" />
-                  </svg>
-                </div>
-              </div>
-              <div className="video-caption">
-                <h3>Meet the Resistors Community</h3>
-                <p>See how our community connects and collaborates</p>
-              </div>
             </div>
           </div>
         </div>
@@ -391,39 +420,7 @@ export default function Community() {
               </div>
             </div>
           </div>
-
         </div>
-        <h2 className="community-section-title">Free Tutorials on YouTube</h2>
-        <p className="community-section-description">
-          Master electronics with our comprehensive video library. From beginner basics to expert-level projects, our tutorials guide you through every step. Whether you're starting from zero or looking to expand your skills, we've got you covered.
-        </p>
-
-        <div className="community-features">
-          <div className="community-feature">
-            <div className="community-feature-icon">🎓</div>
-            <div className="community-feature-text">
-              <h3>Beginner to Expert</h3>
-              <p>Progressive tutorials that build your skills step by step</p>
-            </div>
-          </div>
-
-          <div className="community-feature">
-            <div className="community-feature-icon">🔧</div>
-            <div className="community-feature-text">
-              <h3>Awesome Projects</h3>
-              <p>Learn by building real projects that showcase your abilities</p>
-            </div>
-          </div>
-
-          <div className="community-feature">
-            <div className="community-feature-icon">�</div>
-            <div className="community-feature-text">
-              <h3>Skill Growth</h3>
-              <p>Advanced content for experts looking to expand their knowledge</p>
-            </div>
-          </div>
-        </div>
-
         <div className="community-cta-buttons">
           <a
             href="https://www.youtube.com/@get-nlab"
@@ -434,7 +431,7 @@ export default function Community() {
             <img src="/svg/youtube.svg" alt="YouTube" className="community-icon" />
             Subscribe to YouTube
           </a>
-        </div>
+        </div> 
       </section>
     </div>
   );
