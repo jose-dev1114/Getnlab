@@ -3007,7 +3007,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 @media (max-width: 767px) {
   .build-together-section {
     min-height: 300px;
-    padding: clamp(8rem, 15vh, 10rem) clamp(1.5rem, 4vw, 2rem) clamp(2rem, 4vh, 3rem);
+    padding: clamp(12rem, 20vh, 15rem) clamp(1.5rem, 4vw, 2rem) clamp(2rem, 4vh, 3rem);
   }
 
   .build-together-pattern {
