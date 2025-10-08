@@ -32,39 +32,26 @@ export function Footer() {
           <h3 className="footer-column-title">EXPLORE</h3>
           <ul className="footer-links">
             <li><a href="/starter-kit">Starter Kit</a></li>
-            <li><a href="/collections/projects">Projects</a></li>
-            <li><a href="/pages/download">Download the App</a></li>
-            <li><a href="/pages/support">Support</a></li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h3 className="footer-column-title">DESIGNED FOR</h3>
-          <ul className="footer-links">
-            <li><a href="/pages/career-changers">Career Changers</a></li>
-            <li><a href="/pages/future-engineers">Future Engineers</a></li>
-            <li><a href="/pages/learners">Self-Directed Learners</a></li>
-            <li><a href="/pages/builders">Builders & Influencers</a></li>
+            <li><a href="/explore-projects">Projects</a></li>
+            <li><a href="/download">Download the App</a></li>
           </ul>
         </div>
 
         <div className="footer-column">
           <h3 className="footer-column-title">SUPPORT</h3>
           <ul className="footer-links">
-            <li><a href="/pages/faq">FAQ</a></li>
             <li><a href="/early-access">Get Early Access</a></li>
             <li><a href="https://www.youtube.com/@get-nlab" target="_blank" rel="noopener noreferrer">Subscribe to YouTube</a></li>
-            <li><a href="/pages/community">Community</a></li>
+            <li><a href="/community">Community</a></li>
           </ul>
         </div>
 
         <div className="footer-column">
           <h3 className="footer-column-title">ABOUT</h3>
           <ul className="footer-links">
-            <li><a href="/pages/why-nlab">Why nLab?</a></li>
-            <li><a href="/pages/team">Meet Angie & Nick</a></li>
-            <li><a href="/pages/news">News & Updates</a></li>
-            <li><a href="/pages/contact">Contact Us</a></li>
+            <li><a href="/about">Meet Angie & Nick</a></li>
+            <li><a href="/community">News & Updates</a></li>
+            <li><a href="/about">Contact Us</a></li>
           </ul>
         </div>
       </div>
@@ -73,9 +60,9 @@ export function Footer() {
         <div className="footer-bottom-content">
           <p className="footer-copyright">© 2025, nLab All Rights reserved</p>
           <div className="footer-legal-links">
-            <a href="/policies/privacy-policy" className="footer-legal-link">Privacy Policy</a>
+            {/* <a href="/policies/privacy-policy" className="footer-legal-link">Privacy Policy</a>
             <a href="/policies/terms-of-service" className="footer-legal-link">Terms of Service</a>
-            <a href="/policies/refund-policy" className="footer-legal-link">Refund Policy</a>
+            <a href="/policies/refund-policy" className="footer-legal-link">Refund Policy</a> */}
           </div>
         </div>
       </div>

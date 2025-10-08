@@ -1,10 +1,153 @@
-import {Link} from 'react-router';
+import {Link, Form, useActionData, useNavigation} from 'react-router';
+import {data} from 'react-router';
 
 export const meta = () => {
   return [{title: 'Get Early Access | nLab'}];
 };
 
+// Action function to handle form submission
+export async function action({request, context}) {
+  const formData = await request.formData();
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const interest = formData.get('interest');
+
+  // Validate required fields
+  if (!name || !email) {
+    return data(
+      {
+        error: 'Name and email are required',
+        success: false,
+      },
+      {status: 400}
+    );
+  }
+
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return data(
+      {
+        error: 'Please enter a valid email address',
+        success: false,
+      },
+      {status: 400}
+    );
+  }
+
+  try {
+    // Klaviyo API integration - get from environment variables
+    // Try multiple ways to access env vars in Hydrogen
+    const klaviyoApiKey = context?.env?.KLAVIYO_PRIVATE_API_KEY ||
+                          process.env.KLAVIYO_PRIVATE_API_KEY;
+    const klaviyoListId = context?.env?.KLAVIYO_LIST_ID ||
+                         process.env.KLAVIYO_LIST_ID;
+
+    if (!klaviyoApiKey || !klaviyoListId) {
+      return data(
+        {
+          error: 'Configuration error. Please check environment variables.',
+          success: false,
+        },
+        {status: 500}
+      );
+    }
+
+    // Create or update profile in Klaviyo
+    const requestBody = {
+      data: {
+        type: 'profile',
+        attributes: {
+          email: email,
+          first_name: name.split(' ')[0],
+          last_name: name.split(' ').slice(1).join(' ') || '',
+          properties: {
+            interest: interest || 'Not specified',
+            source: 'Early Access Form',
+            signup_date: new Date().toISOString(),
+          },
+        },
+      },
+    };
+
+    const profileResponse = await fetch('https://a.klaviyo.com/api/profiles/', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Klaviyo-API-Key ${klaviyoApiKey}`,
+        'Content-Type': 'application/json',
+        'revision': '2024-10-15',
+      },
+      body: JSON.stringify(requestBody),
+    });
+
+    let profileId;
+
+    if (!profileResponse.ok) {
+      const errorText = await profileResponse.text();
+      const errorData = JSON.parse(errorText);
+
+      // Check if it's a duplicate profile error (409)
+      if (profileResponse.status === 409 && errorData.errors?.[0]?.code === 'duplicate_profile') {
+        // Profile already exists, get the existing profile ID
+        profileId = errorData.errors[0].meta.duplicate_profile_id;
+      } else {
+        // Other error, throw
+        throw new Error(`Failed to create profile: ${profileResponse.status} ${errorText}`);
+      }
+    } else {
+      // Profile created successfully
+      const profileData = await profileResponse.json();
+      profileId = profileData.data.id;
+    }
+
+    // Add profile to the early access list
+    const listResponse = await fetch(`https://a.klaviyo.com/api/lists/${klaviyoListId}/relationships/profiles/`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Klaviyo-API-Key ${klaviyoApiKey}`,
+        'Content-Type': 'application/json',
+        'revision': '2024-10-15',
+      },
+      body: JSON.stringify({
+        data: [
+          {
+            type: 'profile',
+            id: profileId,
+          },
+        ],
+      }),
+    });
+
+    if (!listResponse.ok) {
+      const errorText = await listResponse.text();
+      // Don't fail the whole process if list subscription fails
+      if (listResponse.status !== 409) {
+        // Only log non-409 errors (409 means already subscribed)
+        console.warn('List subscription failed:', listResponse.status);
+      }
+    }
+
+    return data({
+      success: true,
+      message: 'Successfully joined the early access list!',
+    });
+
+  } catch (error) {
+    return data(
+      {
+        error: 'Something went wrong. Please try again.',
+        success: false,
+      },
+      {status: 500}
+    );
+  }
+}
+
 export default function EarlyAccess() {
+  const actionData = useActionData();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+
   return (
     <div className="early-access-page">
       <div className="early-access-content">
@@ -35,8 +178,23 @@ export default function EarlyAccess() {
       </div>
 
       <div className="early-access-content">
-        <form className="early-access-form">
+        <Form method="post" className="early-access-form">
           <h2>SIGN UP</h2>
+
+          {/* Success Message */}
+          {actionData?.success && (
+            <div className="form-message success">
+              <p>🎉 {actionData.message}</p>
+              <p>Check your email for confirmation and next steps!</p>
+            </div>
+          )}
+
+          {/* Error Message */}
+          {actionData?.error && (
+            <div className="form-message error">
+              <p>❌ {actionData.error}</p>
+            </div>
+          )}
 
           <div className="form-group">
             <label htmlFor="name">Full Name</label>
@@ -46,6 +204,7 @@ export default function EarlyAccess() {
               name="name"
               placeholder="Enter your full name"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -57,12 +216,13 @@ export default function EarlyAccess() {
               name="email"
               placeholder="Enter your email"
               required
+              disabled={isSubmitting}
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="interest">What interests you most?</label>
-            <select id="interest" name="interest">
+            <select id="interest" name="interest" disabled={isSubmitting}>
               <option value="">Why are you interested in nLab?</option>
               <option value="light">Light Projects</option>
               <option value="sound">Sound Projects</option>
@@ -73,15 +233,15 @@ export default function EarlyAccess() {
             </select>
           </div>
 
-          <button type="submit" className="submit-button">
-            <span>Join the list</span>
-            <span>→</span>
+          <button type="submit" className="submit-button" disabled={isSubmitting}>
+            <span>{isSubmitting ? 'Joining...' : 'Join the list'}</span>
+            <span>{isSubmitting ? '⏳' : '→'}</span>
           </button>
 
           <p className="form-disclaimer">
             No spam—just cool builds, perks, and learning inspiration. You can unsubscribe anytime.
           </p>
-        </form>
+        </Form>
       </div>
 
       <div className="early-access-features-wrapper">

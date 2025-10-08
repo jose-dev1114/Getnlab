@@ -167,7 +167,7 @@ export default function ExploreProjects() {
               <div className="project-video">
                 {renderBadge('beginner', 'BEGINNER')}
                 <img
-                  src="/svg/img/explore_first.png"
+                  src="/svg/img/explore_main.png"
                   alt="Light an LED Project"
                   className="project-thumbnail"
                   onClick={() => openVideoModal('a4OCApcuBT8')}

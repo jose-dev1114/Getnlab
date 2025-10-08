@@ -1,4 +1,4 @@
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 
 export function HeroSection() {
   return (
@@ -10,14 +10,13 @@ export function HeroSection() {
             CHANGE THE WORLD
           </h1>
           <p className="hero-description">
-            nLab gives you the world's smallest<br />
-            electronics lab — a hands-on kit and powerful<br />
-            app that make it easy to start building real<br />
-            projects, no matter your experience level.
+            Prepare for tangible careers that can’t be replaced by AI, <br />
+            and turn your ideas into inventions that make an impact. <br />
+            Perfect for beginners - no prior experience required.
           </p>
-          
+
           <Link to="/early-access" className="hero-cta-button">
-            <span>Get Early Access</span>
+            <span>Back Us On Kickstarter</span>
             <span className="lightning-icon">⚡</span>
           </Link>
         </div>

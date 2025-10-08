@@ -1,8 +1,8 @@
-import {Link} from 'react-router';
-import {useEffect} from 'react';
+import { Link } from 'react-router';
+import { useEffect } from 'react';
 
 export const meta = () => {
-  return [{title: 'Starter Kit | nLab'}];
+  return [{ title: 'Starter Kit | nLab' }];
 };
 
 export default function StarterKit() {
@@ -31,7 +31,7 @@ export default function StarterKit() {
     // Cleanup event listeners
     return () => {
       tabs.forEach(tab => {
-        tab.removeEventListener('click', () => {});
+        tab.removeEventListener('click', () => { });
       });
     };
   }, []);
@@ -52,11 +52,11 @@ export default function StarterKit() {
 
         <div className="starter-kit-hero-content">
           <h1 className="starter-kit-title">
-            YOUR ALL-IN-ONE ELECTRONICS LAB
+            Build Skills That Last a Lifetime
           </h1>
           <p className="starter-kit-subtitle">
-            The nLab Starter Kit gives you everything you need to start building right away. Real<br />
-            components, step-by-step projects, and guided lessons through the nLab app.
+            The Starter Kit includes a compact lab, essential parts, hands-on projects, tutorials, and live feedback <br />
+            everything you need to learn, experiment, and prepare for real-world tech challenges.
           </p>
         </div>
 
@@ -71,13 +71,10 @@ export default function StarterKit() {
 
           <div className="explore-content">
             <div className="explore-text">
-              <span className="explore-badge">Real Hardware</span>
-              <h3 className="explore-title">EVERYTHING YOU NEED IN ONE BOX</h3>
+              <span className="explore-badge">The Gadget</span>
+              <h3 className="explore-title">The World’s Smallest Electronics Lab</h3>
               <p className="explore-description">
-                The nLab Starter Kit is your launchpad. Inside, you'll find
-                carefully selected components, guided lessons, and projects
-                that grow with you — from your very first LED to advanced
-                robotics and coding.
+                A groundbreaking, pocket-sized device that replaces an oscilloscope, power supply, and function generator ($1,000+ of professional equipment). Beyond learning, the nLab stays by your side throughout your career, helping you diagnose, debug, and invent.
               </p>
             </div>
 
@@ -88,12 +85,10 @@ export default function StarterKit() {
 
           <div className="explore-content explore-content-reverse">
             <div className="explore-text">
-              <span className="explore-badge" style={{color: '#27C840'}}>Scalable Projects</span>
-              <h3 className="explore-title">FROM FIRST LED TO FULL ROBOTICS</h3>
+              <span className="explore-badge" style={{ color: '#27C840' }}>The Building Blocks</span>
+              <h3 className="explore-title">200+ Essential Electrical Components</h3>
               <p className="explore-description">
-                Start small and grow big. Every project is designed to
-                build on the last — guiding you from your very first circuit
-                to advanced robotics and coding challenges.
+                Your LEGO set for electronics: resistors, capacitors, and other essentials you can mix and match to create real-world tech. Build, test, and explore how these puzzle pieces work together.
               </p>
             </div>
             <div className="explore-image">
@@ -103,12 +98,10 @@ export default function StarterKit() {
 
           <div className="explore-content">
             <div className="explore-text">
-              <span className="explore-badge" style={{color: '#FF7E28'}}>Guided by the App</span>
-              <h3 className="explore-title">LEARN WITH LIVE FEEDBACK</h3>
+              <span className="explore-badge" style={{ color: '#FF7E28' }}>The Projects</span>
+              <h3 className="explore-title">12 Real-World Builds</h3>
               <p className="explore-description">
-                The nLab app connects your kit to guided lessons, step-by-step
-                walkthroughs, and real-time data visualization. Watch your
-                circuits come to life and see exactly how they work as you build.
+                Build real devices like heartbeat monitors, game controllers, and climate sensors — and level up with every project. Gamified challenges guide you while teaching the skills and theory behind each circuit.
               </p>
             </div>
 
@@ -119,12 +112,10 @@ export default function StarterKit() {
 
           <div className="explore-content explore-content-reverse">
             <div className="explore-text">
-              <span className="explore-badge" style={{color: '#B978FF'}}>Proven & Trusted</span>
-              <h3 className="explore-title">TRUSTED IN CLASSROOMS, NOW FOR EVERYONE</h3>
+              <span className="explore-badge" style={{ color: '#B978FF' }}>The Videos</span>
+              <h3 className="explore-title">Step-by-step guidance anywhere, anytime</h3>
               <p className="explore-description">
-                nLab has already been tested in universities and by thousands
-                of learners. Now we're bringing that proven system directly to
-                you, so anyone can build, learn, and succeed.
+                Free YouTube tutorials taught by Angie, a robotics engineer, and Nick, a robotics professor at Northwestern. Learn at your own pace and see your creations come to life.
               </p>
             </div>
             <div className="explore-image">
@@ -315,14 +306,12 @@ export default function StarterKit() {
             <img src="/svg/starter_image_pattern.svg" alt="" />
           </div>
           <div className="banner-text">
-            <h2 className="banner-title">POWER UP YOUR KIT WITH THE NLAB APP</h2>
+            <h2 className="banner-title">Trusted in college classrooms, now for everyone</h2>
             <p className="banner-description">
-              The nLab App is where your Starter Kit comes alive —
-              guiding you through projects, visualizing real-time
-              data, and tracking your progress as you grow.
+              nLab has already been tested in universities and by thousands of learners. Now we’re bringing that proven system directly to you, so anyone can build, learn, and succeed.
             </p>
             <button className="banner-button">
-              Learn More
+              Delete?
               <img src="/svg/arrow_right.svg" alt="" className="banner-arrow" />
             </button>
           </div>
