@@ -151,8 +151,14 @@ export default function EarlyAccess() {
   return (
     <div className="early-access-page">
       <div className="early-access-content">
-        <h1>Get Early Access <br /> FOR 10% Off at Launch</h1>
-        <p>Be among the first to build, learn, and create with nLab <br /> — now before the Kickstarter goes live.</p>
+        <h1>
+          <span className="hidden md:inline">Get Early Access <br /> FOR 10% Off at Launch</span>
+          <span className="md:hidden">Get Early Access FOR 10% Off at Launch</span>
+        </h1>
+        <p>
+          <span className="hidden md:inline">Be among the first to build, learn, and create with nLab <br /> — now before the Kickstarter goes live.</span>
+          <span className="md:hidden">Be among the first to build, learn, and create with nLab — now before the Kickstarter goes live.</span>
+        </p>
       </div>
 
       <div className="early-access-image-container">

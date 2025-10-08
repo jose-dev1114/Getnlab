@@ -33,9 +33,14 @@ export function PatternSection() {
           <div className="pattern-text-section">
             <h2 className="pattern-section-title">EVERYTHING YOU NEED IN ONE BOX</h2>
             <p className="pattern-section-description">
-              The nLab Starter Kit is your launchpad. Inside, you'll find carefully selected<br />
-              components, guided lessons, and projects that grow with you — from your very<br />
-              first LED to advanced robotics and coding.
+              <span className="hidden md:inline">
+                The nLab Starter Kit is your launchpad. Inside, you'll find carefully selected<br />
+                components, guided lessons, and projects that grow with you — from your very<br />
+                first LED to advanced robotics and coding.
+              </span>
+              <span className="md:hidden">
+                The nLab Starter Kit is your launchpad. Inside, you'll find carefully selected components, guided lessons, and projects that grow with you — from your very first LED to advanced robotics and coding.
+              </span>
             </p>
             <Link to="/starter-kit" className="pattern-cta-button">
               <span>Explore the Starter Kit</span>

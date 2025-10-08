@@ -108,8 +108,13 @@ export default function Community() {
         <div className="community-story-container">
           <div className="community-story-content">
             <h2 className="community-story-title">
-              JOIN THE RESISTORS.<br />
-              BUILD YOUR FUTURE.
+              <span className="hidden md:inline">
+                JOIN THE RESISTORS.<br />
+                BUILD YOUR FUTURE.
+              </span>
+              <span className="md:hidden">
+                JOIN THE RESISTORS. BUILD YOUR FUTURE.
+              </span>
             </h2>
             <p className="community-story-description">
               The Resistors aren't just a community—we're your career accelerator. Connect with industry professionals who've walked the path you're on, and professors who know exactly what employers are looking for.

@@ -55,8 +55,13 @@ export default function StarterKit() {
             Build Skills That Last a Lifetime
           </h1>
           <p className="starter-kit-subtitle">
-            The Starter Kit includes a compact lab, essential parts, hands-on projects, tutorials, and live feedback <br />
-            everything you need to learn, experiment, and prepare for real-world tech challenges.
+            <span className="hidden md:inline">
+              The Starter Kit includes a compact lab, essential parts, hands-on projects, tutorials, and live feedback <br />
+              everything you need to learn, experiment, and prepare for real-world tech challenges.
+            </span>
+            <span className="md:hidden">
+              The Starter Kit includes a compact lab, essential parts, hands-on projects, tutorials, and live feedback everything you need to learn, experiment, and prepare for real-world tech challenges.
+            </span>
           </p>
         </div>
 

@@ -19,8 +19,13 @@ export default function About() {
           <div className="about-story-content">
             <div className="about-story-text">
               <h2 className="about-story-title">
-                BUILT BY EDUCATORS.<br />
-                TRUSTED BY MAKERS.
+                <span className="hidden md:inline">
+                  BUILT BY EDUCATORS.<br />
+                  TRUSTED BY MAKERS.
+                </span>
+                <span className="md:hidden">
+                  BUILT BY EDUCATORS. TRUSTED BY MAKERS.
+                </span>
               </h2>
               <p className="about-story-description">
                 nLab started in university classrooms, where our founders set out to solve a challenge: how to make real electronics and robotics skills accessible to everyone, not just engineers.

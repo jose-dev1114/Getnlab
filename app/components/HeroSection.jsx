@@ -10,9 +10,14 @@ export function HeroSection() {
             CHANGE THE WORLD
           </h1>
           <p className="hero-description">
-            Prepare for tangible careers that can’t be replaced by AI, <br />
-            and turn your ideas into inventions that make an impact. <br />
-            Perfect for beginners - no prior experience required.
+            <span className="hidden md:inline">
+              Prepare for tangible careers that can’t be replaced by AI, <br />
+              and turn your ideas into inventions that make an impact. <br />
+              Perfect for beginners - no prior experience required.
+            </span>
+            <span className="md:hidden">
+              Prepare for tangible careers that can't be replaced by AI, and turn your ideas into inventions that make an impact. Perfect for beginners - no prior experience required.
+            </span>
           </p>
 
           <Link to="/early-access" className="hero-cta-button">

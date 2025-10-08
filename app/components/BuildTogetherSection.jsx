@@ -22,7 +22,10 @@ export function BuildTogetherSection() {
             <img src="/svg/img/access_first.png" alt="Your Lab, Powered by Software" />
           </div>
           <div className="build-card-content">
-            <h3 className="build-card-title">YOUR LAB,<br />POWERED BY SOFTWARE</h3>
+            <h3 className="build-card-title">
+              <span className="hidden md:inline">YOUR LAB,<br />POWERED BY SOFTWARE</span>
+              <span className="md:hidden">YOUR LAB, POWERED BY SOFTWARE</span>
+            </h3>
             <Link to="/download" className="build-card-button">
               Learn More About The App
               <img src="/svg/green-arrow.svg" alt="" className="button-arrow" />
@@ -52,7 +55,10 @@ export function BuildTogetherSection() {
             <img src="/svg/img/access_second.png" alt="Career-Ready, Project by Project" />
           </div>
           <div className="build-card-content">
-            <h3 className="build-card-title">CAREER-READY,<br />PROJECT BY PROJECT</h3>
+            <h3 className="build-card-title">
+              <span className="hidden md:inline">CAREER-READY,<br />PROJECT BY PROJECT</span>
+              <span className="md:hidden">CAREER-READY, PROJECT BY PROJECT</span>
+            </h3>
             <a href="https://discord.gg/PTZGpAkj" target="_blank" rel="noopener noreferrer" className="build-card-button">
               Join our Discord Community
               <img src="/svg/arrow_right.svg" alt="" className="button-arrow" />

@@ -22,8 +22,13 @@ export default function Download() {
             </div>
 
             <h1 className="download-hero-title">
-              BRING YOUR KIT TO LIFE<br />
-              WITH THE NLAB APP
+              <span className="hidden md:inline">
+                BRING YOUR KIT TO LIFE<br />
+                WITH THE NLAB APP
+              </span>
+              <span className="md:hidden">
+                BRING YOUR KIT TO LIFE WITH THE NLAB APP
+              </span>
             </h1>
 
             <div className="download-hero-image-mobile">
