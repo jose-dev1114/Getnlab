@@ -80,7 +80,7 @@ export function GridSection() {
             </div>
 
             <div className="grid-item-image">
-              <img src="/svg/img/sensing.svg" alt="Sensing Project" />
+              <img src="/svg/img/sing.svg" alt="Sing Project" />
             </div>
           </div>
 
