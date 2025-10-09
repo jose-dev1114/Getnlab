@@ -5386,8 +5386,8 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
   /* Your all-in-one electronics lab */
   font-family: 'titling-gothic-fb-compressed', 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 500;
+  font-size: 78px;
   line-height: 77px;
   text-align: center;
   text-transform: uppercase;
@@ -5405,9 +5405,10 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
 .starter-kit-subtitle {
   font-family: 'Roboto Condensed', sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  line-height: 1.5;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: -0.02em;
   color: #2B2B2B;
   opacity: 0.8;
   margin: 0;
@@ -5919,12 +5920,16 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
 
   /* Increase font size of title and subtitle in mobile */
   .starter-kit-title {
-    font-size: clamp(3rem, 8vw, 5rem);
-    line-height: 1.1;
+    font-size: 64px;
+    line-height: 59px;
+    font-weight: 500;
   }
 
   .starter-kit-subtitle {
-    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+    font-size: 28px;
+    line-height: 33px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
 
   /* Show mobile image, hide desktop image */
@@ -5957,6 +5962,19 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
 
   .components-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .starter-kit-title {
+    font-size: 78px;
+    line-height: 77px;
+    font-weight: 500;
+  }
+
+  .starter-kit-subtitle {
+    font-size: 28px;
+    line-height: 33px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
 }
 
