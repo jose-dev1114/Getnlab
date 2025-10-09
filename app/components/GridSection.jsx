@@ -32,13 +32,13 @@ export function GridSection() {
             </div>
 
             <div className="grid-item-image">
-              <img src="/svg/img/light.svg" alt="Light Project" />
+              <img src="/svg/img/light.png" alt="Light Project" />
             </div>
           </div>
 
           <div className="grid-item">
             <div className="grid-item-image">
-              <img src="/svg/img/sound.svg" alt="Sound Project" />
+              <img src="/svg/img/sound.png" alt="Sound Project" />
             </div>
 
             <div className="grid-item-text">
@@ -80,13 +80,13 @@ export function GridSection() {
             </div>
 
             <div className="grid-item-image">
-              <img src="/svg/img/sing.svg" alt="Sing Project" />
+              <img src="/svg/img/sing.png" alt="Sing Project" />
             </div>
           </div>
 
           <div className="grid-item">
             <div className="grid-item-image">
-              <img src="/svg/img/motion.svg" alt="Motion Project" />
+              <img src="/svg/img/motion.png" alt="Motion Project" />
             </div>
 
             <div className="grid-item-text">
@@ -128,13 +128,13 @@ export function GridSection() {
             </div>
 
             <div className="grid-item-image">
-              <img src="/svg/img/hardware.svg" alt="AI Hardware Project" />
+              <img src="/svg/img/hardware.png" alt="AI Hardware Project" />
             </div>
           </div>
 
           <div className="grid-item">
             <div className="grid-item-image">
-              <img src="/svg/img/inventions.svg" alt="Your Own Inventions" />
+              <img src="/svg/img/inventions.png" alt="Your Own Inventions" />
             </div>
 
             <div className="grid-item-text">
@@ -161,7 +161,7 @@ export function GridSection() {
           <h2 className="grid-cta-title">ALL THESE PROJECTS ARE IN YOUR KIT</h2>
           <Link to="/explore-projects" className="grid-cta-button">
             View All Projects
-            <img src="/svg/arrow_right.svg" alt="Arrow" className="arrow-icon" />
+            <img src="/svg/arrow_right.png" alt="Arrow" className="arrow-icon" />
           </Link>
         </div>
       </div>
