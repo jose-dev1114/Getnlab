@@ -1925,7 +1925,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 3vw, 3rem);
+  padding: 0 0 0 clamp(1rem, 2vw, 2rem);
   align-items: center;
   line-height: normal;
 }
@@ -1965,7 +1965,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 
   .hero-content {
     gap: 3rem;
-    padding: 0 2rem;
+    padding: 0 0 0 1.5rem;
   }
 }
 
@@ -1977,7 +1977,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 
   .hero-content {
     gap: 4rem;
-    padding: 0 3rem;
+    padding: 0 0 0 2rem;
   }
 }
 
