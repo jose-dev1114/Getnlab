@@ -167,6 +167,15 @@ export function Layout({children}) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" nonce={nonce} />
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" nonce={nonce} />
         <link href="https://fonts.cdnfonts.com/css/titling-gothic-fb-compressed" rel="stylesheet" nonce={nonce} />
+        <style nonce={nonce}>{`
+          @font-face {
+            font-family: 'TitlingGothicFB Comp';
+            src: url('/TitlingGothicFBComp-Med.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+          }
+        `}</style>
         <Meta />
         <Links />
         <link rel="stylesheet" href={tailwindCss}></link>
