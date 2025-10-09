@@ -2004,16 +2004,18 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1024px) {
   .hero-title {
-    font-size: clamp(2.5rem, 5vw, 48px);
-    line-height: 1.05;
+    font-size: 70px;
+    line-height: 68px;
+    font-weight: 500;
   }
 }
 
 /* Desktop */
 @media (min-width: 1025px) {
   .hero-title {
-    font-size: 64px;
-    line-height: 58px;
+    font-size: 78px;
+    line-height: 77px;
+    font-weight: 500;
   }
 }
 
@@ -2045,9 +2047,9 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 
   .hero-title {
     text-align: center;
-    font-size: clamp(2rem, 8vw, 3rem);
-    font-weight: 700;
-    line-height: 1.1;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 59px;
     margin-bottom: clamp(1rem, 3vh, 1.5rem);
     order: 0;
   }
