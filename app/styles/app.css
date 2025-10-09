@@ -1925,7 +1925,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 0 0 clamp(1rem, 2vw, 2rem);
+  padding: 0 clamp(0.5rem, 1.5vw, 1.5rem);
   align-items: center;
   line-height: normal;
 }
@@ -1977,7 +1977,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 
   .hero-content {
     gap: 4rem;
-    padding: 0 0 0 2rem;
+    padding: 0 1rem 0 1rem;
   }
 }
 
@@ -2179,6 +2179,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
     max-width: 100%;
     margin: 0 auto;
     min-height: 250px;
+    padding-right: 0;
   }
 
   .hero-pattern {
