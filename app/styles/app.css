@@ -2441,9 +2441,9 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 .grid-item-title {
   font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-  line-height: 1;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 77px;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: #2B2B2B;
@@ -2458,20 +2458,22 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 
 .grid-item-subtitle {
   font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.4rem, 2.2vw, 1.7rem);
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: -0.02em;
   text-transform: capitalize;
   color: #2B2B2B;
   margin: 0;
-  line-height: 1.2;
 }
 
 .grid-item-description {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: clamp(1.3rem, 1.8vw, 1.5rem);
+  font-size: 28px;
   color: #2B2B2B;
-  line-height: 1.6;
+  line-height: 33px;
   font-weight: 500;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
@@ -2793,15 +2795,23 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   }
 
   .grid-item-title {
-    font-size: clamp(1.8rem, 7vw, 2.8rem);
+    font-size: 64px;
+    line-height: 77px;
+    font-weight: 500;
   }
 
   .grid-item-subtitle {
-    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-size: 28px;
+    line-height: 33px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
 
   .grid-item-description {
-    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    font-size: 28px;
+    line-height: 33px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -2900,11 +2910,23 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   }
 
   .grid-item-title {
-    font-size: clamp(1.6rem, 3.8vw, 1.9rem);
+    font-size: 64px;
+    line-height: 77px;
+    font-weight: 500;
+  }
+
+  .grid-item-subtitle {
+    font-size: 28px;
+    line-height: 33px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
 
   .grid-item-description {
-    font-size: clamp(1.4rem, 2.5vw, 1.5rem);
+    font-size: 28px;
+    line-height: 33px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
 }
 
