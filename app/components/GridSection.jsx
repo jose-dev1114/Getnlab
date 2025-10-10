@@ -161,7 +161,7 @@ export function GridSection() {
           <h2 className="grid-cta-title">ALL THESE PROJECTS ARE IN YOUR KIT</h2>
           <Link to="/explore-projects" className="grid-cta-button">
             View All Projects
-            <img src="/svg/arrow_right.png" alt="Arrow" className="arrow-icon" />
+            <img src="/svg/arrow_right.svg" alt="Arrow" className="arrow-icon" />
           </Link>
         </div>
       </div>

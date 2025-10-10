@@ -6012,6 +6012,199 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
 
 /*
 * --------------------------------------------------
+* Starter Kit Testimonials Section
+* --------------------------------------------------
+*/
+.starter-kit-testimonials {
+  background-color: #3F3F3D;
+  padding: clamp(4rem, 8vh, 6rem) clamp(2rem, 4vw, 4rem);
+}
+
+.starter-kit-testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-title {
+  font-family: 'TitlingGothicFB Comp', sans-serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.2;
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: clamp(3rem, 6vh, 4rem);
+}
+
+.testimonials-carousel {
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonials-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 400%;
+}
+
+.testimonial-slide {
+  width: 25%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.testimonial-content {
+  width: 100%;
+  max-width: 500px;
+  background: #FFFFFF;
+  border: 3px solid #30302F;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+}
+
+.testimonial-stars {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.star {
+  color: #FFD700;
+  font-size: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  background: #FFFFFF;
+  transform: scale(1.1);
+}
+
+.carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.testimonial-quote {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #2B2B2B;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.testimonial-author {
+  border-top: 1px solid #E5E5E5;
+  padding-top: 1rem;
+}
+
+.author-name {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #2B2B2B;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.author-company {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #666666;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+  .testimonials-carousel {
+    max-width: 90%;
+  }
+
+  .testimonial-slide {
+    padding: 0 0.5rem;
+  }
+
+  .testimonial-content {
+    max-width: 100%;
+    padding: 1.5rem 1.25rem;
+    min-height: 300px;
+  }
+
+  .testimonial-quote {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .testimonial-stars {
+    margin-bottom: 1rem;
+  }
+
+  .star {
+    font-size: 1.1rem;
+  }
+
+  .author-name {
+    font-size: 0.9rem;
+  }
+
+  .author-company {
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .testimonials-carousel {
+    max-width: 85%;
+  }
+
+  .testimonial-slide {
+    padding: 0 0.75rem;
+  }
+
+  .testimonial-content {
+    max-width: 450px;
+    padding: 1.75rem 1.5rem;
+    min-height: 290px;
+  }
+
+  .testimonial-quote {
+    font-size: 1rem;
+  }
+}
+
+/*
+* --------------------------------------------------
 * Starter Kit Banner Section
 * --------------------------------------------------
 */

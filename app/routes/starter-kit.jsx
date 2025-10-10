@@ -28,11 +28,50 @@ export default function StarterKit() {
       });
     });
 
+    // Testimonials carousel functionality
+    const dots = document.querySelectorAll('.carousel-dot');
+    const track = document.querySelector('.testimonials-track');
+    let currentSlide = 0;
+    const totalSlides = 4;
+
+    // Auto-advance carousel
+    const autoAdvance = setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }, 5000);
+
+    // Dot click functionality
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+        // Reset auto-advance timer
+        clearInterval(autoAdvance);
+        setTimeout(() => {
+          const newAutoAdvance = setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+          }, 5000);
+        }, 5000);
+      });
+    });
+
+    function updateCarousel() {
+      if (track) {
+        // Move by 25% of the track width for each slide (since track is 400% and each slide is 25%)
+        track.style.transform = `translateX(-${currentSlide * 25}%)`;
+      }
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
     // Cleanup event listeners
     return () => {
       tabs.forEach(tab => {
         tab.removeEventListener('click', () => { });
       });
+      clearInterval(autoAdvance);
     };
   }, []);
   return (
@@ -112,7 +151,7 @@ export default function StarterKit() {
             </div>
 
             <div className="explore-image">
-              <img src="/svg/img/starter_third.png" alt="Live Feedback" />
+              <img src="/svg/img/projects.webp" alt="Live Feedback" />
             </div>
           </div>
 
@@ -126,6 +165,19 @@ export default function StarterKit() {
             </div>
             <div className="explore-image">
               <img src="/svg/img/starter_fourth.png" alt="Proven & Trusted" />
+            </div>
+          </div>
+
+          <div className="explore-content">
+            <div className="explore-text">
+              <span className="explore-badge" style={{ color: '#FF6B35' }}>The App</span>
+              <h3 className="explore-title">Learn with live feedback</h3>
+              <p className="explore-description">
+                The nLab app connects the gadget to your circuit and makes the invisible visible. Watch your circuits come to life and see exactly how they work as you build.
+              </p>
+            </div>
+            <div className="explore-image">
+              <img src="/svg/img/starter_third.png" alt="The App" />
             </div>
           </div>
         </div>
@@ -301,6 +353,99 @@ export default function StarterKit() {
                   <div className="specs-col">2 channel sine and triangle</div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="starter-kit-testimonials">
+        <div className="starter-kit-testimonials-container">
+          <h2 className="testimonials-title">What People Are Saying</h2>
+
+          <div className="testimonials-carousel">
+            <div className="testimonials-track">
+              <div className="testimonial-slide">
+                <div className="testimonial-content">
+                  <div className="testimonial-stars">
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                  </div>
+                  <p className="testimonial-quote">
+                    "I don't know how you pulled it off, but you've somehow made electrical engineering exciting!"
+                  </p>
+                  <div className="testimonial-author">
+                    <p className="author-name">Stephanie H.</p>
+                    <p className="author-company">Zebra Robotics</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="testimonial-slide">
+                <div className="testimonial-content">
+                  <div className="testimonial-stars">
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                  </div>
+                  <p className="testimonial-quote">
+                    "Every season, I see robotics teams tackling the steep learning curve of electronics and circuits—nLab turns that challenge into an opportunity to build these skills safely and confidently."
+                  </p>
+                  <div className="testimonial-author">
+                    <p className="author-name">Al S.</p>
+                    <p className="author-company">Chief Robot Inspector, FIRST Robotics</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="testimonial-slide">
+                <div className="testimonial-content">
+                  <div className="testimonial-stars">
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                  </div>
+                  <p className="testimonial-quote">
+                    "How did anyone ever learn electronics without the nLab?"
+                  </p>
+                  <div className="testimonial-author">
+                    <p className="author-name">Michael H.</p>
+                    <p className="author-company">Student at Northwestern University</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="testimonial-slide">
+                <div className="testimonial-content">
+                  <div className="testimonial-stars">
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                    <span className="star">★</span>
+                  </div>
+                  <p className="testimonial-quote">
+                    "I've taught electronics for 10 years. nLab is the breakthrough I've been waiting for."
+                  </p>
+                  <div className="testimonial-author">
+                    <p className="author-name">Stephen H.</p>
+                    <p className="author-company">Bioengineering Instructor, University of Colorado Denver</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="carousel-dots">
+              <button className="carousel-dot active" data-slide="0"></button>
+              <button className="carousel-dot" data-slide="1"></button>
+              <button className="carousel-dot" data-slide="2"></button>
+              <button className="carousel-dot" data-slide="3"></button>
             </div>
           </div>
         </div>

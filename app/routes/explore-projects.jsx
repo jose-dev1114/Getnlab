@@ -229,7 +229,7 @@ export default function ExploreProjects() {
                 <div className="project-video">
                   {renderBadge('intermediate', 'INTERMEDIATE')}
                   <img
-                    src="/svg/img/explore_second.png"
+                    src="/svg/img/soon.webp"
                     alt="Blinking LED Project"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
@@ -252,7 +252,7 @@ export default function ExploreProjects() {
                 <div className="project-video">
                   {renderBadge('beginner', 'BEGINNER')}
                   <img
-                    src="/svg/img/explore_third.png"
+                    src="/svg/img/soon.webp"
                     alt="Traffic Light Project"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
@@ -298,7 +298,7 @@ export default function ExploreProjects() {
                 <div className="project-video">
                   {renderBadge('intermediate', 'INTERMEDIATE')}
                   <img
-                    src="/svg/img/explore_fifth.png"
+                    src="/svg/img/soon.webp"
                     alt="Light Sensor Project"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
@@ -321,7 +321,7 @@ export default function ExploreProjects() {
                 <div className="project-video">
                   {renderBadge('advanced', 'ADVANCED')}
                   <img
-                    src="/svg/img/explore_sixth.png"
+                    src="/svg/img/soon.webp"
                     alt="Motor Control Project"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
@@ -372,7 +372,7 @@ export default function ExploreProjects() {
                 <div className="project-video">
                   {renderBadge('beginner', 'BEGINNER')}
                   <img
-                    src="/svg/img/explore_third.png"
+                    src="/svg/img/soon.webp"
                     alt="LED Brightness Control Project"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
@@ -423,7 +423,7 @@ export default function ExploreProjects() {
                 <div className="project-video">
                   {renderBadge('intermediate', 'INTERMEDIATE')}
                   <img
-                    src="/svg/img/explore_second.png"
+                    src="/svg/img/soon.webp"
                     alt="Series and Parallel Circuits Project"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
@@ -446,7 +446,7 @@ export default function ExploreProjects() {
                 <div className="project-video">
                   {renderBadge('intermediate', 'INTERMEDIATE')}
                   <img
-                    src="/svg/img/explore_fifth.png"
+                    src="/svg/img/soon.webp"
                     alt="Build a Thermometer Project"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
@@ -474,7 +474,7 @@ export default function ExploreProjects() {
                 <div className="project-video">
                   {renderBadge('advanced', 'ADVANCED')}
                   <img
-                    src="/svg/img/explore_sixth.png"
+                    src="/svg/img/soon.webp"
                     alt="Amplification Project"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
@@ -530,7 +530,7 @@ export default function ExploreProjects() {
                 <div className="project-video">
                   {renderBadge('extra-parts', 'REQUIRES EXTRA PARTS')}
                   <img
-                    src="/svg/img/explore_sixth.png"
+                    src="/svg/img/soon.webp"
                     alt="Extra Parts Project"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
