@@ -783,6 +783,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   padding: 0 clamp(2rem, 6vw, 4rem);
   text-align: center;
   font-size: 21px;
+  letter-spacing: -0.02em;
   line-height: 27px;
 }
 
@@ -1726,6 +1727,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 .collection-description {
   margin-bottom: 1rem;
   max-width: 95%;
+  letter-spacing: -0.02em;
 
   @media (min-width: 45em) {
     max-width: 600px;
@@ -2023,6 +2025,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   justify-content: left;
   align-items: left;
   padding: 0px;
+  letter-spacing: -0.02em;
   gap: 10px;
   flex: none;
   order: 1;
@@ -2393,6 +2396,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   color: #2B2B2B;
   line-height: 33px;
   font-weight: 500;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
@@ -2469,6 +2473,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   color: #2B2B2B;
   line-height: 33px;
   font-weight: 500;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
@@ -2632,6 +2637,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   color: #2B2B2B;
   line-height: 33px;
   font-weight: 500;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
@@ -3059,6 +3065,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   font-weight: 500;
   font-size: 28px;
   line-height: 33px;
+  letter-spacing: -0.02em;
   color: #FFFFFF;
   margin: 0;
 }
@@ -3459,6 +3466,7 @@ body:has(.download-page) .get-early-access-btn {
   line-height: 36px;
   color: #2B2B2B;
   margin: 0;
+  letter-spacing: -0.02em;
   opacity: 0.9;
 }
 
@@ -3685,6 +3693,7 @@ body:has(.download-page) .get-early-access-btn {
   font-weight: 400;
   font-size: 28px;
   line-height: 123.4%;
+  letter-spacing: -0.02em;
   color: #CCCCCC;
   margin: 0;
 }
@@ -3710,6 +3719,7 @@ body:has(.download-page) .get-early-access-btn {
   font-weight: 400;
   font-size: 28px;
   line-height: 100%;
+  letter-spacing: -0.02em;
   color: #CCCCCC;
   margin: 0 0 clamp(2rem, 4vh, 3rem) 0;
   max-width: 800px;
@@ -3772,6 +3782,7 @@ body:has(.download-page) .get-early-access-btn {
   font-weight: 400;
   font-size: 21px;
   line-height: 100%;
+  letter-spacing: -0.02em;
   color: #CCCCCC;
   margin: 0 0 clamp(1.5rem, 3vh, 2rem) 0;
   max-width: 600px;
@@ -4055,6 +4066,7 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   line-height: 33px;
   margin-bottom: 3rem;
   color: #FFFFFF;
+  letter-spacing: -0.02em;
   opacity: 0.9;
   max-width: 800px;
   text-align: center;
@@ -4784,6 +4796,7 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+  letter-spacing: -0.02em;
 
 
   color: #FFFFFF;
@@ -4908,6 +4921,7 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
 .project-card .project-description {
   margin-bottom: 0;
   font-size: 0.9rem;
+  letter-spacing: -0.02em;
 }
 
 /* Responsive Design */
@@ -5041,6 +5055,7 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   font-weight: 400;
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   line-height: 1.5;
+  letter-spacing: -0.02em;
   color: #2B2B2B;
   margin: 0;
   opacity: 0.8;
@@ -5188,6 +5203,7 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   font-weight: 400;
   font-size: clamp(0.9rem, 1.6vw, 1.1rem);
   line-height: 1.4;
+  letter-spacing: -0.02em;
   color: #CCCCCC;
   margin: 0 0 clamp(1.5rem, 3vh, 2rem) 0;
   flex-grow: 1;
@@ -5532,6 +5548,7 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
   font-weight: 400;
   font-size: clamp(1.1rem, 2.2vw, 1.3rem);
   line-height: 1.6;
+  letter-spacing: -0.02em;
   color: #FFFFFF;
   opacity: 0.9;
   margin: 0;
@@ -5870,6 +5887,7 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
   font-size: 16px;
   line-height: 1.5;
   color: #FFFFFF;
+  letter-spacing: -0.02em;
   opacity: 0.8;
   margin: 0;
 }
@@ -6048,7 +6066,6 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
 .banner-title {
   font-family: 'titling-gothic-fb-compressed', 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
   font-style: normal;
-  font-weight: 700;
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   line-height: 1.2;
   text-transform: uppercase;
@@ -6062,6 +6079,7 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
   font-weight: 400;
   font-size: clamp(1rem, 1.8vw, 1.25rem);
   line-height: 1.5;
+  letter-spacing: -0.02em;
   color: #FFFFFF;
   margin: 0;
   opacity: 0.9;
@@ -6218,6 +6236,7 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
   line-height: 1.6;
   margin-bottom: 2rem;
   opacity: 0.8;
+  letter-spacing: -0.02em;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -6345,6 +6364,7 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
   color: var(--nlab-text-dark);
   line-height: 1.5;
   opacity: 0.8;
+  letter-spacing: -0.02em;
 }
 
 /*
@@ -6534,6 +6554,7 @@ body:has(.about-page) .get-early-access-btn {
   font-weight: 500;
   font-size: 28px;
   line-height: 100%;
+  letter-spacing: -0.02em;
   color: #2B2B2B;
   margin: 0 0 1.5rem 0;
 }
@@ -6655,6 +6676,7 @@ body:has(.about-page) .get-early-access-btn {
   line-height: 100%;
   max-width: 800px;
   color: #ffffff;
+  letter-spacing: -0.02em;
 }
 
 .about-makers-profile {
@@ -7114,6 +7136,7 @@ body:has(.about-page) .get-early-access-btn {
   font-size: clamp(1.1rem, 2.5vw, 1.3rem);
   line-height: 1.5;
   color: #666666;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
@@ -8639,6 +8662,7 @@ body:has(.community-page) .header-menu-mobile a[href="/community"] {
   font-weight: 400;
   font-size: clamp(1.125rem, 2.2vw, 1.375rem);
   line-height: 1.6;
+  letter-spacing: -0.02em;
   text-align: center;
   color: #2B2B2B;
   margin: 0 auto 1.5rem auto;
@@ -8816,6 +8840,7 @@ body:has(.community-page) .header-menu-mobile a[href="/community"] {
   font-weight: 400;
   font-size: clamp(1rem, 1.6vw, 1.125rem);
   line-height: 1.6;
+  letter-spacing: -0.02em;
   color: #FFFFFF;
   margin: 0 0 2rem 0;
 }

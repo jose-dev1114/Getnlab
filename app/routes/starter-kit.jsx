@@ -316,10 +316,6 @@ export default function StarterKit() {
             <p className="banner-description">
               nLab has already been tested in universities and by thousands of learners. Now we’re bringing that proven system directly to you, so anyone can build, learn, and succeed.
             </p>
-            <button className="banner-button">
-              Delete?
-              <img src="/svg/arrow_right.svg" alt="" className="banner-arrow" />
-            </button>
           </div>
         </div>
       </section>
