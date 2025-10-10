@@ -3359,7 +3359,7 @@ body:has(.download-page) .get-early-access-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(3rem, 6vh, 4rem) clamp(1.5rem, 3vw, 3rem) clamp(8rem, 15vh, 12rem);
+  padding: clamp(3rem, 6vh, 4rem) clamp(0.25rem, 0.5vw, 0.25rem) clamp(8rem, 15vh, 12rem);
   margin: 0;
   overflow: hidden;
 }
@@ -3418,7 +3418,7 @@ body:has(.download-page) .get-early-access-btn {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: clamp(3rem, 6vw, 6rem);
+  gap: clamp(1rem, 6vw, 2rem);
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
@@ -3431,6 +3431,7 @@ body:has(.download-page) .get-early-access-btn {
   display: flex;
   flex-direction: column;
   gap: clamp(1.5rem, 3vh, 2rem);
+  order: 1;
 }
 
 .download-hero-pattern {
@@ -3452,7 +3453,7 @@ body:has(.download-page) .get-early-access-btn {
   font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 78px;
+  font-size: 69px;
   line-height: 77px;
   text-transform: uppercase;
 
@@ -3518,6 +3519,7 @@ body:has(.download-page) .get-early-access-btn {
   display: flex;
   justify-content: center;
   align-items: center;
+  order: 2;
 }
 
 .download-hero-image img {
@@ -3617,11 +3619,11 @@ body:has(.download-page) .get-early-access-btn {
   }
 
   .download-hero-text {
-    order: 2;
+    order: 1;
   }
 
   .download-hero-image {
-    order: 1;
+    order: 2;
   }
 
   .download-hero-pattern {
@@ -6732,8 +6734,7 @@ body:has(.about-page) .get-early-access-btn {
 .about-story-title {
   font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: 66px;
   line-height: 1.2;
   text-transform: uppercase;
 
