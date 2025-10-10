@@ -587,6 +587,28 @@ body:not(:has(.starter-kit-page, .community-page, .about-page, .early-access-pag
   cursor: pointer;
 }
 
+.header-menu-early-access-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.header-menu-early-access-btn:hover {
+  background: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(43, 43, 43, 0.3);
+}
+
 .header-ctas {
   align-items: center;
   display: flex;
@@ -627,7 +649,7 @@ body:has(.early-access-page) .nlab-logo {
 /* White text color for PC view */
 body:has(.early-access-page) .header-menu-desktop a,
 body:has(.early-access-page) .header-menu-mobile a {
-  color: #FFFFFF !important;
+  color: #010101 !important;
 }
 
 body:has(.early-access-page) .header-menu-mobile-toggle h3 {

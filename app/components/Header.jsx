@@ -99,6 +99,16 @@ export function HeaderMenu({
           </NavLink>
         );
       })}
+
+      {/* Early Access Button for Mobile */}
+      <NavLink
+        className="header-menu-early-access-btn"
+        onClick={close}
+        prefetch="intent"
+        to="/early-access"
+      >
+        Get Early Access
+      </NavLink>
     </nav>
   );
 }
