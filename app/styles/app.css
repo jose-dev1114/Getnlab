@@ -509,7 +509,7 @@ body:not(:has(.starter-kit-page, .community-page, .about-page, .early-access-pag
   }
 
   .header-menu-desktop .header-menu-item:hover {
-    color: #00AEEF;
+    color: white;
   }
 
   .nlab-header .header-ctas {
@@ -1948,6 +1948,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
   width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 clamp(0.5rem, 1.5vw, 1.5rem);
   align-items: center;
@@ -2404,7 +2405,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 .grid-section-title {
   font-family: 'TitleGothicFB Comp', 'Roboto Condensed', Sans-Serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 48px;
   line-height: 77px;
   text-transform: uppercase;
@@ -2504,10 +2505,10 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
   border-radius: 12px;
-  margin: clamp(0.8rem, 1.8vw, 1.8rem);
+  padding: clamp(1.5rem, 3vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .grid-item-image img {
@@ -2646,7 +2647,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 .pattern-section-title {
   font-family: 'TitleGothicFB Comp', 'Roboto Condensed', Sans-Serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 48px;
   line-height: 77px;
   text-transform: uppercase;
@@ -2736,7 +2737,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   .pattern-section-title {
     font-size: 48px;
     line-height: 52px;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   .pattern-section-description {
@@ -2777,7 +2778,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   .grid-section-title {
     font-size: 48px;
     line-height: 52px;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   .grid-cta-title {
@@ -2813,8 +2814,8 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 
   .grid-item-image {
     order: 2;
-    margin: 0;
-    flex: 0.8;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    flex: 1;
   }
 
   .grid-item-image img {
@@ -2875,7 +2876,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   .pattern-section-title {
     font-size: 48px;
     line-height: 52px;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   .pattern-section-description {
@@ -2913,7 +2914,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   .grid-section-title {
     font-size: 48px;
     line-height: 52px;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   .grid-cta-title {
@@ -3008,7 +3009,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   .grid-section-title {
     font-size: 48px;
     line-height: 52px;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   .grid-cta-title {
@@ -3442,10 +3443,10 @@ body:has(.download-page) .get-early-access-btn {
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 4vw, 4rem);
+  /* gap: clamp(2rem, 4vw, 4rem); */
   width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 clamp(0.5rem, 1.5vw, 1.5rem) 0 clamp(2rem, 4vw, 4rem);
   align-items: center;
   line-height: normal;
 }
@@ -3704,7 +3705,7 @@ body:has(.download-page) .get-early-access-btn {
 /* Desktop */
 @media (min-width: 1025px) {
   .download-hero-title {
-    font-size: 78px;
+    font-size: 73px;
     line-height: 77px;
     font-weight: 700;
   }
@@ -4084,9 +4085,9 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
 /* Background Pattern */
 .explore-projects-pattern {
   position: absolute;
-  top: -50px;
+  /* top: -50px; */
   right: -50px;
-  z-index: 15;
+  z-index: 10000;
   pointer-events: none;
 }
 
@@ -4154,8 +4155,8 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   color: #FFFFFF;
   letter-spacing: -0.02em;
   opacity: 0.9;
-  max-width: 800px;
-  text-align: center;
+  max-width: 950px;
+  text-align: left;
 }
 
 /* Project Filter Tabs */
@@ -4403,7 +4404,6 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   min-height: 500px;
   width: 100%;
   height: auto;
-  padding: 0 2rem;
   margin-bottom: 3rem;
 }
 
@@ -5642,7 +5642,6 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
 
 .explore-image {
   flex: 1;
-  max-width: 600px;
 }
 
 .explore-image img {
@@ -6815,10 +6814,11 @@ body:has(.about-page) .get-early-access-btn {
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 4vw, 4rem);
+  /* gap: clamp(2rem, 4vw, 4rem); */
   width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 clamp(0.5rem, 1.5vw, 1.5rem) 0 clamp(1rem, 2vw, 2rem);
+  /* padding: 0 clamp(0.5rem, 1.5vw, 1.5rem) 0 clamp(1rem, 2vw, 2rem); */
   align-items: center;
   line-height: normal;
 }
@@ -6984,7 +6984,7 @@ body:has(.about-page) .get-early-access-btn {
     margin-bottom: 2rem;
     font-weight: 500;
     text-align: left;
-    max-width: 550px;
+    max-width: 650px;
   }
 }
 
