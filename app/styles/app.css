@@ -1014,6 +1014,51 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   transform: none;
 }
 
+.pre-order-cta {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(0, 174, 239, 0.1);
+  border: 2px solid rgba(0, 174, 239, 0.3);
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.pre-order-text {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.1rem;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+.pre-order-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #00AEEF;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.pre-order-button:hover {
+  background: #0099d4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 174, 239, 0.3);
+}
+
+.pre-order-button:focus {
+  outline: 2px solid #00AEEF;
+  outline-offset: 2px;
+}
+
 .early-access-features-wrapper {
   display: flex;
   flex-direction: row;
@@ -9374,6 +9419,536 @@ body:has(.early-access-page) .header-menu-mobile a[href="/early-access"] {
   border-bottom: 3px solid #00AEEF;
   padding-bottom: 2px;
 }
+
+/* ===== PRE-ORDER PAGE STYLES ===== */
+
+.pre-order-page {
+  background: #00AEEF;
+  padding: 2rem 1rem;
+}
+
+.pre-order-hero {
+  position: relative;
+  background-color: #00AEEF;
+  padding: clamp(6rem, 12vh, 10rem) clamp(2rem, 4vw, 4rem) clamp(8rem, 15vh, 12rem);
+  text-align: center;
+  overflow: hidden;
+}
+
+.pre-order-hero-pattern-right {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  width: clamp(250px, 30vw, 450px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pre-order-hero-pattern-right img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pre-order-hero-pattern-left {
+  position: absolute;
+  left: 7%;
+  bottom: 21%;
+  width: clamp(150px, 18vw, 250px);
+  height: auto;
+  z-index: 15;
+  pointer-events: none;
+  transform: translate(-50%, 50%);
+}
+
+.pre-order-hero-pattern-left img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pre-order-about-pattern-right {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  width: clamp(250px, 30vw, 450px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  display: none;
+}
+
+.pre-order-about-pattern-right img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pre-order-hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+  padding-bottom: clamp(3rem, 6vh, 5rem);
+}
+
+.pre-order-title {
+  font-family: 'titling-gothic-fb-compressed', 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 78px;
+  line-height: 77px;
+  text-align: center;
+  color: #2B2B2B;
+  margin-bottom: clamp(1rem, 2vh, 2rem);
+}
+
+.pre-order-subtitle {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38px;
+  text-align: center;
+  color: #2B2B2B;
+  margin-bottom: clamp(2rem, 4vh, 3rem);
+}
+
+.pre-order-combined-section {
+  padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 4rem);
+  background-color: #00AEEF;
+}
+
+.pre-order-combined-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: center;
+  min-height: 60vh;
+}
+
+.pre-order-checkout-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pre-order-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+}
+
+.shopify-buy-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Force font styles for Shopify Buy Button with higher specificity */
+.shopify-buy-container .shopify-buy__product .shopify-buy__product__title,
+.shopify-buy-container .shopify-buy__product .shopify-buy__btn,
+.shopify-buy-container [data-element="product.title"],
+.shopify-buy-container [data-element="product.button"],
+#shopify-buy-button .shopify-buy__product__title,
+#shopify-buy-button .shopify-buy__btn,
+#shopify-buy-button [data-element="product.title"],
+#shopify-buy-button [data-element="product.button"] {
+  font-family: 'Roboto Condensed', Arial, sans-serif !important;
+}
+
+.shopify-buy-container .shopify-buy__product .shopify-buy__product__title,
+.shopify-buy-container [data-element="product.title"],
+#shopify-buy-button .shopify-buy__product__title,
+#shopify-buy-button [data-element="product.title"] {
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  color: #2B2B2B !important;
+  font-size: 28px !important;
+  line-height: 1.2 !important;
+}
+
+.shopify-buy-container .shopify-buy__product .shopify-buy__btn,
+.shopify-buy-container [data-element="product.button"],
+#shopify-buy-button .shopify-buy__btn,
+#shopify-buy-button [data-element="product.button"] {
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+/* Loading spinner styles */
+.loading-placeholder {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #FF6B35;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.config-error {
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  color: #856404;
+}
+
+.config-error h4 {
+  margin-top: 0;
+  color: #856404;
+}
+
+.config-error ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.pre-order-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.1rem;
+  color: #2B2B2B;
+}
+
+.benefit-icon {
+  font-size: 1.5rem;
+}
+
+.pre-order-main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.pre-order-product-section {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.product-details {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-title {
+  font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.product-price {
+  margin-bottom: 2rem;
+}
+
+.current-price {
+  display: block;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00AEEF;
+  margin-bottom: 0.5rem;
+}
+
+.future-price {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.product-description h3,
+.product-guarantee h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.product-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.product-features li {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  color: #2B2B2B;
+  margin-bottom: 0.75rem;
+  padding-left: 0;
+}
+
+.product-guarantee p {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.shopify-buy-container {
+  background: #00AEEF;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 2rem;
+}
+
+.loading-placeholder {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #00AEEF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+.config-error {
+  text-align: center;
+  padding: 2rem;
+  background: #fff3cd;
+  border: 2px solid #ffeaa7;
+  border-radius: 8px;
+  color: #856404;
+}
+
+.config-error h4 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #856404;
+}
+
+.config-error p {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #856404;
+}
+
+.config-error ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.config-error li {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  color: #856404;
+  background: #fff;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.trust-section {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.trust-section h3 {
+  font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.trust-indicators {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.trust-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.trust-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.trust-item h4 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.trust-item p {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.faq-section {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+}
+
+.faq-section h3 {
+  font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.faq-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item h4 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin-bottom: 0.75rem;
+}
+
+.faq-item p {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.pre-order-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Hide blue_light pattern on mobile */
+@media (max-width: 768px) {
+  .pre-order-hero-pattern-left {
+    display: none;
+  }
+
+  .pre-order-hero {
+    padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 4rem) clamp(4rem, 8vh, 6rem);
+  }
+
+  .pre-order-combined-content {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vh, 3rem);
+    text-align: center;
+  }
+
+  .pre-order-hero-content {
+    text-align: center;
+    order: 1;
+  }
+
+  .pre-order-checkout-content {
+    order: 2;
+  }
+
+  .pre-order-title {
+    font-size: 48px;
+    line-height: 44px;
+    font-weight: 500;
+  }
+
+  .pre-order-subtitle {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 500;
+  }
+
+  /* Hide original pattern and show about pattern like about page */
+  .pre-order-hero-pattern-right {
+    display: none;
+  }
+
+  /* Show about pattern in mobile */
+  .pre-order-about-pattern-right {
+    display: block;
+    right: -1px;
+    width: clamp(150px, 20vw, 250px);
+  }
+
+  .shopify-buy-container {
+    position: static;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ===== END OF PRE-ORDER PAGE STYLES ===== */
 
 body:has(.explore-projects-page) .header-menu-desktop a[href="/explore-projects"],
 body:has(.explore-projects-page) .header-menu-mobile a[href="/explore-projects"] {

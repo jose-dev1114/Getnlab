@@ -1,8 +1,17 @@
-import {Link, Form, useActionData, useNavigation} from 'react-router';
+import {Link, Form, useActionData, useNavigation, useLoaderData} from 'react-router';
 import {data} from 'react-router';
+import { useState, useEffect } from 'react';
 
 export const meta = () => {
   return [{title: 'Get Early Access | nLab'}];
+};
+
+export const loader = async ({ context }) => {
+  return {
+    shopifyDomain: context?.env?.PUBLIC_STORE_DOMAIN || process.env.PUBLIC_STORE_DOMAIN,
+    shopifyStorefrontToken: context?.env?.PUBLIC_STOREFRONT_API_TOKEN || process.env.PUBLIC_STOREFRONT_API_TOKEN,
+    shopifyProductId: context?.env?.SHOPIFY_PRODUCT_ID || process.env.SHOPIFY_PRODUCT_ID
+  };
 };
 
 // Action function to handle form submission
@@ -147,6 +156,123 @@ export default function EarlyAccess() {
   const actionData = useActionData();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
+  const { shopifyDomain, shopifyStorefrontToken, shopifyProductId } = useLoaderData();
+  const [shopifyClient, setShopifyClient] = useState(null);
+
+  useEffect(() => {
+    console.log('=== Shopify SDK Loading ===');
+    console.log('shopifyDomain:', shopifyDomain);
+    console.log('shopifyStorefrontToken:', shopifyStorefrontToken ? 'Present' : 'Missing');
+
+    // Load Shopify Buy Button SDK
+    const script = document.createElement('script');
+    script.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+    script.async = true;
+    script.onload = () => {
+      console.log('Shopify SDK loaded, window.ShopifyBuy:', !!window.ShopifyBuy);
+      if (window.ShopifyBuy && shopifyDomain && shopifyStorefrontToken) {
+        console.log('Creating Shopify client...');
+        const client = window.ShopifyBuy.buildClient({
+          domain: shopifyDomain,
+          storefrontAccessToken: shopifyStorefrontToken
+        });
+        setShopifyClient(client);
+        console.log('Shopify client created successfully');
+      } else {
+        console.log('Cannot create Shopify client:', {
+          ShopifyBuy: !!window.ShopifyBuy,
+          domain: !!shopifyDomain,
+          token: !!shopifyStorefrontToken
+        });
+      }
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, [shopifyDomain, shopifyStorefrontToken]);
+
+  const handlePreOrder = async () => {
+    // Debug logging
+    console.log('=== Pre-Order Debug Info ===');
+    console.log('shopifyDomain:', shopifyDomain);
+    console.log('shopifyStorefrontToken:', shopifyStorefrontToken ? 'Present' : 'Missing');
+    console.log('shopifyProductId:', shopifyProductId);
+    console.log('shopifyClient:', shopifyClient ? 'Initialized' : 'Not initialized');
+    console.log('window.ShopifyBuy:', window.ShopifyBuy ? 'Loaded' : 'Not loaded');
+
+    if (!shopifyClient || !shopifyProductId) {
+      console.log('Redirecting to pre-order page - Missing:', {
+        shopifyClient: !shopifyClient ? 'shopifyClient' : null,
+        shopifyProductId: !shopifyProductId ? 'shopifyProductId' : null
+      });
+      window.location.href = '/pre-order';
+      return;
+    }
+
+    try {
+      // Fetch the pre-order product (separate $1 product)
+      const preOrderProduct = await shopifyClient.product.fetch(shopifyProductId);
+
+      if (!preOrderProduct || !preOrderProduct.variants || preOrderProduct.variants.length === 0) {
+        throw new Error('Pre-order product not found or has no variants');
+      }
+
+      // Create checkout with the pre-order product
+      const checkout = await shopifyClient.checkout.create();
+
+      // Add pre-order item to checkout
+      const lineItemsToAdd = [{
+        variantId: preOrderProduct.variants[0].id,
+        quantity: 1,
+        customAttributes: [
+          {
+            key: 'Pre-Order Type',
+            value: 'nLab Kit Reservation'
+          },
+          {
+            key: 'Expected Launch',
+            value: 'Kickstarter Campaign'
+          },
+          {
+            key: 'Discount Eligible',
+            value: '10% off at launch'
+          }
+        ]
+      }];
+
+      // Add line items to checkout
+      const updatedCheckout = await shopifyClient.checkout.addLineItems(checkout.id, lineItemsToAdd);
+
+      // Add checkout attributes for tracking
+      const checkoutWithAttributes = await shopifyClient.checkout.updateAttributes(updatedCheckout.id, {
+        customAttributes: [
+          {
+            key: 'Order Type',
+            value: 'Pre-Order Reservation'
+          },
+          {
+            key: 'Source',
+            value: 'Early Access Page'
+          },
+          {
+            key: 'Campaign',
+            value: 'Pre-Launch'
+          }
+        ]
+      });
+
+      // Redirect to Shopify checkout
+      window.location.href = checkoutWithAttributes.webUrl;
+    } catch (error) {
+      console.error('Error creating pre-order checkout:', error);
+      // Fallback to pre-order page on error
+      window.location.href = '/pre-order';
+    }
+  };
 
   return (
     <div className="early-access-page">
@@ -243,6 +369,15 @@ export default function EarlyAccess() {
             <span>{isSubmitting ? 'Joining...' : 'Join the list'}</span>
             <span>{isSubmitting ? '⏳' : '→'}</span>
           </button>
+
+          <div className="pre-order-cta">
+            <p className="pre-order-text">
+              Want to secure your spot? <strong>Pre-order for just $1</strong>
+            </p>
+            <button onClick={handlePreOrder} className="pre-order-button">
+              Pre-Order Now for $1 →
+            </button>
+          </div>
 
           <p className="form-disclaimer">
             No spam—just cool builds, perks, and learning inspiration. You can unsubscribe anytime.

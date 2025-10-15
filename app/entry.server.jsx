@@ -38,6 +38,16 @@ export default async function handleRequest(
       'https://fonts.googleapis.com',
       'https://fonts.gstatic.com',
       'https://fonts.cdnfonts.com',
+      'https://sdks.shopifycdn.com',
+      'https://cdn.shopify.com',
+      'https://shopifycloud.com',
+    ],
+    scriptSrc: [
+      "'self'",
+      'https://sdks.shopifycdn.com',
+      'https://cdn.shopify.com',
+      'https://shopifycloud.com',
+      "'unsafe-inline'",
     ],
     frameSrc: [
       "'self'",
