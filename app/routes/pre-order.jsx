@@ -2,10 +2,13 @@ import { Link, useLoaderData } from 'react-router';
 import { useState, useEffect } from 'react';
 
 export const loader = async ({ context }) => {
+  // In Hydrogen deployment, environment variables are accessed through context.env
+  const env = context?.env || {};
+
   return {
-    shopifyDomain: context?.env?.PUBLIC_STORE_DOMAIN || process.env.PUBLIC_STORE_DOMAIN,
-    shopifyStorefrontToken: context?.env?.PUBLIC_STOREFRONT_API_TOKEN || process.env.PUBLIC_STOREFRONT_API_TOKEN,
-    shopifyProductId: context?.env?.SHOPIFY_PRODUCT_ID || process.env.SHOPIFY_PRODUCT_ID
+    shopifyDomain: env.PUBLIC_STORE_DOMAIN,
+    shopifyStorefrontToken: env.PUBLIC_STOREFRONT_API_TOKEN,
+    shopifyProductId: env.PUBLIC_SHOPIFY_PRODUCT_ID
   };
 };
 
@@ -369,7 +372,7 @@ function ShopifyBuyButton({ shopifyDomain, shopifyStorefrontToken, shopifyProduc
             <ul>
               <li>PUBLIC_STORE_DOMAIN</li>
               <li>PUBLIC_STOREFRONT_API_TOKEN</li>
-              <li>SHOPIFY_PRODUCT_ID</li>
+              <li>PUBLIC_SHOPIFY_PRODUCT_ID</li>
             </ul>
             <p>See SHOPIFY_SETUP.md for detailed instructions.</p>
           </div>

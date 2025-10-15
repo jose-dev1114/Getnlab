@@ -10,7 +10,7 @@ export const loader = async ({ context }) => {
   return {
     shopifyDomain: context?.env?.PUBLIC_STORE_DOMAIN || process.env.PUBLIC_STORE_DOMAIN,
     shopifyStorefrontToken: context?.env?.PUBLIC_STOREFRONT_API_TOKEN || process.env.PUBLIC_STOREFRONT_API_TOKEN,
-    shopifyProductId: context?.env?.SHOPIFY_PRODUCT_ID || process.env.SHOPIFY_PRODUCT_ID
+    shopifyProductId: context?.env?.PUBLIC_SHOPIFY_PRODUCT_ID || process.env.PUBLIC_SHOPIFY_PRODUCT_ID
   };
 };
 

@@ -81,7 +81,7 @@ cp .env.example .env
 # .env
 PUBLIC_STORE_DOMAIN=your-shop-name.myshopify.com
 PUBLIC_STOREFRONT_API_TOKEN=your-storefront-access-token
-SHOPIFY_PRODUCT_ID=your-product-id
+PUBLIC_SHOPIFY_PRODUCT_ID=your-product-id
 ```
 
 **Important**: The pre-order page automatically reads these environment variables. No code changes needed!
