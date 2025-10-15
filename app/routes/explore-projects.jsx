@@ -10,7 +10,8 @@ function getBadgeDotColor(badgeType) {
     beginner: '#27C840',
     intermediate: '#FFC928',
     advanced: '#FF2828',
-    coding: '#00AEEF'
+    coding: '#00AEEF',
+    'extra-parts': '#9B59B6'
   };
   return colors[badgeType] || '#27C840';
 }
@@ -178,7 +179,7 @@ export default function ExploreProjects() {
               </div>
               <div className="explore-info">
                 <h3 className="explore-title">LIGHT AN LED</h3>
-                <div className="explore-duration">5:23</div>
+                <div className="explore-duration">13:45</div>
                 <p className="explore-description mb-3">
                   Turn on your very first circuit by powering an LED. In this
                   beginner project, you'll learn how current flows through a
@@ -199,9 +200,9 @@ export default function ExploreProjects() {
               </div>
             </div>
 
-            {/* Grid of 6 Cards */}
+            {/* Grid of 22 Cards */}
             <div className="projects-grid">
-              {/* Card 1 */}
+              {/* Card 1 - Light an LED */}
               <div className="featured-project-card">
                 <div className="project-video">
                   {renderBadge('beginner', 'BEGINNER')}
@@ -217,20 +218,147 @@ export default function ExploreProjects() {
                 </div>
                 <div className="explore-info">
                   <h3 className="explore-title">LIGHT AN LED</h3>
-                  <div className="explore-duration">5:23</div>
                   <p className="explore-description mb-3">
-                    Design and build the circuit that turns on a light
+                    Turn on your very first circuit by powering an LED. In this beginner project, you'll learn how current flows through a simple loop, how resistors control current, and why polarity matters when working with electronic components.
                   </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> How to use a breadboard to connect components. Why resistors are essential to protect LEDs. How to identify polarity and orient components correctly. The basics of current and voltage in a circuit.
+                  </div>
                 </div>
               </div>
 
-              {/* Card 2 */}
+              {/* Card 2 - Make your first circuit better */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('beginner', 'BEGINNER')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Make your first circuit better"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">MAKE YOUR FIRST CIRCUIT BETTER</h3>
+                  <p className="explore-description mb-3">
+                    Extend your circuit with wire. Learn how the breadboard works, and use wire stripping tools to spread the components of your LED circuit around the breadboard.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> How a breadboard is wired. How to cut and strip a wire. The importance of color coding your wires.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3 - Circuit building skills */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('beginner', 'BEGINNER')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Circuit building skills"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">CIRCUIT BUILDING SKILLS</h3>
+                  <p className="explore-description mb-3">
+                    A deep dive into the breadboard and wire. Where did the breadboard come from, and how does it work? Learn about the different types of wire and the best way to use it in a breadboard.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> The origin of the breadboard. How the breadboard connects wires. Solid vs stranded wire. Common wire color coding.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4 - How to use the nLab and app */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('beginner', 'BEGINNER')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="How to use the nLab and app"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">HOW TO USE THE NLAB AND APP</h3>
+                  <p className="explore-description mb-3">
+                    A look at the nLab: an oscilloscope, a power supply, and a function generator. Using the nLab app, you can see you signal, power it, and create signals to work with.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> How to zoom in in time and voltage. How to read voltage from an oscilloscope. How the power supply works. How to set the nLab output signals.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 5 - Coding with nLab */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('beginner', 'BEGINNER')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Coding with nLab"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">CODING WITH NLAB</h3>
+                  <p className="explore-description mb-3">
+                    Using Python, you can get access to your nLab to build your own interface. Read voltages and set outputs for your specific project, like a data logger, a game, or a control system.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> How to get the nLab api. The basic api functions. Make a data logger. Make a game in pygame zero.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 6 - The science behind electronics */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('beginner', 'BEGINNER')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="The science behind electronics"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">THE SCIENCE BEHIND ELECTRONICS</h3>
+                  <p className="explore-description mb-3">
+                    What is electricity? In this video, explore the concepts of voltage, current, and power, using easy to understand analogies.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Voltage is pressure. Current is like flow.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 7 - Series and Parallel Circuits */}
               <div className="featured-project-card">
                 <div className="project-video">
                   {renderBadge('intermediate', 'INTERMEDIATE')}
                   <img
                     src="/svg/img/soon.webp"
-                    alt="Blinking LED Project"
+                    alt="Series and Parallel Circuits"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
                   />
@@ -240,66 +368,22 @@ export default function ExploreProjects() {
                 </div>
                 <div className="explore-info">
                   <h3 className="explore-title">SERIES AND PARALLEL CIRCUITS</h3>
-                  <div className="explore-duration">7:15</div>
                   <p className="explore-description mb-3">
-                    Learn how to build any size resistors
+                    Circuit components are wired in ways that share voltage and current. The properties of voltage, "across", and current, "through", are used to design circuits with just a few easy rules.
                   </p>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="featured-project-card">
-                <div className="project-video">
-                  {renderBadge('beginner', 'BEGINNER')}
-                  <img
-                    src="/svg/img/soon.webp"
-                    alt="Traffic Light Project"
-                    className="project-thumbnail"
-                    onClick={() => openVideoModal('a4OCApcuBT8')}
-                  />
-                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
-                    <CirclePlayIcon />
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Voltage is a property that is across a component. Current is a property that goes through. Components connect at nodes. Resistors can be combined in series and parallel to make new resistors.
                   </div>
                 </div>
-                <div className="explore-info">
-                  <h3 className="explore-title">LED BRIGHTNESS CONTROL</h3>
-                  <div className="explore-duration">12:30</div>
-                  <p className="explore-description mb-3">
-                    Use the nLab to control an LED
-                  </p>
-                </div>
               </div>
 
-              {/* Card 4 */}
-              <div className="featured-project-card">
-                <div className="project-video">
-                  {renderBadge('beginner', 'BEGINNER')}
-                  <img
-                    src="/svg/img/explore_fourth.png"
-                    alt="Buzzer Circuit Project"
-                    className="project-thumbnail"
-                    onClick={() => openVideoModal('a4OCApcuBT8')}
-                  />
-                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
-                    <CirclePlayIcon />
-                  </div>
-                </div>
-                <div className="explore-info">
-                  <h3 className="explore-title">SAVING DATA</h3>
-                  <div className="explore-duration">6:45</div>
-                  <p className="explore-description mb-3">
-                    Grab data from the nLab app and view it with your computer
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 5 */}
+              {/* Card 8 - Ohm's Law and Circuit Design */}
               <div className="featured-project-card">
                 <div className="project-video">
                   {renderBadge('intermediate', 'INTERMEDIATE')}
                   <img
                     src="/svg/img/soon.webp"
-                    alt="Light Sensor Project"
+                    alt="Ohm's Law and Circuit Design"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
                   />
@@ -308,21 +392,198 @@ export default function ExploreProjects() {
                   </div>
                 </div>
                 <div className="explore-info">
-                  <h3 className="explore-title">BUILD A THERMOMENTER</h3>
-                  <div className="explore-duration">9:20</div>
+                  <h3 className="explore-title">OHM'S LAW AND CIRCUIT DESIGN</h3>
                   <p className="explore-description mb-3">
-                    Design and build a circuit that turns on more LEDs the warmer the sensor gets
+                    Resistors obey Ohm's Law, a simple equation relating voltage, current, and resistance. Combined with series and parallel rules, you can find the voltage at every point and the current through every component!
                   </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Ohm's Law, V=IR. Summing voltage around a circuit. Current cannot accumulate at a node.
+                  </div>
                 </div>
               </div>
 
-              {/* Card 6 */}
+              {/* Card 9 - Build a sensing circuit */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('intermediate', 'INTERMEDIATE')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Build a sensing circuit"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">BUILD A SENSING CIRCUIT</h3>
+                  <p className="explore-description mb-3">
+                    Design circuits that detect light, temperature, and sound.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Phototransistors for sensing light. Thermistors for sensing temperature. Microphones for sensing sound.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 10 - Design circuits by stacking them like blocks */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('intermediate', 'INTERMEDIATE')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Design circuits by stacking them like blocks"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">DESIGN CIRCUITS BY STACKING THEM LIKE BLOCKS</h3>
+                  <p className="explore-description mb-3">
+                    We've designed a few small circuits. By stacking them, we can build more complicated functions. But sometimes this doesn't work, unless we consider how they interact with each other.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Impedance rules.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 11 - Capacitors in circuits */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('intermediate', 'INTERMEDIATE')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Capacitors in circuits"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">CAPACITORS IN CIRCUITS</h3>
+                  <p className="explore-description mb-3">
+                    See how charging capacitors can be used to change how circuits react over time
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Capacitors are not resistors. How to charge a capacitor. Using capacitors with resistors to change how circuits react.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 12 - Operational Amplifier Circuits */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('intermediate', 'INTERMEDIATE')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Operational Amplifier Circuits"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">OPERATIONAL AMPLIFIER CIRCUITS</h3>
+                  <p className="explore-description mb-3">
+                    It is time to super charge our circuits with chips! Operational amplifiers are integrated circuits that use power to solve many of the design challenges we've seen in circuit design. Op amps are used to make decisions, fix impedance problems, and perform math.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Happy opamp theory. Op amps as comparators. Different op amp circuits for math.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 13 - Transistor Circuits */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('intermediate', 'INTERMEDIATE')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Transistor Circuits"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">TRANSISTOR CIRCUITS</h3>
+                  <p className="explore-description mb-3">
+                    Learn how transistors created the electronics revolution. In this video, use transistors as switches and amplifiers.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> The transistor equation. Transistors as amplifiers. Transistors as switches. Transistor power considerations.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 14 - Record and plot nLab data */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('coding', 'CODING')}
+                  <img
+                    src="/svg/img/explore_fourth.png"
+                    alt="Record and plot nLab data"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">RECORD AND PLOT NLAB DATA</h3>
+                  <p className="explore-description mb-3">
+                    Sometimes you want to get your data into a file for use later. In the nLab app, you can save your data as a screenshot and as a .csv file. See how to use the file to plot your data in a spreadsheet and in Python.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Saving data. Plotting a .csv file in a spreadsheet. Plotting a .csv file in Python.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 15 - Design your own game with nLab */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('coding', 'CODING')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Design your own game with nLab"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">DESIGN YOUR OWN GAME WITH NLAB</h3>
+                  <p className="explore-description mb-3">
+                    Circuits are way more fun when you get to interact with them. Now that you can design functional circuits, let's get their data into the computer and do something. Let's make a game! Pygame Zero is a great platform to use with the nLab api to quickly get going.
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> The engineering design process. Designing, building, testing, and iterating. Making graphics and sound with Python. Modern coding techniques with AI assistance.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 16 - Building a microphone */}
               <div className="featured-project-card">
                 <div className="project-video">
                   {renderBadge('advanced', 'ADVANCED')}
                   <img
                     src="/svg/img/soon.webp"
-                    alt="Motor Control Project"
+                    alt="Building a microphone"
                     className="project-thumbnail"
                     onClick={() => openVideoModal('a4OCApcuBT8')}
                   />
@@ -331,11 +592,163 @@ export default function ExploreProjects() {
                   </div>
                 </div>
                 <div className="explore-info">
-                  <h3 className="explore-title">AMPLIFICATION</h3>
-                  <div className="explore-duration">15:10</div>
+                  <h3 className="explore-title">BUILDING A MICROPHONE</h3>
                   <p className="explore-description mb-3">
-                    Design and build circuits that take tiny signals and makes them visible
+                    Project: how to detect sound with a circuit
                   </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Amplifiers. Filters.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 17 - An optical pulse sensor */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('advanced', 'ADVANCED')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="An optical pulse sensor"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">AN OPTICAL PULSE SENSOR</h3>
+                  <p className="explore-description mb-3">
+                    Project: use light to detect your pulse, the way a smart watch does
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Biosensing. Amplifiers. Filters.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 18 - Make an ECG */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('extra-parts', 'REQUIRES EXTRA PARTS')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Make an ECG"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">MAKE AN ECG</h3>
+                  <p className="explore-description mb-3">
+                    Project: detect your pulse with electrodes
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Biosensing. Amplifiers. Filters.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 19 - Build a thermometer */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('advanced', 'ADVANCED')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Build a thermometer"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">BUILD A THERMOMETER</h3>
+                  <p className="explore-description mb-3">
+                    Project: design a circuit to sense temperature and display the data to a user
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Amplifiers. Comparators. The design process.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 20 - Build a motion detector */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('advanced', 'ADVANCED')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Build a motion detector"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">BUILD A MOTION DETECTOR</h3>
+                  <p className="explore-description mb-3">
+                    Project: use light to detect when people are in a room
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Amplifiers. Filters. Active sensing.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 21 - Invent a musical instrument */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('advanced', 'ADVANCED')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Invent a musical instrument"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">INVENT A MUSICAL INSTRUMENT</h3>
+                  <p className="explore-description mb-3">
+                    Project: invent a new way to make music
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Amplifiers. Filters. The design process. Interactive design.
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 22 - Make an EMG controller */}
+              <div className="featured-project-card">
+                <div className="project-video">
+                  {renderBadge('extra-parts', 'REQUIRES EXTRA PARTS')}
+                  <img
+                    src="/svg/img/soon.webp"
+                    alt="Make an EMG controller"
+                    className="project-thumbnail"
+                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                  />
+                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                    <CirclePlayIcon />
+                  </div>
+                </div>
+                <div className="explore-info">
+                  <h3 className="explore-title">MAKE AN EMG CONTROLLER</h3>
+                  <p className="explore-description mb-3">
+                    Project: detect your muscle activity level with EMG
+                  </p>
+                  <div className="what-youll-learn">
+                    <strong>What you'll learn:</strong> Biosensing. Amplifiers, Filters. Rectifiers.
+                  </div>
                 </div>
               </div>
             </div>
@@ -360,7 +773,7 @@ export default function ExploreProjects() {
                 </div>
                 <div className="explore-info">
                   <h3 className="explore-title">LIGHT AN LED</h3>
-                  <div className="explore-duration">5:23</div>
+                  <div className="explore-duration">13:45</div>
                   <p className="explore-description mb-3">
                     Design and build the circuit that turns on a light
                   </p>
