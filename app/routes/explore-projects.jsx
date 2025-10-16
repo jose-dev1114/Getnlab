@@ -171,9 +171,9 @@ export default function ExploreProjects() {
                   src="/svg/img/explore_main.png"
                   alt="Light an LED Project"
                   className="project-thumbnail"
-                  onClick={() => openVideoModal('a4OCApcuBT8')}
+                  onClick={() => openVideoModal('_OU6WcBfDhw')}
                 />
-                <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                <div className="circle-play" onClick={() => openVideoModal('_OU6WcBfDhw')}>
                   <CirclePlayIcon />
                 </div>
               </div>
@@ -210,9 +210,9 @@ export default function ExploreProjects() {
                     src="/svg/img/explore_first.png"
                     alt="Light an LED Project"
                     className="project-thumbnail"
-                    onClick={() => openVideoModal('a4OCApcuBT8')}
+                    onClick={() => openVideoModal('_OU6WcBfDhw')}
                   />
-                  <div className="circle-play" onClick={() => openVideoModal('a4OCApcuBT8')}>
+                  <div className="circle-play" onClick={() => openVideoModal('_OU6WcBfDhw')}>
                     <CirclePlayIcon />
                   </div>
                 </div>
