@@ -5,10 +5,65 @@ export const loader = async ({ context }) => {
   // In Hydrogen deployment, environment variables are accessed through context.env
   const env = context?.env || {};
 
+  const shopifyDomain = env.PUBLIC_STORE_DOMAIN;
+  const shopifyStorefrontToken = env.PUBLIC_STOREFRONT_API_TOKEN;
+  const shopifyProductId = env.PUBLIC_SHOPIFY_PRODUCT_ID;
+
+  // Fetch product data from Shopify Storefront API
+  let productData = null;
+
+  if (shopifyDomain && shopifyStorefrontToken && shopifyProductId) {
+    try {
+      const query = `
+        query getProduct($id: ID!) {
+          product(id: $id) {
+            id
+            title
+            description
+            featuredImage {
+              url
+              altText
+            }
+            variants(first: 1) {
+              edges {
+                node {
+                  id
+                  price {
+                    amount
+                    currencyCode
+                  }
+                  availableForSale
+                }
+              }
+            }
+          }
+        }
+      `;
+
+      const response = await fetch(`https://${shopifyDomain}/api/2023-10/graphql.json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Storefront-Access-Token': shopifyStorefrontToken,
+        },
+        body: JSON.stringify({
+          query,
+          variables: { id: `gid://shopify/Product/${shopifyProductId}` }
+        })
+      });
+
+      const result = await response.json();
+      productData = result.data?.product;
+    } catch (error) {
+      console.error('Error fetching product data:', error);
+    }
+  }
+
   return {
-    shopifyDomain: env.PUBLIC_STORE_DOMAIN,
-    shopifyStorefrontToken: env.PUBLIC_STOREFRONT_API_TOKEN,
-    shopifyProductId: env.PUBLIC_SHOPIFY_PRODUCT_ID
+    shopifyDomain,
+    shopifyStorefrontToken,
+    shopifyProductId,
+    productData
   };
 };
 
@@ -16,420 +71,264 @@ export const meta = () => {
   return [{ title: 'Pre-Order nLab Kit | nLab' }];
 };
 
-// Client-side only Shopify component
-function ShopifyBuyButton({ shopifyDomain, shopifyStorefrontToken, shopifyProductId }) {
-  const [shopifyLoaded, setShopifyLoaded] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+// Star Rating Component
+function StarRating() {
+  return (
+    <div className="star-rating">
+      {[...Array(5)].map((_, index) => (
+        <svg
+          key={index}
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="star"
+        >
+          <path
+            d="M10 1L12.09 6.26L18 7.27L14 11.14L15.18 17.02L10 14.77L4.82 17.02L6 11.14L2 7.27L7.91 6.26L10 1Z"
+            fill="#FFD700"
+            stroke="#FFD700"
+            strokeWidth="1"
+          />
+        </svg>
+      ))}
+    </div>
+  );
+}
 
-  // Hydration check
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+// Custom Product Component
+function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontToken }) {
+  const [quantity, setQuantity] = useState(1);
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  useEffect(() => {
-    if (!isClient) return;
-
-    let script = null;
-    let fontLink = null;
-    let isComponentMounted = true;
-
-    // Add Google Fonts for better font loading
-    fontLink = document.createElement('link');
-    fontLink.href = 'https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;700&display=swap';
-    fontLink.rel = 'stylesheet';
-    fontLink.id = 'roboto-condensed-font';
-
-    if (!document.head.querySelector('#roboto-condensed-font')) {
-      document.head.appendChild(fontLink);
+  // Product images array
+  const productImages = [
+    {
+      src: "/svg/img/pre_order.webp",
+      alt: "nLab Electronics Kit - Main View"
+    },
+    {
+      src: "/svg/img/pre_order_1.webp",
+      alt: "nLab Electronics Kit - Projects View"
+    },
+    {
+      src: "/svg/img/pre_order_2.webp",
+      alt: "nLab Electronics Kit - First Access"
     }
+  ];
 
-    // Load Shopify Buy Button SDK
-    script = document.createElement('script');
-    script.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-    script.async = true;
-    script.id = 'shopify-buy-sdk';
-
-    script.onload = () => {
-      if (isComponentMounted) {
-        console.log('Shopify SDK loaded');
-        setShopifyLoaded(true);
-        // Small delay to ensure SDK is fully ready
-        setTimeout(() => {
-          if (isComponentMounted) {
-            initializeShopifyBuyButton();
-          }
-        }, 100);
-      }
-    };
-
-    script.onerror = () => {
-      console.error('Failed to load Shopify SDK');
-      if (isComponentMounted) {
-        setShopifyLoaded(false);
-      }
-    };
-
-    if (!document.head.querySelector('#shopify-buy-sdk')) {
-      document.head.appendChild(script);
-    }
-
-    return () => {
-      isComponentMounted = false;
-
-      // Cleanup MutationObserver first
-      if (window.shopifyFontObserver) {
-        try {
-          window.shopifyFontObserver.disconnect();
-        } catch (e) {
-          // Ignore
-        }
-        window.shopifyFontObserver = null;
-      }
-
-      // Don't remove scripts as they might be shared across components
-      // Just mark component as unmounted to prevent callbacks
-    };
-  }, [isClient]);
-
-  const initializeShopifyBuyButton = () => {
-    console.log('Initializing Shopify Buy Button...');
-    console.log('ShopifyBuy available:', !!window.ShopifyBuy);
-    console.log('Domain:', shopifyDomain);
-    console.log('Token available:', !!shopifyStorefrontToken);
-    console.log('Product ID:', shopifyProductId);
-
-    if (!window.ShopifyBuy) {
-      console.error('ShopifyBuy not available');
-      return;
-    }
-
-    if (!shopifyDomain || !shopifyStorefrontToken || !shopifyProductId) {
-      console.error('Missing Shopify configuration');
-      return;
-    }
-
-    // Clear any existing content to prevent duplicates
-    const container = document.getElementById('shopify-buy-button');
-    if (!container) {
-      console.error('Container not found');
-      return;
-    }
-
-    // Check if already initialized
-    if (container.hasChildNodes() && container.querySelector('.shopify-buy__product')) {
-      console.log('Already initialized');
-      return;
-    }
-
-    container.innerHTML = '';
-
-    try {
-
-      const client = window.ShopifyBuy.buildClient({
-        domain: shopifyDomain,
-        storefrontAccessToken: shopifyStorefrontToken
-      });
-
-      const ui = window.ShopifyBuy.UI.init(client);
-
-      const component = ui.createComponent('product', {
-        id: shopifyProductId,
-        node: document.getElementById('shopify-buy-button'),
-        moneyFormat: '$%7B%7Bamount%7D%7D',
-        options: {
-          product: {
-            layout: 'horizontal',
-            variantId: 'all',
-            width: '100%',
-            contents: {
-              img: true,
-              title: true,
-              price: false,
-              options: false,
-              quantity: false,
-              button: true,
-              buttonWithQuantity: false,
-              description: false
-            },
-            styles: {
-              product: {
-                '@media (min-width: 601px)': {
-                  'max-width': '500px',
-                  'margin-left': 'auto',
-                  'margin-right': 'auto',
-                  'margin-bottom': '50px'
-                },
-                'text-align': 'center'
-              },
-              img: {
-                'width': '300px',
-                'height': '300px',
-                'object-fit': 'cover',
-                'border-radius': '12px',
-                'margin-bottom': '20px',
-                'box-shadow': '0 4px 12px rgba(0, 0, 0, 0.1)'
-              },
-              title: {
-                'font-family': '"Roboto Condensed", sans-serif !important',
-                'font-size': '28px !important',
-                'font-weight': '700 !important',
-                'color': '#2B2B2B !important',
-                'margin-bottom': '20px !important',
-                'text-transform': 'uppercase !important',
-                'line-height': '1.2 !important'
-              },
-              button: {
-                'font-family': '"Roboto Condensed", sans-serif',
-                'font-size': '20px',
-                'font-weight': '700',
-                'padding-top': '20px',
-                'padding-bottom': '20px',
-                'padding-left': '40px',
-                'padding-right': '40px',
-                'color': '#2B2B2B',
-                'background-color': '#FF6B35',
-                'text-transform': 'uppercase',
-                'border': 'none',
-                'border-radius': '12px',
-                'box-shadow': '0 4px 12px rgba(255, 107, 53, 0.3)',
-                'transition': 'all 0.3s ease',
-                ':hover': {
-                  'background-color': '#E55A2B',
-                  'color': '#ffffff',
-                  'transform': 'translateY(-2px)',
-                  'box-shadow': '0 6px 16px rgba(255, 107, 53, 0.4)'
-                },
-                ':focus': {
-                  'background-color': '#E55A2B',
-                  'outline': 'none',
-                  'box-shadow': '0 0 0 3px rgba(255, 107, 53, 0.2)'
-                },
-                ':active': {
-                  'transform': 'translateY(0)',
-                  'box-shadow': '0 2px 8px rgba(255, 107, 53, 0.3)'
-                }
-              },
-              price: {
-                'font-family': '"Roboto Condensed", sans-serif',
-                'font-size': '24px',
-                'color': '#2B2B2B'
-              },
-              compareAt: {
-                'font-family': '"Roboto Condensed", sans-serif',
-                'font-size': '20px',
-                'color': '#666666'
-              }
-            },
-            text: {
-              button: 'Reserve Your Spot - $1'
-            }
-          },
-          productSet: {
-            styles: {
-              products: {
-                '@media (min-width: 601px)': {
-                  'margin-left': '-20px'
-                }
-              }
-            }
-          },
-          modalProduct: {
-            styles: {
-              product: {
-                '@media (min-width: 601px)': {
-                  'max-width': '100%',
-                  'margin-left': '0px',
-                  'margin-bottom': '0px'
-                }
-              }
-            }
-          },
-          cart: {
-            styles: {
-              button: {
-                'font-family': '"Roboto Condensed", sans-serif',
-                'font-size': '20px',
-                'font-weight': '700',
-                'padding-top': '20px',
-                'padding-bottom': '20px',
-                'padding-left': '40px',
-                'padding-right': '40px',
-                'color': '#ffffff',
-                'background-color': '#FF6B35',
-                'text-transform': 'uppercase',
-                'border': 'none',
-                'border-radius': '12px',
-                'box-shadow': '0 4px 12px rgba(255, 107, 53, 0.3)',
-                'transition': 'all 0.3s ease',
-                ':hover': {
-                  'background-color': '#E55A2B',
-                  'color': '#ffffff',
-                  'transform': 'translateY(-2px)',
-                  'box-shadow': '0 6px 16px rgba(255, 107, 53, 0.4)'
-                },
-                ':focus': {
-                  'background-color': '#E55A2B',
-                  'outline': 'none',
-                  'box-shadow': '0 0 0 3px rgba(255, 107, 53, 0.2)'
-                }
-              }
-            }
-          }
-        }
-      });
-
-      // Force font styles after component loads
-      setTimeout(() => {
-        const applyFontStyles = () => {
-          const titleElements = document.querySelectorAll(
-            '.shopify-buy__product__title, [data-element="product.title"]'
-          );
-          const buttonElements = document.querySelectorAll(
-            '.shopify-buy__btn, [data-element="product.button"]'
-          );
-
-          titleElements.forEach(el => {
-            if (el && el.style) {
-              try {
-                el.style.setProperty('font-family', 'Roboto Condensed, sans-serif', 'important');
-                el.style.setProperty('font-weight', '700', 'important');
-                el.style.setProperty('text-transform', 'uppercase', 'important');
-                // el.style.setProperty('letter-spacing', '0.5px', 'important');
-                el.style.setProperty('color', '#2B2B2B', 'important');
-                el.style.setProperty('font-size', '28px', 'important');
-                el.style.setProperty('line-height', '1.2', 'important');
-              } catch (error) {
-                console.log('Title styling error:', error);
-              }
-            }
-          });
-
-          buttonElements.forEach(el => {
-            if (el && el.style) {
-              try {
-                el.style.setProperty('font-family', 'Roboto Condensed, sans-serif', 'important');
-                el.style.setProperty('font-weight', '700', 'important');
-                el.style.setProperty('text-transform', 'uppercase', 'important');
-                // el.style.setProperty('letter-spacing', '0.5px', 'important');
-              } catch (error) {
-                console.log('Button styling error:', error);
-              }
-            }
-          });
-        };
-
-        // Apply styles immediately and then watch for changes
-        applyFontStyles();
-
-        // Use MutationObserver to catch any dynamic changes
-        if (!window.shopifyFontObserver) {
-          const observer = new MutationObserver(() => {
-            try {
-              applyFontStyles();
-            } catch (error) {
-              // Ignore styling errors
-            }
-          });
-
-          const container = document.getElementById('shopify-buy-button');
-          if (container) {
-            observer.observe(container, {
-              childList: true,
-              subtree: true
-            });
-
-            // Store observer for cleanup
-            window.shopifyFontObserver = observer;
-          }
-        }
-      }, 500);
-    } catch (error) {
-      console.error('Error initializing Shopify Buy Button:', error);
-    }
-  };
-
-  // Don't render anything until client-side hydration is complete
-  if (!isClient) {
+  if (!productData) {
     return (
-      <div className="shopify-buy-container">
-        <div id="shopify-buy-button">
-          <div className="loading-placeholder">
-            <div className="loading-spinner"></div>
-            <p>Loading secure checkout...</p>
-          </div>
-        </div>
+      <div className="product-loading">
+        <div className="loading-spinner"></div>
+        <p>Loading product...</p>
       </div>
     );
   }
 
+  const variant = productData.variants.edges[0]?.node;
+  const price = variant?.price;
+
+  const handleQuantityChange = (change) => {
+    setQuantity(prev => Math.max(1, prev + change));
+  };
+
+  const handleAddToCart = async () => {
+    if (!variant || isAddingToCart) return;
+
+    setIsAddingToCart(true);
+
+    try {
+      // Create cart using Storefront API (updated approach)
+      const cartCreateQuery = `
+        mutation cartCreate($input: CartInput!) {
+          cartCreate(input: $input) {
+            cart {
+              id
+              checkoutUrl
+            }
+            userErrors {
+              field
+              message
+            }
+          }
+        }
+      `;
+
+      const response = await fetch(`https://${shopifyDomain}/api/2024-01/graphql.json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Storefront-Access-Token': shopifyStorefrontToken,
+        },
+        body: JSON.stringify({
+          query: cartCreateQuery,
+          variables: {
+            input: {
+              lines: [{
+                merchandiseId: variant.id,
+                quantity: quantity
+              }]
+            }
+          }
+        })
+      });
+
+      const result = await response.json();
+      console.log('Cart creation result:', result);
+
+      const cart = result.data?.cartCreate?.cart;
+      const errors = result.data?.cartCreate?.userErrors;
+
+      if (errors && errors.length > 0) {
+        console.error('Cart creation errors:', errors);
+        alert(`Error: ${errors[0].message}`);
+        return;
+      }
+
+      if (cart?.checkoutUrl) {
+        // Redirect to Shopify checkout
+        window.location.href = cart.checkoutUrl;
+      } else {
+        console.error('No checkout URL returned:', result);
+        alert('Failed to create cart. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      alert('Failed to add to cart. Please try again.');
+    } finally {
+      setIsAddingToCart(false);
+    }
+  };
+
   return (
-    <div className="shopify-buy-container">
-      <div id="shopify-buy-button">
-        {!shopifyDomain || !shopifyStorefrontToken || !shopifyProductId ? (
-          <div className="config-error">
-            <h4>Configuration Required</h4>
-            <p>Shopify integration is not yet configured. Please set up your environment variables:</p>
-            <ul>
-              <li>PUBLIC_STORE_DOMAIN</li>
-              <li>PUBLIC_STOREFRONT_API_TOKEN</li>
-              <li>PUBLIC_SHOPIFY_PRODUCT_ID</li>
-            </ul>
-            <p>See SHOPIFY_SETUP.md for detailed instructions.</p>
-          </div>
-        ) : !shopifyLoaded ? (
-          <div className="loading-placeholder">
-            <div className="loading-spinner"></div>
-            <p>Loading secure checkout...</p>
+    <div className="custom-product-display">
+      {/* Product Image Gallery */}
+      <div className="product-image-container">
+        {/* Main Image */}
+        <div className="main-image-container">
+          <img
+            src={productImages[selectedImageIndex].src}
+            alt={productImages[selectedImageIndex].alt}
+            className="product-image"
+          />
+        </div>
+
+        {/* Thumbnail Gallery */}
+        <div className="thumbnail-gallery">
+          {productImages.map((image, index) => (
             <button
-              onClick={() => window.location.reload()}
-              style={{
-                marginTop: '20px',
-                padding: '10px 20px',
-                backgroundColor: '#FF6B35',
-                color: 'white',
-                border: 'none',
-                borderRadius: '8px',
-                cursor: 'pointer'
-              }}
+              key={index}
+              className={`thumbnail-btn ${index === selectedImageIndex ? 'active' : ''}`}
+              onClick={() => setSelectedImageIndex(index)}
+              type="button"
             >
-              Retry Loading
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="thumbnail-image"
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Product Details */}
+      <div className="product-details">
+        <h1 className="product-title">{productData.title}</h1>
+
+        <StarRating />
+
+        <div className="product-description">
+          Reserve your nLab Electronics Learning Kit for just $1!<br /><br />
+
+          <strong>About nLab Kit:</strong><br />
+          The complete electronics learning system with oscilloscope, power supply, function generator, and 12+ interactive projects and tutorials. Perfect for students, makers, and electronics beginners.<br /><br />
+
+          <strong>How it works:</strong><br />
+          • Pay $1 now to reserve your kit<br />
+          • Get notified when our Kickstarter launches<br />
+          • Complete your order with 10% discount<br />
+          • Receive your kit when we start shipping<br /><br />
+
+          <strong>Regular price: $199 | Your price with pre-order: $179.10</strong>
+        </div>
+
+        <div className="product-controls">
+          {/* Quantity Spinner */}
+          <div className="quantity-spinner">
+            <button
+              type="button"
+              className="quantity-btn"
+              onClick={() => handleQuantityChange(-1)}
+              disabled={quantity <= 1}
+            >
+              -
+            </button>
+            <span className="quantity-value">{quantity}</span>
+            <button
+              type="button"
+              className="quantity-btn"
+              onClick={() => handleQuantityChange(1)}
+            >
+              +
             </button>
           </div>
-        ) : null}
+
+          {/* Add to Cart Button */}
+          <button
+            className="add-to-cart-btn"
+            onClick={handleAddToCart}
+            disabled={!variant?.availableForSale || isAddingToCart}
+          >
+            {isAddingToCart ? 'Adding...' : `Add to Cart - ${price ? `$${(parseFloat(price.amount) * quantity).toFixed(2)}` : 'Price unavailable'}`}
+          </button>
+        </div>
       </div>
+    </div>
+  );
+}
+
+// Configuration Error Component
+function ConfigurationError() {
+  return (
+    <div className="config-error">
+      <h4>Configuration Required</h4>
+      <p>Shopify integration is not yet configured. Please set up your environment variables:</p>
+      <ul>
+        <li>PUBLIC_STORE_DOMAIN</li>
+        <li>PUBLIC_STOREFRONT_API_TOKEN</li>
+        <li>PUBLIC_SHOPIFY_PRODUCT_ID</li>
+      </ul>
+      <p>See SHOPIFY_SETUP.md for detailed instructions.</p>
     </div>
   );
 }
 
 // Main component
 export default function PreOrder() {
-  const { shopifyDomain, shopifyStorefrontToken, shopifyProductId } = useLoaderData();
+  const { shopifyDomain, shopifyStorefrontToken, shopifyProductId, productData } = useLoaderData();
 
   return (
-    <div className="pre-order-page">
-      {/* Combined Hero and Checkout Section */}
-      <section className="pre-order-combined-section">
-        <div className="pre-order-combined-content">
-          {/* Left Side - Checkout */}
-          <div className="pre-order-checkout-content">
-            <ShopifyBuyButton
-              shopifyDomain={shopifyDomain}
-              shopifyStorefrontToken={shopifyStorefrontToken}
-              shopifyProductId={shopifyProductId}
-            />
+    <div className="pre-order-main">
+      <div className="pre-order-page">
+        {/* Product Section */}
+        <section className="pre-order-product-section">
+          <div className="pre-order-product-content">
+            {!shopifyDomain || !shopifyStorefrontToken || !shopifyProductId ? (
+              <ConfigurationError />
+            ) : (
+              <CustomProductDisplay
+                productData={productData}
+                shopifyDomain={shopifyDomain}
+                shopifyStorefrontToken={shopifyStorefrontToken}
+              />
+            )}
           </div>
-
-          {/* Right Side - Hero Content */}
-          <div className="pre-order-hero-content">
-            <h1 className="pre-order-title">Reserve Your nLab Kit</h1>
-            <p className="pre-order-subtitle">
-              Secure your spot for just $1 and get 10% off at launch
-            </p>
-          </div>
-        </div>
-      </section>
-
-
+        </section>
+      </div>
     </div>
   );
 }
