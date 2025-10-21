@@ -4503,7 +4503,7 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #00AEEF;
+  background-color: #666666;
   border-radius: 24px;
   transition: 0.3s;
 }
@@ -4518,7 +4518,7 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   background-color: white;
   border-radius: 50%;
   transition: 0.3s;
-  transform: translateX(26px);
+  transform: translateX(0px);
 }
 
 .toggle-switch input:checked+label {

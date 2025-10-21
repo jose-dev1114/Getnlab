@@ -11,12 +11,14 @@ export function HeroSection() {
           </h1>
           <p className="hero-description">
             <span className="hidden md:inline">
-              Prepare for tangible careers that can’t be replaced by AI,
-              and turn your ideas into inventions that make an impact.
-              Perfect for beginners - no prior experience required. <br />
+              Prepare for tangible careers that can’t be replaced by AI, and turn your ideas into inventions that make an impact.
+              <br /><br />
+              Perfect for beginners - no prior experience required.
             </span>
             <span className="md:hidden">
-              Prepare for tangible careers that can't be replaced by AI, and turn your ideas into inventions that make an impact. Perfect for beginners - no prior experience required.
+              Prepare for tangible careers that can’t be replaced by AI, and turn your ideas into inventions that make an impact.
+              <br /><br />
+              Perfect for beginners - no prior experience required.
             </span>
           </p>
 

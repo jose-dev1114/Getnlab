@@ -49,10 +49,8 @@ export function Footer() {
           <h3 className="footer-column-title">ABOUT</h3>
           <ul className="footer-links">
             <li><a href="/about">Meet Angie & Nick</a></li>
-            <li><a href="/about">Contact Us</a></li>
           </ul>
         </div>
-
         <div className="footer-column footer-newsletter">
           <h3 className="footer-column-title">STAY IN THE LOOP</h3>
           <p className="footer-newsletter-description">
