@@ -52,6 +52,27 @@ export function Footer() {
             <li><a href="/about">Contact Us</a></li>
           </ul>
         </div>
+
+        <div className="footer-column footer-newsletter">
+          <h3 className="footer-column-title">STAY IN THE LOOP</h3>
+          <p className="footer-newsletter-description">
+            Get updates on new projects, behind-the-scenes content, and early access to launches.
+          </p>
+          <form className="footer-newsletter-form" action="/api/klaviyo-subscribe" method="POST">
+            <div className="footer-newsletter-input-group">
+              <input
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                className="footer-newsletter-input"
+              />
+              <button type="submit" className="footer-newsletter-button">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
       <div className="footer-bottom">

@@ -93,6 +93,7 @@ function StarRating() {
           />
         </svg>
       ))}
+      <span className="review-count">127 reviews</span>
     </div>
   );
 }
@@ -245,13 +246,14 @@ function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontTok
           Reserve your nLab Electronics Learning Kit for just $1!<br /><br />
 
           <strong>About nLab Kit:</strong><br />
-          The complete electronics learning system with oscilloscope, power supply, function generator, and 12+ interactive projects and tutorials. Perfect for students, makers, and electronics beginners.<br /><br />
+          Get ready to learn real electronics, build real projects, and join a community of future innovators.
+          The nLab Kit is a complete hands-on learning system featuring an oscilloscope, power supply, function generator, and 12+ guided projects designed for beginners, students, and makers. <br />
 
           <strong>How it works:</strong><br />
           • Pay $1 now to reserve your kit<br />
           • Get notified when our Kickstarter launches<br />
-          • Complete your order with 10% discount<br />
-          • Receive your kit when we start shipping<br /><br />
+          • Complete your order with an exclusive 10% discount<br />
+          • Receive your kit when shipping begins<br /><br />
 
           <strong>Regular price: $199 | Your price with pre-order: $179.10</strong>
         </div>

@@ -5,12 +5,19 @@ export function KlaviyoPopup() {
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
-    // Show popup after a delay for smooth entrance every time
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 2000); // 2 second delay
+    // Check if popup has been shown before in this session
+    const hasSeenPopup = sessionStorage.getItem('nlab-popup-shown');
 
-    return () => clearTimeout(timer);
+    if (!hasSeenPopup) {
+      // Show popup after a delay for smooth entrance
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+        // Mark popup as shown for this session
+        sessionStorage.setItem('nlab-popup-shown', 'true');
+      }, 2000); // 2 second delay
+
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const handleClose = () => {
@@ -63,34 +70,34 @@ export function KlaviyoPopup() {
         
         <div className="klaviyo-popup-content">
           <h2 className="klaviyo-popup-title">
-            We Are Launching on Kickstarter!
+            We're Launching Soon on Kickstarter!
           </h2>
           <p className="klaviyo-popup-subtitle">
-            Sign up to win a FREE Starter Kit + a live lesson to build your first project!
+            Join the nLab Early Builder Community for behind-the-scenes updates, exclusive launch discounts, and live sessions with our founders — engineers who've built real products and want to share what they've learned.
           </p>
-          
+
           <form onSubmit={handleSubmit} className="klaviyo-popup-form">
             <input
               type="text"
               name="fullName"
-              placeholder="Enter your full name"
+              placeholder="Full Name"
               required
               className="klaviyo-popup-input"
             />
             <input
               type="email"
               name="email"
-              placeholder="Enter your email address"
+              placeholder="Email Address"
               required
               className="klaviyo-popup-input"
             />
             <button type="submit" className="klaviyo-popup-submit">
-              Subscribe Now
+              Join the Community
             </button>
           </form>
-          
+
           <p className="klaviyo-popup-disclaimer">
-            We respect your privacy. Unsubscribe at any time.
+            No spam. Just real updates, early access, and hands-on knowledge.
           </p>
         </div>
       </div>

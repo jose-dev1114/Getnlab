@@ -13,16 +13,15 @@ export function HeroSection() {
             <span className="hidden md:inline">
               Prepare for tangible careers that can’t be replaced by AI,
               and turn your ideas into inventions that make an impact.
-              Perfect for beginners - no prior experience required.
+              Perfect for beginners - no prior experience required. <br />
             </span>
             <span className="md:hidden">
               Prepare for tangible careers that can't be replaced by AI, and turn your ideas into inventions that make an impact. Perfect for beginners - no prior experience required.
             </span>
           </p>
 
-          <Link to="/early-access" className="hero-cta-button">
-            <span>Back Us On Kickstarter</span>
-            <span className="lightning-icon">⚡</span>
+          <Link to="/pre-order" className="hero-cta-button hero-cta-prominent">
+            <span>Reserve Your Starter Kit for $1!</span>
           </Link>
         </div>
 
