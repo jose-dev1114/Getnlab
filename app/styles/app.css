@@ -11709,7 +11709,7 @@ body:has(.pre-order-page) .header-menu-mobile-toggle h3 {
 
 .benefit-item {
   display: flex;
-  align-items: center;
+  align-items: left;
   gap: 0.75rem;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.1rem;
