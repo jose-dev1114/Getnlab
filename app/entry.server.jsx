@@ -41,6 +41,7 @@ export default async function handleRequest(
       'https://sdks.shopifycdn.com',
       'https://cdn.shopify.com',
       'https://shopifycloud.com',
+      'https://api.github.com',
     ],
     scriptSrc: [
       "'self'",

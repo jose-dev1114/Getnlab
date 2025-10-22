@@ -1,8 +1,96 @@
+import { useEffect } from 'react';
+
 export const meta = () => {
   return [{ title: 'Download App | nLab' }];
 };
 
 export default function Download() {
+  useEffect(() => {
+    const owner = "nLabs-nScope";
+    const repo = "nLab";
+
+    const downloadMacHandler = async () => {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`);
+        if (!res.ok) throw new Error("Failed to fetch release info");
+        const release = await res.json();
+        const dmgAsset = release.assets.find(asset => asset.name.endsWith(".dmg"));
+        if (!dmgAsset) {
+          console.error("No .dmg file found in the latest release.");
+          alert("Error fetching release info");
+          return;
+        }
+        // Redirect browser to the .dmg download
+        window.location.href = dmgAsset.browser_download_url;
+      } catch (err) {
+        console.error(err);
+        alert("Error fetching release info");
+      }
+    };
+
+    const downloadWindowsHandler = async () => {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`);
+        if (!res.ok) throw new Error("Failed to fetch release info");
+        const release = await res.json();
+        const exeAsset = release.assets.find(asset => asset.name.endsWith(".exe"));
+        if (!exeAsset) {
+          console.error("No .exe file found in the latest release.");
+          alert("Error fetching release info");
+          return;
+        }
+        // Redirect browser to the .exe download
+        window.location.href = exeAsset.browser_download_url;
+      } catch (err) {
+        console.error(err);
+        alert("Error fetching release info");
+      }
+    };
+
+    const downloadAutoHandler = async () => {
+      // Detect user's OS
+      const userAgent = navigator.userAgent;
+      const isMac = /Mac|iPhone|iPad|iPod/.test(userAgent);
+      const isWindows = /Win/.test(userAgent);
+
+      if (isMac) {
+        await downloadMacHandler();
+      } else if (isWindows) {
+        await downloadWindowsHandler();
+      } else {
+        // Default to Windows if OS can't be detected
+        await downloadWindowsHandler();
+      }
+    };
+
+    // Add event listeners
+    const macButton = document.getElementById("downloadMac");
+    const windowsButton = document.getElementById("downloadWindows");
+    const autoButton = document.getElementById("downloadAuto");
+
+    if (macButton) {
+      macButton.addEventListener("click", downloadMacHandler);
+    }
+    if (windowsButton) {
+      windowsButton.addEventListener("click", downloadWindowsHandler);
+    }
+    if (autoButton) {
+      autoButton.addEventListener("click", downloadAutoHandler);
+    }
+
+    // Cleanup event listeners on unmount
+    return () => {
+      if (macButton) {
+        macButton.removeEventListener("click", downloadMacHandler);
+      }
+      if (windowsButton) {
+        windowsButton.removeEventListener("click", downloadWindowsHandler);
+      }
+      if (autoButton) {
+        autoButton.removeEventListener("click", downloadAutoHandler);
+      }
+    };
+  }, []);
   return (
     <div className="download-page">
       <section className="download-hero-section">
@@ -39,9 +127,9 @@ export default function Download() {
               Connect your physical kit to the nLab App and unlock a smarter, more guided learning experience. The app acts as your bridge between hardware and knowledge — letting you follow step-by-step lessons, visualize live sensor data, and track progress as you build. Whether you're a beginner or advancing into robotics, the nLab App ensures your journey is smoother, clearer, and more interactive.
             </p>
 
-            <a href="https://getnlab.com/products/nlab-starter-kit?download#" target="_blank" rel="noopener noreferrer" className="download-cta-button">
+            <button id="downloadAuto" className="download-cta-button">
               Download the App <img src="/svg/arrow-down.svg" alt="Download" className="download-arrow" />
-            </a>
+            </button>
           </div>
 
           <div className="download-hero-image">
@@ -115,9 +203,9 @@ export default function Download() {
                   Get the nLab App on your Mac to connect your Starter Kit,
                   follow guided lessons, and see your circuits come to life.
                 </p>
-                <a href="https://getnlab.com/products/nlab-starter-kit?download#" target="_blank" rel="noopener noreferrer" className="download-platform-button">
+                <button id="downloadMac" className="download-platform-button">
                   Download for Mac <img src="/svg/apple.svg" alt="Apple" className="platform-icon" />
-                </a>
+                </button>
               </div>
 
               <div className="tab-panel" id="window-panel">
@@ -125,9 +213,9 @@ export default function Download() {
                   Get the nLab App on your Windows PC to connect your Starter Kit,
                   follow guided lessons, and see your circuits come to life.
                 </p>
-                <a href="https://getnlab.com/products/nlab-starter-kit?download#" target="_blank" rel="noopener noreferrer" className="download-platform-button">
+                <button id="downloadWindows" className="download-platform-button">
                   Download for Windows <img src="/svg/windows.svg" alt="Windows" className="platform-icon" />
-                </a>
+                </button>
               </div>
 
               <div className="tab-panel" id="nlab-api-panel">
