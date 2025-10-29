@@ -162,19 +162,11 @@ export function GridSection() {
         <div className="grid-items">
           <div className="grid-itemss">
             <div className="grid-item-texts">
-              <h3 className="grid-item-titles">LIGHT</h3>
+              <h3 className="grid-item-titles">STAND OUT</h3>
 
               <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Build</h4>
                 <p className="grid-item-descriptions">
-                  A simple LED circuit — the perfect first project.
-                </p>
-              </div>
-
-              <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Learn</h4>
-                <p className="grid-item-descriptions">
-                  How electricity flows, how to bslink lights, and how function generators work.
+                  Boost your resume or college application with hands-on electronics experience. Show you can build, experiment, and problem-solve with real hardware.
                 </p>
               </div>
             </div>
@@ -190,19 +182,11 @@ export function GridSection() {
             </div>
 
             <div className="grid-item-texts">
-              <h3 className="grid-item-titles">SOUND</h3>
+              <h3 className="grid-item-titles">GET IN-DEMAND JOBS</h3>
 
               <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Build</h4>
                 <p className="grid-item-descriptions">
-                  A working speaker from scratch — hear your creation.
-                </p>
-              </div>
-
-              <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Learn</h4>
-                <p className="grid-item-descriptions">
-                  How sound waves work, amplification, and audio signal processing.
+                  Hardware engineers are in short supply. The skills you learn here open doors to industries from robotics to renewable energy.
                 </p>
               </div>
             </div>
@@ -210,19 +194,11 @@ export function GridSection() {
 
           <div className="grid-itemss">
             <div className="grid-item-texts">
-              <h3 className="grid-item-titles">SENSING</h3>
+              <h3 className="grid-item-titles">UNLOCK YOUR CREATIVITY</h3>
 
               <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Build</h4>
                 <p className="grid-item-descriptions">
-                  A climate monitor or motion detector.
-                </p>
-              </div>
-
-              <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Learn</h4>
-                <p className="grid-item-descriptions">
-                  How sensors like phototransistors and thermistors translate the physical world into data.
+                  Turn your ideas into reality. With electronics as your toolkit, you can build anything you imagine — no more limits from “not knowing how.”
                 </p>
               </div>
             </div>
@@ -232,77 +208,6 @@ export function GridSection() {
             </div>
           </div>
 
-          <div className="grid-itemss">
-            <div className="grid-item-images">
-              <img src="/svg/img/motion.png" alt="Motion Project" />
-            </div>
-
-            <div className="grid-item-texts">
-              <h3 className="grid-item-titles">MOTION</h3>
-
-              <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Build</h4>
-                <p className="grid-item-descriptions">
-                  A servo motor system.
-                </p>
-              </div>
-
-              <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Learn</h4>
-                <p className="grid-item-descriptions">
-                  How motors move, respond, and bring projects to life.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid-itemss">
-            <div className="grid-item-texts">
-              <h3 className="grid-item-titles">AI HARDWARE</h3>
-
-              <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Build</h4>
-                <p className="grid-item-descriptions">
-                  A counter circuit.
-                </p>
-              </div>
-
-              <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Learn</h4>
-                <p className="grid-item-descriptions">
-                  The building blocks of computers and digital logic.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid-item-images">
-              <img src="/svg/img/hardware.png" alt="AI Hardware Project" />
-            </div>
-          </div>
-
-          <div className="grid-itemss">
-            <div className="grid-item-images">
-              <img src="/svg/img/inventions.png" alt="Your Own Inventions" />
-            </div>
-
-            <div className="grid-item-texts">
-              <h3 className="grid-item-titles">YOUR OWN INVENTIONS</h3>
-
-              <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Build</h4>
-                <p className="grid-item-descriptions">
-                  Whatever you can imagine.
-                </p>
-              </div>
-
-              <div className="grid-item-sections">
-                <h4 className="grid-item-subtitles">Learn</h4>
-                <p className="grid-item-descriptions">
-                  The skills and confidence to turn your ideas into real projects, anywhere.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
         <div className="grid-cta-section">
           <div className="trusted-by-content">
