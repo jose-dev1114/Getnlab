@@ -21,6 +21,8 @@ export async function action({request, context}) {
   const email = formData.get('email');
   const interest = formData.get('interest');
 
+  console.log('📝 Early access form submission:', { name, email, interest });
+
   // Validate required fields
   if (!name || !email) {
     return data(
@@ -63,6 +65,12 @@ export async function action({request, context}) {
     }
 
     // Create or update profile in Klaviyo
+    // Determine source based on interest field
+    const isPopupSubmission = interest === 'Kickstarter Popup';
+    const source = isPopupSubmission ? 'Kickstarter Popup' : 'Early Access Form';
+
+    console.log('🎯 Submission type:', { isPopupSubmission, source });
+
     const requestBody = {
       data: {
         type: 'profile',
@@ -71,8 +79,8 @@ export async function action({request, context}) {
           first_name: name.split(' ')[0],
           last_name: name.split(' ').slice(1).join(' ') || '',
           properties: {
-            interest: interest || 'Not specified',
-            source: 'Early Access Form',
+            interest: isPopupSubmission ? 'General Interest' : (interest || 'Not specified'),
+            source: source,
             signup_date: new Date().toISOString(),
           },
         },
@@ -136,12 +144,18 @@ export async function action({request, context}) {
       }
     }
 
+    console.log('✅ Klaviyo integration successful!');
+
     return data({
       success: true,
-      message: 'Successfully joined the early access list!',
+      message: isPopupSubmission
+        ? 'Successfully joined the Kickstarter launch list! 🎉'
+        : 'Successfully joined the early access list!',
     });
 
   } catch (error) {
+    console.error('❌ Klaviyo integration failed:', error);
+
     return data(
       {
         error: 'Something went wrong. Please try again.',
