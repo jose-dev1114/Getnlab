@@ -209,7 +209,7 @@ export function GridSection() {
           </div>
 
         </div>
-        <div className="grid-cta-section">
+        {/* <div className="grid-cta-section">
           <div className="trusted-by-content">
             <h2 className="trusted-by-title">NLAB IS IN USE AND TRUSTED BY</h2>
             <div className="trusted-by-logos">
@@ -220,7 +220,7 @@ export function GridSection() {
               <img src="/svg/company_logo/massachusetts.png" alt="Massachusetts Institute of Technology" className="company-logo" />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -170,7 +170,17 @@ function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontTok
             input: {
               lines: [{
                 merchandiseId: variant.id,
-                quantity: quantity
+                quantity: quantity,
+                attributes: [
+                  {
+                    key: 'Pre-Order',
+                    value: 'No shipping required'
+                  },
+                  {
+                    key: 'Order Type',
+                    value: 'Digital Pre-Order'
+                  }
+                ]
               }]
             }
           }

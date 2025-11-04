@@ -137,7 +137,7 @@ export default function StarterKit() {
               </p>
             </div>
             <div className="explore-image">
-              <img src="/svg/img/starter_second.png" alt="Scalable Projects" />
+              <img src="/svg/img/projects.webp" alt="Scalable Projects" />
             </div>
           </div>
 
@@ -151,7 +151,7 @@ export default function StarterKit() {
             </div>
 
             <div className="explore-image">
-              <img src="/svg/img/projects.webp" alt="Live Feedback" />
+              <img src="/svg/img/starter_second.png" alt="Live Feedback" />
             </div>
           </div>
 
