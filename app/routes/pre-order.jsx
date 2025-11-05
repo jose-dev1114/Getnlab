@@ -72,31 +72,31 @@ export const meta = () => {
 };
 
 // Star Rating Component
-function StarRating() {
-  return (
-    <div className="star-rating">
-      {[...Array(5)].map((_, index) => (
-        <svg
-          key={index}
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="star"
-        >
-          <path
-            d="M10 1L12.09 6.26L18 7.27L14 11.14L15.18 17.02L10 14.77L4.82 17.02L6 11.14L2 7.27L7.91 6.26L10 1Z"
-            fill="#FFD700"
-            stroke="#FFD700"
-            strokeWidth="1"
-          />
-        </svg>
-      ))}
-      <span className="review-count">127 reviews</span>
-    </div>
-  );
-}
+// function StarRating() {
+//   return (
+//     <div className="star-rating">
+//       {[...Array(5)].map((_, index) => (
+//         <svg
+//           key={index}
+//           width="20"
+//           height="20"
+//           viewBox="0 0 20 20"
+//           fill="none"
+//           xmlns="http://www.w3.org/2000/svg"
+//           className="star"
+//         >
+//           <path
+//             d="M10 1L12.09 6.26L18 7.27L14 11.14L15.18 17.02L10 14.77L4.82 17.02L6 11.14L2 7.27L7.91 6.26L10 1Z"
+//             fill="#FFD700"
+//             stroke="#FFD700"
+//             strokeWidth="1"
+//           />
+//         </svg>
+//       ))}
+//       <span className="review-count">127 reviews</span>
+//     </div>
+//   );
+// }
 
 // Custom Product Component
 function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontToken }) {
@@ -250,7 +250,7 @@ function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontTok
       <div className="product-details">
         <h1 className="product-title">{productData.title}</h1>
 
-        <StarRating />
+        {/* <StarRating /> */}
 
         <div className="product-description">
           Reserve your nLab Electronics Learning Kit for just $1!<br /><br />
