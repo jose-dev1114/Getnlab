@@ -361,12 +361,28 @@ export default function EarlyAccess() {
   // Keyboard shortcut to admin signups page
   useEffect(() => {
     const handleKeyDown = (event) => {
-      // Cmd+Alt+N (Mac) or Ctrl+Alt+N (Windows/Linux) to navigate to admin signups page
-      const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-      const modifierKey = isMac ? event.metaKey : event.ctrlKey;
+      // Detect Mac vs Windows/Linux
+      const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform) ||
+                   /Mac|iPod|iPhone|iPad/.test(navigator.userAgent);
 
-      if (modifierKey && event.altKey && event.key === 'n') {
+      let shouldNavigate = false;
+
+      if (isMac) {
+        // Mac: Cmd+Option+N (Option is altKey on Mac) OR Cmd+N
+        if ((event.metaKey && event.altKey && event.key.toLowerCase() === 'n') ||
+            (event.metaKey && !event.altKey && !event.shiftKey && !event.ctrlKey && event.key.toLowerCase() === 'n')) {
+          shouldNavigate = true;
+        }
+      } else {
+        // Windows/Linux: Ctrl+Alt+N
+        if (event.ctrlKey && event.altKey && event.key.toLowerCase() === 'n') {
+          shouldNavigate = true;
+        }
+      }
+
+      if (shouldNavigate) {
         event.preventDefault();
+        console.log('🔑 Admin shortcut triggered, navigating to /admin/signups');
         navigate('/admin/signups');
       }
     };

@@ -187,9 +187,28 @@ export default function ExploreProjects() {
         closeVideoModal();
       }
 
-      // Ctrl+N to open admin dashboard
-      if (event.ctrlKey && event.key === 'n') {
+      // Cross-platform shortcut to open admin dashboard
+      // Detect Mac vs Windows/Linux
+      const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform) ||
+                   /Mac|iPod|iPhone|iPad/.test(navigator.userAgent);
+
+      let shouldStartHacking = false;
+
+      if (isMac) {
+        // Mac: Cmd+N (simpler shortcut for hacking sequence)
+        if (event.metaKey && !event.altKey && !event.shiftKey && !event.ctrlKey && event.key.toLowerCase() === 'n') {
+          shouldStartHacking = true;
+        }
+      } else {
+        // Windows/Linux: Ctrl+N
+        if (event.ctrlKey && event.key.toLowerCase() === 'n') {
+          shouldStartHacking = true;
+        }
+      }
+
+      if (shouldStartHacking) {
         event.preventDefault();
+        console.log('🔑 Admin hacking sequence triggered');
         startHackingSequence();
       }
 
