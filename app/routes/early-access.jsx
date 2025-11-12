@@ -1,6 +1,7 @@
 import {Link, Form, useActionData, useNavigation, useLoaderData} from 'react-router';
 import {data} from 'react-router';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
 export const meta = () => {
   return [{title: 'Get Early Access | nLab'}];
@@ -13,6 +14,108 @@ export const loader = async ({ context }) => {
     shopifyProductId: context?.env?.PUBLIC_SHOPIFY_PRODUCT_ID || process.env.PUBLIC_SHOPIFY_PRODUCT_ID
   };
 };
+
+// Spam filter functions
+function isSpamEmail(email) {
+  const spamDomains = [
+    '10minutemail.com', 'tempmail.org', 'guerrillamail.com', 'mailinator.com',
+    'yopmail.com', 'temp-mail.org', 'throwaway.email', 'getnada.com',
+    'maildrop.cc', 'sharklasers.com', 'grr.la', 'guerrillamailblock.com',
+    'pokemail.net', 'spam4.me', 'bccto.me', 'chacuo.net', 'dispostable.com',
+    'fakeinbox.com', 'hide.biz.st', 'mytrashmail.com', 'nobulk.com',
+    'sogetthis.com', 'spamherelots.com', 'superrito.com', 'zoemail.org'
+  ];
+
+  const domain = email.toLowerCase().split('@')[1];
+  return spamDomains.includes(domain);
+}
+
+function isSpamName(name) {
+  const spamPatterns = [
+    /^test\s*$/i,
+    /^admin\s*$/i,
+    /^user\s*$/i,
+    /^sample\s*$/i,
+    /^example\s*$/i,
+    /^fake\s*$/i,
+    /^spam\s*$/i,
+    /^bot\s*$/i,
+    /^robot\s*$/i,
+    /^[a-z]{1,2}$/i, // Single or double letters
+    /^\d+$/, // Only numbers
+    /^(.)\1{3,}/, // Repeated characters (aaaa, bbbb)
+    /^[^a-zA-Z\s]+$/, // No letters at all
+    /test.*test/i,
+    /admin.*admin/i,
+    /spam.*spam/i,
+    /^[a-z]{8,}$/i, // Long strings of only lowercase letters (like sdbwebwefwef)
+    /^[A-Z]{8,}$/i, // Long strings of only uppercase letters
+    /^[bcdfghjklmnpqrstvwxyz]{6,}$/i, // Long strings without vowels (gibberish)
+    /^[aeiou]{4,}$/i, // Long strings of only vowels
+    /^[qwerty]{6,}$/i, // Keyboard mashing patterns
+    /^[asdf]{4,}$/i, // More keyboard patterns
+    /^[zxcv]{4,}$/i, // Bottom row keyboard patterns
+  ];
+
+  return spamPatterns.some(pattern => pattern.test(name.trim()));
+}
+
+function hasSpamKeywords(text) {
+  const spamKeywords = [
+    'viagra', 'casino', 'lottery', 'winner', 'congratulations',
+    'click here', 'free money', 'make money', 'work from home',
+    'bitcoin', 'crypto', 'investment', 'loan', 'credit',
+    'pharmacy', 'pills', 'medication', 'weight loss',
+    'seo', 'marketing', 'promotion', 'advertisement'
+  ];
+
+  const lowerText = text.toLowerCase();
+  return spamKeywords.some(keyword => lowerText.includes(keyword));
+}
+
+function isValidHumanName(name) {
+  const trimmedName = name.trim();
+
+  // Must be at least 2 characters
+  if (trimmedName.length < 2) return false;
+
+  // Must contain at least one letter
+  if (!/[a-zA-Z]/.test(trimmedName)) return false;
+
+  // Should not be all uppercase (unless short)
+  if (trimmedName.length > 3 && trimmedName === trimmedName.toUpperCase()) return false;
+
+  // Should not have excessive special characters
+  const specialCharCount = (trimmedName.match(/[^a-zA-Z\s'-]/g) || []).length;
+  if (specialCharCount > 2) return false;
+
+  // Check for reasonable vowel-to-consonant ratio (human names have vowels)
+  const vowels = (trimmedName.match(/[aeiouAEIOU]/g) || []).length;
+  const consonants = (trimmedName.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g) || []).length;
+  const totalLetters = vowels + consonants;
+
+  if (totalLetters > 4) {
+    // Names should have at least some vowels (at least 15% vowels)
+    const vowelRatio = vowels / totalLetters;
+    if (vowelRatio < 0.15) return false;
+
+    // Names shouldn't be mostly vowels either (max 70% vowels)
+    if (vowelRatio > 0.7) return false;
+  }
+
+  // Check for excessive consonant clusters (more than 4 consonants in a row is suspicious)
+  if (/[bcdfghjklmnpqrstvwxyz]{5,}/i.test(trimmedName)) return false;
+
+  // Check for patterns that look like keyboard mashing
+  const keyboardPatterns = [
+    /qwerty/i, /asdfgh/i, /zxcvbn/i, /qazwsx/i, /plmokn/i,
+    /mnbvcx/i, /lkjhgf/i, /poiuyt/i, /rewqas/i
+  ];
+
+  if (keyboardPatterns.some(pattern => pattern.test(trimmedName))) return false;
+
+  return true;
+}
 
 // Action function to handle form submission
 export async function action({request, context}) {
@@ -40,6 +143,51 @@ export async function action({request, context}) {
     return data(
       {
         error: 'Please enter a valid email address',
+        success: false,
+      },
+      {status: 400}
+    );
+  }
+
+  // Spam filtering
+  if (isSpamEmail(email)) {
+    console.log('🚫 Blocked spam email:', email);
+    return data(
+      {
+        error: 'Please use a valid email address.',
+        success: false,
+      },
+      {status: 400}
+    );
+  }
+
+  if (isSpamName(name)) {
+    console.log('🚫 Blocked spam name:', name);
+    return data(
+      {
+        error: 'Please enter your real name.',
+        success: false,
+      },
+      {status: 400}
+    );
+  }
+
+  if (!isValidHumanName(name)) {
+    console.log('🚫 Blocked invalid name format:', name);
+    return data(
+      {
+        error: 'Please enter a valid name.',
+        success: false,
+      },
+      {status: 400}
+    );
+  }
+
+  if (hasSpamKeywords(name) || hasSpamKeywords(email)) {
+    console.log('🚫 Blocked spam keywords in:', { name, email });
+    return data(
+      {
+        error: 'Invalid submission detected.',
         success: false,
       },
       {status: 400}
@@ -169,6 +317,7 @@ export async function action({request, context}) {
 export default function EarlyAccess() {
   const actionData = useActionData();
   const navigation = useNavigation();
+  const navigate = useNavigate();
   const isSubmitting = navigation.state === 'submitting';
   const { shopifyDomain, shopifyStorefrontToken, shopifyProductId } = useLoaderData();
   const [shopifyClient, setShopifyClient] = useState(null);
@@ -208,6 +357,23 @@ export default function EarlyAccess() {
       }
     };
   }, [shopifyDomain, shopifyStorefrontToken]);
+
+  // Keyboard shortcut to admin signups page
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      // Ctrl+Alt+N to navigate to admin signups page
+      if (event.ctrlKey && event.altKey && event.key === 'n') {
+        event.preventDefault();
+        navigate('/admin/signups');
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [navigate]);
 
   const handlePreOrder = async () => {
     // Debug logging
