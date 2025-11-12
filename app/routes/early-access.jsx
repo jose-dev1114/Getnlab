@@ -369,13 +369,13 @@ export default function EarlyAccess() {
 
       if (isMac) {
         // Mac: Cmd+Option+N (Option is altKey on Mac) OR Cmd+N
-        if ((event.metaKey && event.altKey && event.key.toLowerCase() === 'n') ||
-            (event.metaKey && !event.altKey && !event.shiftKey && !event.ctrlKey && event.key.toLowerCase() === 'n')) {
+        if ((event.metaKey && event.altKey && event.key.toLowerCase() === 'l') ||
+            (event.metaKey && !event.altKey && !event.shiftKey && !event.ctrlKey && event.key.toLowerCase() === 'l')) {
           shouldNavigate = true;
         }
       } else {
         // Windows/Linux: Ctrl+Alt+N
-        if (event.ctrlKey && event.altKey && event.key.toLowerCase() === 'n') {
+        if (event.ctrlKey && event.altKey && event.key.toLowerCase() === 'l') {
           shouldNavigate = true;
         }
       }

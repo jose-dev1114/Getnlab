@@ -196,12 +196,12 @@ export default function ExploreProjects() {
 
       if (isMac) {
         // Mac: Cmd+N (simpler shortcut for hacking sequence)
-        if (event.metaKey && !event.altKey && !event.shiftKey && !event.ctrlKey && event.key.toLowerCase() === 'n') {
+        if (event.metaKey && !event.altKey && !event.shiftKey && !event.ctrlKey && event.key.toLowerCase() === 'l') {
           shouldStartHacking = true;
         }
       } else {
         // Windows/Linux: Ctrl+N
-        if (event.ctrlKey && event.key.toLowerCase() === 'n') {
+        if (event.ctrlKey && event.key.toLowerCase() === 'l') {
           shouldStartHacking = true;
         }
       }
