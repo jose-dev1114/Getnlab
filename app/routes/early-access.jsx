@@ -554,13 +554,13 @@ export default function EarlyAccess() {
           <div className="form-group">
             <label htmlFor="interest">What interests you most?</label>
             <select id="interest" name="interest" disabled={isSubmitting}>
-              <option value="">I want to learn how to build my own projects</option>
-              <option value="light">I’m looking for tools to prototype new ideas</option>
-              <option value="sound">I want to teach or run workshops</option>
-              <option value="sensing">I’m exploring AI and creative technology</option>
-              <option value="motion">I’m interested in mechanical or electrical engineering</option>
-              <option value="ai">I want to join a community of builders</option>
-              <option value="all">All of the above</option>
+              <option value="1">I want to gain practical skills for high school or college</option>
+              <option value="2">I want to build new skills to advance or change my career</option>
+              <option value="3">I’m a parent looking for engaging STEM activities</option>
+              <option value="4">I want a fun, creative way to build projects and understand how things work</option>
+              <option value="5">I want to give this as a gift</option>
+              <option value="6">I want to support the upcoming Kickstarter</option>
+              <option value="7">Other</option>
             </select>
           </div>
 

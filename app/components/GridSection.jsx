@@ -155,9 +155,9 @@ export function GridSection() {
         </div>
         <div className="grid-header" style={{textAlign: "center", paddingTop: "4rem"}}>
           <h2 className="grid-section-title">Where do these skills take you?</h2>
-          <p className="grid-section-description">
+          {/* <p className="grid-section-description">
             Discover how everyday technology works — by building it yourself.
-          </p>
+          </p> */}
         </div>
         <div className="grid-items">
           <div className="grid-itemss">
