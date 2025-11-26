@@ -172,13 +172,13 @@ export function GridSection() {
             </div>
 
             <div className="grid-item-images">
-              <img src="/svg/img/light.png" alt="Light Project" />
+              <img src="/svg/img/light.webp" alt="Light Project" />
             </div>
           </div>
 
           <div className="grid-itemss">
             <div className="grid-item-images">
-              <img src="/svg/img/sound.png" alt="Sound Project" />
+              <img src="/svg/img/sound.webp" alt="Sound Project" />
             </div>
 
             <div className="grid-item-texts">
@@ -204,7 +204,7 @@ export function GridSection() {
             </div>
 
             <div className="grid-item-images">
-              <img src="/svg/img/sensing.png" alt="Sing Project" />
+              <img src="/svg/img/sensing.webp" alt="Sing Project" />
             </div>
           </div>
 
