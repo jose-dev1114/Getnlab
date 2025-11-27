@@ -2,6 +2,7 @@ import {Link, Form, useActionData, useNavigation, useLoaderData} from 'react-rou
 import {data} from 'react-router';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import { trackEmailSignup, trackFormInteraction } from '~/lib/facebook-pixel';
 
 export const meta = () => {
   return [{title: 'Get Early Access | nLab'}];
@@ -299,6 +300,10 @@ export async function action({request, context}) {
       message: isPopupSubmission
         ? 'Successfully joined the Kickstarter launch list! 🎉'
         : 'Successfully joined the early access list!',
+      trackFacebookPixel: {
+        email: email,
+        source: isPopupSubmission ? 'popup' : 'early-access'
+      }
     });
 
   } catch (error) {
@@ -321,6 +326,14 @@ export default function EarlyAccess() {
   const isSubmitting = navigation.state === 'submitting';
   const { shopifyDomain, shopifyStorefrontToken, shopifyProductId } = useLoaderData();
   const [shopifyClient, setShopifyClient] = useState(null);
+
+  // Track Facebook Pixel events on successful form submission
+  useEffect(() => {
+    if (actionData?.success && actionData?.trackFacebookPixel) {
+      const { email, source } = actionData.trackFacebookPixel;
+      trackEmailSignup(email, source);
+    }
+  }, [actionData]);
 
   useEffect(() => {
     console.log('=== Shopify SDK Loading ===');
@@ -395,6 +408,9 @@ export default function EarlyAccess() {
   }, [navigate]);
 
   const handlePreOrder = async () => {
+    // Track Facebook Pixel event for pre-order button click
+    trackFormInteraction('pre-order', 'click');
+
     // Debug logging
     console.log('=== Pre-Order Debug Info ===');
     console.log('shopifyDomain:', shopifyDomain);
@@ -536,6 +552,7 @@ export default function EarlyAccess() {
               placeholder="Enter your name"
               required
               disabled={isSubmitting}
+              onFocus={() => trackFormInteraction('early-access', 'start')}
             />
           </div>
 
@@ -548,6 +565,7 @@ export default function EarlyAccess() {
               placeholder="Enter your email"
               required
               disabled={isSubmitting}
+              onFocus={() => trackFormInteraction('early-access', 'start')}
             />
           </div>
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { trackEmailSignup, trackFormInteraction } from '~/lib/facebook-pixel';
 
 // Client-side spam validation functions
 function isSpamEmail(email) {
@@ -189,6 +190,9 @@ export function KlaviyoPopup() {
         // Status 200 means success - show congratulations immediately
         console.log('🎉 Success! Status 200 received. Showing congratulations message...');
 
+        // Track Facebook Pixel event for popup email signup
+        trackEmailSignup(email, 'popup');
+
         // Show congratulations message
         setShowSuccess(true);
         // Close popup after showing success message for 2.5 seconds
@@ -265,6 +269,7 @@ export function KlaviyoPopup() {
                   required
                   disabled={isSubmitting}
                   className="klaviyo-popup-input"
+                  onFocus={() => trackFormInteraction('popup', 'start')}
                 />
                 <input
                   type="email"
@@ -273,6 +278,7 @@ export function KlaviyoPopup() {
                   required
                   disabled={isSubmitting}
                   className="klaviyo-popup-input"
+                  onFocus={() => trackFormInteraction('popup', 'start')}
                 />
                 <button
                   type="submit"

@@ -42,12 +42,15 @@ export default async function handleRequest(
       'https://cdn.shopify.com',
       'https://shopifycloud.com',
       'https://api.github.com',
+      'https://connect.facebook.net',
+      'https://www.facebook.com',
     ],
     scriptSrc: [
       "'self'",
       'https://sdks.shopifycdn.com',
       'https://cdn.shopify.com',
       'https://shopifycloud.com',
+      'https://connect.facebook.net',
       "'unsafe-inline'",
     ],
     frameSrc: [
@@ -56,6 +59,11 @@ export default async function handleRequest(
       'https://www.youtube-nocookie.com',
       'https://youtube.com',
       'https://youtube-nocookie.com',
+    ],
+    imgSrc: [
+      "'self'",
+      'data:',
+      'https://www.facebook.com',
     ],
   });
 

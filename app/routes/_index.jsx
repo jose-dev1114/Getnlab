@@ -1,5 +1,5 @@
 import {Await, useLoaderData, Link} from 'react-router';
-import {Suspense} from 'react';
+import {Suspense, useEffect} from 'react';
 import {Image} from '@shopify/hydrogen';
 import {ProductItem} from '~/components/ProductItem';
 import {HeroSection} from '~/components/HeroSection';
@@ -8,6 +8,7 @@ import {PatternSection} from '~/components/PatternSection';
 import {GridSection} from '~/components/GridSection';
 import {BuildTogetherSection} from '~/components/BuildTogetherSection';
 import {KlaviyoPopup} from '~/components/KlaviyoPopup';
+import {trackPageView} from '~/lib/facebook-pixel';
 
 /**
  * @type {Route.MetaFunction}
@@ -76,6 +77,14 @@ function loadDeferredData({context}) {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
+
+  // Track homepage page view
+  useEffect(() => {
+    trackPageView('homepage', {
+      section: 'landing'
+    });
+  }, []);
+
   return (
     <div className="home">
       <HeroSection />

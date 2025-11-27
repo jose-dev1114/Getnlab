@@ -15,6 +15,7 @@ import resetStyles from '~/styles/reset.css?url';
 import appStyles from '~/styles/app.css?url';
 import tailwindCss from './styles/tailwind.css?url';
 import {PageLayout} from './components/PageLayout';
+import {FacebookPixelScript, FacebookPixel} from './components/FacebookPixel';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -83,10 +84,16 @@ export async function loader(args) {
 
   const {storefront, env} = args.context;
 
+  console.log('🔍 Environment Debug:', {
+    PUBLIC_FACEBOOK_PIXEL_ID: env.PUBLIC_FACEBOOK_PIXEL_ID,
+    allEnvKeys: Object.keys(env).filter(key => key.includes('FACEBOOK'))
+  });
+
   return {
     ...deferredData,
     ...criticalData,
     publicStoreDomain: env.PUBLIC_STORE_DOMAIN,
+    facebookPixelId: env.PUBLIC_FACEBOOK_PIXEL_ID,
     shop: getShopAnalytics({
       storefront,
       publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
@@ -153,9 +160,9 @@ function loadDeferredData({context}) {
 }
 
 /**
- * @param {{children?: React.ReactNode}}
+ * @param {{children?: React.ReactNode, facebookPixelId?: string}}
  */
-export function Layout({children}) {
+export function Layout({children, facebookPixelId}) {
   const nonce = useNonce();
 
   return (
@@ -181,6 +188,7 @@ export function Layout({children}) {
         <link rel="stylesheet" href={tailwindCss}></link>
         <link rel="stylesheet" href={resetStyles}></link>
         <link rel="stylesheet" href={appStyles}></link>
+        <FacebookPixelScript pixelId={facebookPixelId} nonce={nonce} />
       </head>
       <body>
         {children}
@@ -205,6 +213,7 @@ export default function App() {
       shop={data.shop}
       consent={data.consent}
     >
+      <FacebookPixel pixelId={data.facebookPixelId} />
       <PageLayout {...data}>
         <Outlet />
       </PageLayout>
@@ -214,6 +223,7 @@ export default function App() {
 
 export function ErrorBoundary() {
   const error = useRouteError();
+  const data = useRouteLoaderData('root');
   let errorMessage = 'Unknown error';
   let errorStatus = 500;
 
@@ -225,15 +235,17 @@ export function ErrorBoundary() {
   }
 
   return (
-    <div className="route-error">
-      <h1>Oops</h1>
-      <h2>{errorStatus}</h2>
-      {errorMessage && (
-        <fieldset>
-          <pre>{errorMessage}</pre>
-        </fieldset>
-      )}
-    </div>
+    <Layout facebookPixelId={data?.facebookPixelId}>
+      <div className="route-error">
+        <h1>Oops</h1>
+        <h2>{errorStatus}</h2>
+        {errorMessage && (
+          <fieldset>
+            <pre>{errorMessage}</pre>
+          </fieldset>
+        )}
+      </div>
+    </Layout>
   );
 }
 
