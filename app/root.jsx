@@ -9,13 +9,14 @@ import {
   ScrollRestoration,
   useRouteLoaderData,
 } from 'react-router';
+import {useEffect} from 'react';
 import favicon from '~/assets/favicon.svg';
 import {FOOTER_QUERY, HEADER_QUERY} from '~/lib/fragments';
 import resetStyles from '~/styles/reset.css?url';
 import appStyles from '~/styles/app.css?url';
 import tailwindCss from './styles/tailwind.css?url';
 import {PageLayout} from './components/PageLayout';
-import {FacebookPixelScript, FacebookPixel} from './components/FacebookPixel';
+import {FacebookPixelScript, FacebookPixelRouteTracker} from './components/FacebookPixel';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -83,11 +84,6 @@ export async function loader(args) {
   const criticalData = await loadCriticalData(args);
 
   const {storefront, env} = args.context;
-
-  console.log('🔍 Environment Debug:', {
-    PUBLIC_FACEBOOK_PIXEL_ID: env.PUBLIC_FACEBOOK_PIXEL_ID,
-    allEnvKeys: Object.keys(env).filter(key => key.includes('FACEBOOK'))
-  });
 
   return {
     ...deferredData,
@@ -173,7 +169,7 @@ export function Layout({children, facebookPixelId}) {
         <link rel="preconnect" href="https://fonts.googleapis.com" nonce={nonce} />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" nonce={nonce} />
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" nonce={nonce} />
-        <link href="https://fonts.cdnfonts.com/css/titling-gothic-fb-compressed" rel="stylesheet" nonce={nonce} />
+
         <style nonce={nonce}>{`
           @font-face {
             font-family: 'TitlingGothicFB Comp';
@@ -188,7 +184,7 @@ export function Layout({children, facebookPixelId}) {
         <link rel="stylesheet" href={tailwindCss}></link>
         <link rel="stylesheet" href={resetStyles}></link>
         <link rel="stylesheet" href={appStyles}></link>
-        <FacebookPixelScript pixelId={facebookPixelId} nonce={nonce} />
+        <script nonce={nonce} dangerouslySetInnerHTML={{__html: `console.log('🧪 Test script loaded in Layout');`}} />
       </head>
       <body>
         {children}
@@ -203,6 +199,27 @@ export default function App() {
   /** @type {RootLoader} */
   const data = useRouteLoaderData('root');
 
+  // Initialize Facebook Pixel
+  useEffect(() => {
+    if (data?.facebookPixelId && typeof window !== 'undefined') {
+      console.log('🔍 Initializing Facebook Pixel:', data.facebookPixelId);
+
+      // Facebook Pixel Code
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+      window.fbq('init', data.facebookPixelId);
+      window.fbq('track', 'PageView');
+      console.log('✅ Facebook Pixel initialized:', data.facebookPixelId);
+    }
+  }, [data?.facebookPixelId]);
+
   if (!data) {
     return <Outlet />;
   }
@@ -213,7 +230,7 @@ export default function App() {
       shop={data.shop}
       consent={data.consent}
     >
-      <FacebookPixel pixelId={data.facebookPixelId} />
+      <FacebookPixelRouteTracker pixelId={data.facebookPixelId} />
       <PageLayout {...data}>
         <Outlet />
       </PageLayout>
