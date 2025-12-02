@@ -1,4 +1,20 @@
+import {Form, useActionData, useNavigation} from 'react-router';
+import {useEffect} from 'react';
+import { trackEmailSignup, trackFormInteraction } from '~/lib/facebook-pixel';
+
 export function Footer() {
+  const actionData = useActionData();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+
+  // Track Facebook Pixel events on successful form submission
+  useEffect(() => {
+    if (actionData?.success && actionData?.trackFacebookPixel) {
+      const { email, source } = actionData.trackFacebookPixel;
+      trackEmailSignup(email, source);
+    }
+  }, [actionData]);
+
   return (
     <>
       <div className="footer-pattern-top">
@@ -56,20 +72,37 @@ export function Footer() {
           <p className="footer-newsletter-description">
             Get updates on new projects, behind-the-scenes content, and early access to launches.
           </p>
-          <form className="footer-newsletter-form" action="/api/klaviyo-subscribe" method="POST">
+
+          <Form method="post" action="/newsletter-subscribe" className="footer-newsletter-form">
+            {/* Success Message */}
+            {actionData?.success && (
+              <div className="footer-newsletter-message success">
+                <p>✅ {actionData.message}</p>
+              </div>
+            )}
+
+            {/* Error Message */}
+            {actionData?.error && (
+              <div className="footer-newsletter-message error">
+                <p>❌ {actionData.error}</p>
+              </div>
+            )}
+
             <div className="footer-newsletter-input-group">
               <input
                 type="email"
                 name="email"
                 placeholder="your@email.com"
                 required
+                disabled={isSubmitting}
                 className="footer-newsletter-input"
+                onFocus={() => trackFormInteraction('footer-newsletter', 'start')}
               />
-              <button type="submit" className="footer-newsletter-button">
-                Subscribe
+              <button type="submit" className="footer-newsletter-button" disabled={isSubmitting}>
+                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
               </button>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
 
