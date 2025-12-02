@@ -73,7 +73,7 @@ export function Footer() {
             Get updates on new projects, behind-the-scenes content, and early access to launches.
           </p>
 
-          <Form method="post" action="/newsletter-subscribe" className="footer-newsletter-form">
+          <Form method="post" className="footer-newsletter-form">
             {/* Success Message */}
             {actionData?.success && (
               <div className="footer-newsletter-message success">
