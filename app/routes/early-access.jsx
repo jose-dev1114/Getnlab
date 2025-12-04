@@ -587,6 +587,14 @@ export default function EarlyAccess() {
             No spam—just cool builds, perks, and learning inspiration.<br />
             You can unsubscribe anytime.
           </p>
+
+          <div className="form-or-divider">
+            <span>OR</span>
+          </div>
+
+          <Link to="/pre-order" className="form-reserve-button">
+            Reserve Your Starter Kit for $1!
+          </Link>
         </Form>
         <img src="/svg/img/right_icon.png" alt="" className="form-icon form-icon-right" />
       </div>

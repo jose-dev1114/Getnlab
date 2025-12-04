@@ -1086,6 +1086,54 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   margin: 0;
 }
 
+.form-or-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  margin: 8px 0;
+}
+
+.form-or-divider::before,
+.form-or-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #E0E0E0;
+}
+
+.form-or-divider span {
+  font-family: 'TitlingGothicFB Comp', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.form-reserve-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 360px;
+  background: #585858;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(43, 43, 43, 0.2);
+}
+
+.form-reserve-button:hover {
+  background: #2B2B2B;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 43, 43, 0.3);
+}
+
 /* Form Testimonials */
 .form-testimonials {
   background-color: #3F3F3D;
