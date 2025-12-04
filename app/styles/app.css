@@ -3763,7 +3763,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 */
 .build-together-section {
   position: relative;
-  background-color: #3F3F3D;
+  /* background-color: #3F3F3D; */
   width: 100%;
   min-height: 400px;
   display: flex;
