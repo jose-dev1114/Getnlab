@@ -35,12 +35,6 @@ export function GridSection() {
       description: "Create climate monitors and motion detectors using sensors like phototransistors and thermistors."
     },
     {
-      title: "MOTION & CONTROL",
-      image: "/svg/img/motion.png",
-      alt: "Motion Project",
-      description: "Build servo motor systems and discover how motors move, respond, and bring projects to life."
-    },
-    {
       title: "AI HARDWARE",
       image: "/svg/img/hardware.png",
       alt: "AI Hardware Project",
@@ -208,6 +202,20 @@ export function GridSection() {
             </div>
           </div>
 
+        </div>
+        <div className='pattern-text-section'>
+           <div className="global-usage-content">
+              <div className="global-usage-lightning">
+                <img src="/svg/blue_light.svg" alt="" />
+              </div>
+              <div className="global-usage-text">
+                <h2 className="global-usage-title">10,000 STUDENTS AND PROFESSORS USE NLAB GLOBALLY.</h2>
+                <p className="global-usage-universities">
+                  Northwestern - Carnegie Mellon - University of Colorado - Tufts - Johns Hopkins - Technion Israel - Griffith University Australia - University of Lagos, Nigeria - ... and more!
+                </p>
+                <p className="global-usage-title">NOW, FOR THE FIRST TIME, WE'RE BRINGING IT DIRECTLY TO YOU.</p>
+              </div>
+            </div>
         </div>
         {/* <div className="grid-cta-section">
           <div className="trusted-by-content">

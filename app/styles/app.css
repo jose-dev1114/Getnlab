@@ -752,13 +752,14 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 
 .early-access-content h1 {
   font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
-  font-size: 64px;
-  font-stretch: condensed;
+  font-size: clamp(1.75rem, 4vw + 0.5rem, 56px);
+  font-weight: 700;
   text-transform: uppercase;
-  line-height: 59px;
+  line-height: 1.05;
   margin-bottom: clamp(1rem, 3vh, 1.5rem);
   text-align: center;
   color: #FFFFFF;
+  letter-spacing: -0.02em;
 }
 
 .early-access-content>p {
@@ -2117,7 +2118,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
   width: 100%;
-  max-width: 1400px;
+  /* max-width: 1400px; */
   margin: 0 auto;
   padding: 0 clamp(0.5rem, 1.5vw, 1.5rem);
   align-items: center;
@@ -2146,6 +2147,12 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
     align-items: center;
   }
 
+  .hero-title {
+    text-align: center;
+    min-width: unset !important;
+    width: 100%;
+  }
+
   .hero-image-container {
     order: 1;
   }
@@ -2166,7 +2173,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 /* Desktop */
 @media (min-width: 1025px) {
   .hero-section {
-    padding: clamp(4rem, 8vh, 6rem) 0;
+    padding: clamp(8rem, 8vh, 12rem) 0;
   }
 
   .hero-text {
@@ -2303,7 +2310,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #2B2B2B;
+  background: #585858;
   color: white;
   padding: clamp(10px, 1.5vw, 12px) clamp(20px, 2.5vw, 24px);
   border-radius: 8px;
@@ -2607,11 +2614,12 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 }
 
 .grid-section-title {
-  font-family: 'TitleGothicFB Comp', 'Roboto Condensed', Sans-Serif;
+  font-family: 'TitlingGothicFB Comp', sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: 48px;
+  font-weight: 500;
+  font-size: 52px;
   line-height: 77px;
+  letter-spacing: 0%;
   text-transform: uppercase;
   color: #2B2B2B;
   margin: 0;
@@ -3064,16 +3072,16 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: clamp(1.5rem, 3vh, 2rem);
-  max-width: 800px;
+  gap: clamp(0.75rem, 1.5vh, 1rem);
+  /* max-width: 950px; */
 }
 
 .pattern-section-title {
-  font-family: 'TitleGothicFB Comp', 'Roboto Condensed', Sans-Serif;
+  font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', Sans-Serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 48px;
-  line-height: 77px;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
   text-transform: uppercase;
   color: #2B2B2B;
   margin: 0;
@@ -3087,22 +3095,27 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   font-weight: 500;
   letter-spacing: -0.02em;
   margin: 0;
+  max-width: 850px;
 }
 
 .pattern-cta-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  max-width: 250px;
+  padding: clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px);
   background: transparent;
   color: #2B2B2B;
-  padding: clamp(10px, 1.5vw, 12px) clamp(20px, 2.5vw, 24px);
   border: 2px solid #2B2B2B;
   border-radius: 8px;
   text-decoration: none;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 600;
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .pattern-cta-button:hover {
@@ -3202,7 +3215,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   .grid-section-title {
     font-size: 48px;
     line-height: 52px;
-    font-weight: 700;
+    font-weight: 500;
   }
 
   .grid-cta-title {
@@ -3412,7 +3425,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   .grid-section-title {
     font-size: 48px;
     line-height: 52px;
-    font-weight: 700;
+    font-weight: 500;
   }
 
   .grid-cta-title {
@@ -3467,7 +3480,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   }
 
   .pattern-content {
-    padding: clamp(10rem, 15vh, 15rem) 80px clamp(8rem, 12vh, 12rem) 80px;
+    padding: clamp(10rem, 15vh, 15rem) 80px clamp(10rem, 12vh, 15rem) 80px;
   }
 
   .pattern-left-black {
@@ -3503,7 +3516,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   .grid-section-title {
     font-size: 48px;
     line-height: 52px;
-    font-weight: 700;
+    font-weight: 500;
   }
 
   .grid-cta-title {
@@ -3566,7 +3579,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 }
 
 .build-together-title {
-  font-family: 'TitleGothicFB Comp', 'Roboto Condensed', Sans-Serif;
+  font-family: 'TitlingGothicFB Comp', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 48px;
@@ -3898,6 +3911,10 @@ body:has(.download-page) .nlab-header {
   background-color: #FFF5E4;
 }
 
+body:has(.download-page) .nlab-logo img {
+  filter: brightness(0);
+}
+
 body:has(.download-page) .header-menu-item {
   color: #2B2B2B !important;
 }
@@ -4036,7 +4053,6 @@ body:has(.download-page) .get-early-access-btn {
   line-height: 1.05;
   text-transform: uppercase;
   color: #2B2B2B;
-  margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
   flex: none;
   order: 0;
@@ -4590,6 +4606,132 @@ body:has(.explore-projects-page) .header-menu-mobile a {
   color: #000000 !important;
 }
 
+/* ===== HOMEPAGE (MAIN PAGE) WHITE TEXT STYLES ===== */
+
+/* Desktop header menu - white text on homepage */
+body:has(.home) .header-menu-desktop .header-menu-item {
+  color: #FFFFFF !important;
+}
+
+/* Desktop header menu - blue hover on homepage */
+body:has(.home) .header-menu-desktop .header-menu-item:hover {
+  color: #00AEEF !important;
+}
+
+/* Get Early Access button - white text on homepage */
+body:has(.home) .get-early-access-btn {
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+}
+
+/* Get Early Access button - blue hover on homepage */
+body:has(.home) .get-early-access-btn:hover {
+  background-color: #00AEEF !important;
+  color: #FFFFFF !important;
+  border-color: #00AEEF !important;
+}
+
+/* Mobile menu toggle - white text on homepage */
+body:has(.home) .header-menu-mobile-toggle h3 {
+  color: #FFFFFF !important;
+}
+
+/* Hero section text - white on homepage */
+body:has(.home) .hero-text {
+  color: #FFFFFF !important;
+}
+
+/* Hero title - white on homepage */
+body:has(.home) .hero-title {
+  color: #FFFFFF !important;
+}
+
+/* Hero description - white on homepage */
+body:has(.home) .hero-description {
+  color: #FFFFFF !important;
+}
+
+/* Header background - dark gray on homepage */
+body:has(.home) .nlab-header {
+  background-color: #2B2B2B !important;
+}
+
+/* Hero section background - dark gray on homepage */
+body:has(.home) .hero-section {
+  background-color: #2B2B2B !important;
+}
+
+/* Hero content - horizontal layout with reduced padding */
+body:has(.home) .hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Hero blue light pattern styles - smaller size, vertical center */
+.hero-blue-light-pattern {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.hero-blue-light-pattern img {
+  max-width: 120px;
+  height: auto;
+  filter: brightness(0) saturate(100%) invert(60%) sepia(100%) saturate(2000%) hue-rotate(180deg) brightness(100%) contrast(100%);
+}
+
+/* Hero left pattern styles */
+.hero-left-pattern {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hero-left-pattern img {
+  max-width: 300px;
+  height: auto;
+}
+
+/* Hero white logo styles - left aligned */
+.hero-white-logo {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hero-white-logo img {
+  max-width: 150px;
+  height: auto;
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 767px) {
+  /* Stack vertically on mobile */
+  body:has(.home) .hero-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-blue-light-pattern img {
+    max-width: 80px;
+    display: none;
+  }
+
+  .hero-left-pattern img,
+  .hero-white-logo img {
+    max-width: 100px;
+  }
+}
+
 body:has(.explore-projects-page) .header-menu-desktop a:hover,
 body:has(.explore-projects-page) .header-menu-mobile a:hover {
   color: #00AEEF !important;
@@ -4672,6 +4814,71 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
     max-height: 400px;
     opacity: 0.2;
   }
+}
+
+/* Global Usage Section */
+.global-usage-section {
+  background-color: #FFF5E4;
+  padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 4rem);
+  position: relative;
+  z-index: 10;
+}
+
+.global-usage-content {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.global-usage-lightning {
+  flex-shrink: 0;
+  width: clamp(80px, 10vw, 130px);
+}
+
+.global-usage-lightning img {
+  width: 100%;
+  height: auto;
+}
+
+.global-usage-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.global-usage-title {
+  font-family: 'TitlingGothicFB Comp', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 4vw, 52px);
+  line-height: 77px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #2B2B2B;
+  margin: 0;
+}
+
+.global-usage-universities {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1rem, 2vw, 28px);
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: #00AEEF;
+  margin: 0;
+  max-width: 950px;
+}
+
+.global-usage-subtitle {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 900;
+  font-style: italic;
+  color: #2B2B2B;
+  margin: 0;
+  line-height: 1.2;
 }
 
 /* Learn by Doing Section */
@@ -7281,6 +7488,91 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   background: #cc0000;
 }
 
+/* Coming Soon Popup Styles */
+.coming-soon-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.coming-soon-popup {
+  position: relative;
+  background: #FFF5E4;
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0px 24px 48px rgba(0, 0, 0, 0.3);
+  animation: modalScaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.coming-soon-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #2B2B2B;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.coming-soon-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+
+.coming-soon-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.coming-soon-icon {
+  font-size: 3rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.coming-soon-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.75rem;
+  color: #2B2B2B;
+  margin: 0;
+}
+
+.coming-soon-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
 .project-text-section {
   display: flex;
   flex-direction: column;
@@ -7856,6 +8148,7 @@ body:has(.starter-kit-page) .nlab-header {
 
 body:has(.starter-kit-page) .nlab-logo img {
   content: url('/svg/blue_logo.svg');
+  filter: brightness(0);
 }
 
 body:has(.starter-kit-page) .header-menu-item {
@@ -9121,15 +9414,15 @@ body:has(.starter-kit-page) .header-menu-mobile-toggle h3 {
 
 /* About Page Header Styles */
 body:has(.about-page) .nlab-header {
-  background-color: #FFF5E4;
+  background-color: #3F3F3D;
 }
 
-/* body:has(.about-page) .nlab-logo img {
-  filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(184deg) brightness(119%) contrast(119%);
-} */
+body:has(.about-page) .nlab-logo img {
+  filter: none;
+}
 
 body:has(.about-page) .header-menu-item {
-  color: #2B2B2B !important;
+  color: #FFFFFF !important;
 }
 
 body:has(.about-page) .header-menu-item:hover {
@@ -9138,18 +9431,32 @@ body:has(.about-page) .header-menu-item:hover {
 
 body:has(.about-page) .header-menu-item[aria-current="page"],
 body:has(.about-page) .header-menu-item.active {
-  border-bottom: 3px solid #2B2B2B;
+  border-bottom: 3px solid #FFFFFF;
   padding-bottom: 2px;
 }
 
 body:has(.about-page) .header-menu-mobile-toggle h3 {
-  color: #2B2B2B;
+  color: #FFFFFF;
 }
 
 body:has(.about-page) .get-early-access-btn {
-  color: #2B2B2B !important;
-  border-color: #2B2B2B !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
   background: transparent;
+}
+
+/* About Page Mobile Menu - Black text */
+body:has(.about-page) .header-menu-mobile a {
+  color: #000000 !important;
+}
+
+body:has(.about-page) .header-menu-mobile a:hover {
+  color: #00AEEF !important;
+}
+
+body:has(.about-page) .header-menu-mobile a[href="/about"] {
+  color: #000000 !important;
+  border-bottom: 3px solid #000000;
 }
 
 /* About Hero Section */
@@ -9491,7 +9798,7 @@ body:has(.about-page) .get-early-access-btn {
   line-height: 100%;
   max-width: 800px;
   color: #ffffff;
-  letter-spacing: -0.02em;
+  /* letter-spacing: -0.02em; */
 }
 
 .about-makers-profile {
@@ -12845,10 +13152,15 @@ body:has(.download-page) .header-menu-mobile a[href="/download"] {
   padding-bottom: 2px;
 }
 
-body:has(.about-page) .header-menu-desktop a[href="/about"],
+body:has(.about-page) .header-menu-desktop a[href="/about"] {
+  color: #FFFFFF !important;
+  border-bottom: 3px solid #FFFFFF;
+  padding-bottom: 2px;
+}
+
 body:has(.about-page) .header-menu-mobile a[href="/about"] {
-  color: #00AEEF !important;
-  border-bottom: 3px solid #00AEEF;
+  color: #000000 !important;
+  border-bottom: 3px solid #000000;
   padding-bottom: 2px;
 }
 

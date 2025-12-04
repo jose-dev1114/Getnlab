@@ -630,10 +630,10 @@ export default function EarlyAccess() {
               <p>Get insider access to how we're building nLab.</p>
             </div>
 
-            <div className="benefit-item">
+            {/* <div className="benefit-item">
               <h4>COMMUNITY ACCESS</h4>
               <p>Join our Discord maker community before launch.</p>
-            </div>
+            </div> */}
 
             <div className="benefit-item">
               <h4>SHAPE THE FUTURE</h4>

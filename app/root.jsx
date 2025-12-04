@@ -223,14 +223,43 @@ export async function action({request, context}) {
       body: JSON.stringify(requestBody),
     });
 
-    if (!profileResponse.ok) {
+    let profileId;
+
+    if (profileResponse.status === 409) {
+      // Profile already exists - try to get existing profile by email
+      const existingProfileResponse = await fetch(
+        `https://a.klaviyo.com/api/profiles/?filter=equals(email,"${encodeURIComponent(email)}")`,
+        {
+          method: 'GET',
+          headers: {
+            'Authorization': `Klaviyo-API-Key ${klaviyoApiKey}`,
+            'Content-Type': 'application/json',
+            'revision': '2024-10-15',
+          },
+        }
+      );
+
+      if (existingProfileResponse.ok) {
+        const existingData = await existingProfileResponse.json();
+        if (existingData.data && existingData.data.length > 0) {
+          profileId = existingData.data[0].id;
+          console.log('📧 Found existing profile:', profileId);
+        }
+      }
+
+      if (!profileId) {
+        console.error('Could not find existing profile for email:', email);
+        throw new Error('Profile lookup failed');
+      }
+    } else if (!profileResponse.ok) {
       const errorText = await profileResponse.text();
       console.error('Profile creation failed:', profileResponse.status, errorText);
       throw new Error(`Profile creation failed: ${profileResponse.status}`);
+    } else {
+      const profileData = await profileResponse.json();
+      profileId = profileData.data.id;
+      console.log('✨ Created new profile:', profileId);
     }
-
-    const profileData = await profileResponse.json();
-    const profileId = profileData.data.id;
 
     // Subscribe to list
     const listResponse = await fetch(`https://a.klaviyo.com/api/lists/${klaviyoListId}/relationships/profiles/`, {

@@ -59,6 +59,8 @@ export default function ExploreProjects() {
   const [currentVideoId, setCurrentVideoId] = useState('');
   // State for coming soon toggle (default ON to show all cards)
   const [showComingSoon, setShowComingSoon] = useState(true);
+  // State for coming soon popup
+  const [showComingSoonPopup, setShowComingSoonPopup] = useState(false);
 
   // Admin Dashboard State
   const [showAdminDashboard, setShowAdminDashboard] = useState(false);
@@ -436,7 +438,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'beginner', text: 'BEGINNER' },
       image: '/svg/img/explore_fourth.png',
-      videoId: 'a4OCApcuBT8',
       title: 'CIRCUIT BUILDING SKILLS',
       description: 'A deep dive into the breadboard and wire. Where did the breadboard come from, and how does it work? Learn about the different types of wire and the best way to use it in a breadboard.',
       whatYoullLearn: 'The origin of the breadboard. How the breadboard connects wires. Solid vs stranded wire. Common wire color coding.'
@@ -445,7 +446,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'beginner', text: 'BEGINNER' },
       image: '/svg/img/explore_main.png',
-      videoId: 'a4OCApcuBT8',
       title: 'HOW TO USE THE NLAB AND APP',
       description: 'A look at the nLab: an oscilloscope, a power supply, and a function generator. Using the nLab app, you can see you signal, power it, and create signals to work with.',
       whatYoullLearn: 'How to zoom in in time and voltage. How to read voltage from an oscilloscope. How the power supply works. How to set the nLab output signals.'
@@ -454,7 +454,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'beginner', text: 'BEGINNER' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'CODING WITH NLAB',
       description: 'Using Python, you can get access to your nLab to build your own interface. Read voltages and set outputs for your specific project, like a data logger, a game, or a control system.',
       whatYoullLearn: 'How to get the nLab api. The basic api functions. Make a data logger. Make a game in pygame zero.'
@@ -463,7 +462,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'beginner', text: 'BEGINNER' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'THE SCIENCE BEHIND ELECTRONICS',
       description: 'What is electricity? In this video, explore the concepts of voltage, current, and power, using easy to understand analogies.',
       whatYoullLearn: 'Voltage is pressure. Current is like flow.'
@@ -472,7 +470,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'intermediate', text: 'INTERMEDIATE' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'SERIES AND PARALLEL CIRCUITS',
       description: 'Circuit components are wired in ways that share voltage and current. The properties of voltage, "across", and current, "through", are used to design circuits with just a few easy rules. In this video, see how resistors, LEDs, and buttons can be placed for different effects.',
       whatYoullLearn: 'Voltage is a property that is across a component. Current is a property that goes through. Components connect at nodes. Resistors can be combined in series and parallel to make new resistors.'
@@ -481,7 +478,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'intermediate', text: 'INTERMEDIATE' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'OHM\'S LAW AND CIRCUIT DESIGN',
       description: 'Resistors obey Ohm\'s Law, a simple equation relating voltage, current, and resistance. Combined with series and parallel rules, you can find the voltage at every point and the current through every component!',
       whatYoullLearn: 'Ohm\'s Law, V=IR. Summing voltage around a circuit. Current cannot accumulate at a node.'
@@ -490,7 +486,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'intermediate', text: 'INTERMEDIATE' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'BUILD A SENSING CIRCUIT',
       description: 'Design circuits that detect light, temperature, and sound.',
       whatYoullLearn: 'Phototransistors for sensing light. Thermistors for sensing temperature. Microphones for sensing sound.'
@@ -499,7 +494,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'intermediate', text: 'INTERMEDIATE' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'DESIGN CIRCUITS BY STACKING THEM LIKE BLOCKS',
       description: 'We\'ve designed a few small circuits. By stacking them, we can build more complicated functions. But sometimes this doesn\'t work, unless we consider how they interact with each other.',
       whatYoullLearn: 'Impedance rules.'
@@ -508,7 +502,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'intermediate', text: 'INTERMEDIATE' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'CAPACITORS IN CIRCUITS',
       description: 'See how charging capacitors can be used to change how circuits react over time',
       whatYoullLearn: 'Capacitors are not resistors. How to charge a capacitor. Using capacitors with resistors to change how circuits react.'
@@ -517,7 +510,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'intermediate', text: 'INTERMEDIATE' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'OPERATIONAL AMPLIFIER CIRCUITS',
       description: 'It is time to super charge our circuits with chips! Operational amplifiers are integrated circuits that use power to solve many of the design challenges we\'ve seen in circuit design. Op amps are used to make decisions, fix impedance problems, and perform math. In this video, see how they are used and add to your list of circuit blocks.',
       whatYoullLearn: 'Happy opamp theory. Op amps as comparators. Different op amp circuits for math.'
@@ -526,7 +518,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'intermediate', text: 'INTERMEDIATE' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'TRANSISTOR CIRCUITS',
       description: 'Learn how transistors created the electronics revolution. In this video, use transistors as switches and amplifiers.',
       whatYoullLearn: 'The transistor equation. Transistors as amplifiers. Transistors as switches. Transistor power considerations.'
@@ -535,7 +526,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'coding', text: 'CODING' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'RECORD AND PLOT NLAB DATA',
       description: 'Sometimes you want to get your data into a file for use later. In the nLab app, you can save your data as a screenshot and as a .csv file. See how to use the file to plot your data in a spreadsheet and in Python.',
       whatYoullLearn: 'Saving data. Plotting a .csv file in a spreadsheet. Plotting a .csv file in Python.'
@@ -544,7 +534,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'coding', text: 'CODING' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'DESIGN YOUR OWN GAME WITH NLAB',
       description: 'Circuits are way more fun when you get to interact with them. Now that you can design functional circuits, let\'s get their data into the computer and do something. Let\'s make a game! Pygame Zero is a great platform to use with the nLab api to quickly get going.',
       whatYoullLearn: 'The engineering design process. Designing, building, testing, and iterating. Making graphics and sound with Python. Modern coding techniques with AI assistance.'
@@ -553,7 +542,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'advanced', text: 'ADVANCED' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'BUILDING A MICROPHONE',
       description: 'Project: how to detect sound with a circuit',
       whatYoullLearn: 'Amplifiers. Filters.'
@@ -562,7 +550,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'advanced', text: 'ADVANCED' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'AN OPTICAL PULSE SENSOR',
       description: 'Project: use light to detect your pulse, the way a smart watch does',
       whatYoullLearn: 'Biosensing. Amplifiers. Filters.'
@@ -571,7 +558,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'extra-parts', text: 'REQUIRES EXTRA PARTS' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'MAKE AN ECG',
       description: 'Project: detect your pulse with electrodes',
       whatYoullLearn: 'Biosensing. Amplifiers. Filters.'
@@ -580,7 +566,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'advanced', text: 'ADVANCED' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'BUILD A THERMOMETER',
       description: 'Project: design a circuit to sense temperature and display the data to a user',
       whatYoullLearn: 'Amplifiers. Comparators. The design process.'
@@ -589,7 +574,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'advanced', text: 'ADVANCED' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'BUILD A MOTION DETECTOR',
       description: 'Project: use light to detect when people are in a room',
       whatYoullLearn: 'Amplifiers. Filters. Active sensing.'
@@ -598,7 +582,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'advanced', text: 'ADVANCED' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'INVENT A MUSICAL INSTRUMENT',
       description: 'Project: invent a new way to make music',
       whatYoullLearn: 'Amplifiers. Filters. The design process. Interactive design.'
@@ -607,7 +590,6 @@ export default function ExploreProjects() {
     {
       badge: { type: 'extra-parts', text: 'REQUIRES EXTRA PARTS' },
       image: '/svg/img/soon.webp',
-      videoId: 'a4OCApcuBT8',
       title: 'MAKE AN EMG CONTROLLER',
       description: 'Project: detect your muscle activity level with EMG',
       whatYoullLearn: 'Biosensing. Amplifiers, Filters. Rectifiers.'
@@ -634,6 +616,15 @@ export default function ExploreProjects() {
     });
   };
 
+  // Function to handle card click - either open video or show coming soon popup
+  const handleCardClick = (cardData) => {
+    if (cardData.videoId) {
+      openVideoModal(cardData.videoId);
+    } else {
+      setShowComingSoonPopup(true);
+    }
+  };
+
   // Function to render a project card
   const renderProjectCard = (cardData, index) => {
     return (
@@ -644,9 +635,9 @@ export default function ExploreProjects() {
             src={cardData.image}
             alt={cardData.title}
             className="project-thumbnail"
-            onClick={() => openVideoModal(cardData.videoId)}
+            onClick={() => handleCardClick(cardData)}
           />
-          <div className="circle-play" onClick={() => openVideoModal(cardData.videoId)}>
+          <div className="circle-play" onClick={() => handleCardClick(cardData)}>
             <CirclePlayIcon />
           </div>
         </div>
@@ -873,6 +864,24 @@ export default function ExploreProjects() {
                   Watch on YouTube
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Coming Soon Popup */}
+      {showComingSoonPopup && (
+        <div className="coming-soon-popup-overlay" onClick={() => setShowComingSoonPopup(false)}>
+          <div className="coming-soon-popup" onClick={(e) => e.stopPropagation()}>
+            <button className="coming-soon-close" onClick={() => setShowComingSoonPopup(false)}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
+            <div className="coming-soon-content">
+              <div className="coming-soon-icon">🚀</div>
+              <h3 className="coming-soon-title">Coming Soon!</h3>
+              <p className="coming-soon-text">This project is currently in development. Check back soon for new content!</p>
             </div>
           </div>
         </div>

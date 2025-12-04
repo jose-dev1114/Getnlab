@@ -35,9 +35,9 @@ export function Footer() {
             <a href="https://www.youtube.com/@get-nlab" target="_blank" rel="noopener noreferrer" className="social-icon">
               <img src="/svg/youtube.svg" alt="YouTube" />
             </a>
-            <a href="https://discord.gg/PTZGpAkj" target="_blank" rel="noopener noreferrer" className="social-icon">
+            {/* <a href="https://discord.gg/PTZGpAkj" target="_blank" rel="noopener noreferrer" className="social-icon">
               <img src="/svg/discord.svg" alt="Discord" />
-            </a>
+            </a> */}
             <a href="https://kickstarter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
               <img src="/svg/kickstarter.svg" alt="Kickstarter" />
             </a>

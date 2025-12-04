@@ -127,7 +127,6 @@ export default function Community() {
       </section>
 
       <section className="community-discord-section">
-        {/* Clean Kickstarter Hero Section */}
         <div className="kickstarter-hero-section">
           <div className="kickstarter-hero-content">
             <div className="kickstarter-hero-header">
@@ -182,7 +181,7 @@ export default function Community() {
           </div>
         </div>
         {/* Modern Discord Community Section */}
-        <div className="discord-hero-section">
+        {/* <div className="discord-hero-section">
           <div className="discord-hero-content">
             <div className="discord-hero-header">
               <h1 className="discord-hero-title">
@@ -269,7 +268,7 @@ export default function Community() {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="youtube-section-header">
           <h2 className="community-section-title">Free Tutorials on YouTube</h2>
           <p className="community-section-description">

@@ -66,16 +66,12 @@ export default function Download() {
     // Add event listeners
     const macButton = document.getElementById("downloadMac");
     const windowsButton = document.getElementById("downloadWindows");
-    const autoButton = document.getElementById("downloadAuto");
 
     if (macButton) {
       macButton.addEventListener("click", downloadMacHandler);
     }
     if (windowsButton) {
       windowsButton.addEventListener("click", downloadWindowsHandler);
-    }
-    if (autoButton) {
-      autoButton.addEventListener("click", downloadAutoHandler);
     }
 
     // Cleanup event listeners on unmount
@@ -85,9 +81,6 @@ export default function Download() {
       }
       if (windowsButton) {
         windowsButton.removeEventListener("click", downloadWindowsHandler);
-      }
-      if (autoButton) {
-        autoButton.removeEventListener("click", downloadAutoHandler);
       }
     };
   }, []);
@@ -124,10 +117,15 @@ export default function Download() {
             </div>
 
             <p className="download-hero-description">
-              Connect your physical kit to the nLab App and unlock a smarter, more guided learning experience. The app acts as your bridge between hardware and knowledge — letting you follow step-by-step lessons, visualize live sensor data, and track progress as you build. Whether you're a beginner or advancing into robotics, the nLab App ensures your journey is smoother, clearer, and more interactive.
+              The nLab app is completely free and works seamlessly with your Starter Kit — no subscription required. Watch your circuits come alive with real-time visualization and feedback.
             </p>
 
-            <button id="downloadAuto" className="download-cta-button">
+            <button
+              className="download-cta-button"
+              onClick={() => {
+                document.querySelector('.download-app-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               Download the App <img src="/svg/arrow-down.svg" alt="Download" className="download-arrow" />
             </button>
           </div>
@@ -145,20 +143,20 @@ export default function Download() {
             <h2 className="key-benefits-title">KEY BENEFITS</h2>
             <div className="benefits-grid">
               <div className="benefit-item">
-                <h3 className="benefit-title">Guided Lessons</h3>
-                <p className="benefit-description">Walk-through tutorials that explain circuits, code, and logic</p>
+                <h3 className="benefit-title">Troubleshoot Like a Pro</h3>
+                <p className="benefit-description">Use the same tools that professional engineers use in the field to explore, test, and debug circuits in real-world builds.</p>
               </div>
               <div className="benefit-item">
-                <h3 className="benefit-title">Progress Tracking</h3>
-                <p className="benefit-description">Know what you've built, what's next, and your skill growth</p>
+                <h3 className="benefit-title">Diagnose and Solve Problems Quickly</h3>
+                <p className="benefit-description">Use the oscilloscope to visualize voltage and signal behavior, making troubleshooting fast and intuitive.</p>
               </div>
               <div className="benefit-item">
-                <h3 className="benefit-title">Live Data Visualization</h3>
-                <p className="benefit-description">See what your hardware is doing in real time</p>
+                <h3 className="benefit-title">Test and Explore Signals</h3>
+                <p className="benefit-description">Output and monitor signals with the function generator to experiment safely and see how your circuits respond.</p>
               </div>
               <div className="benefit-item">
-                <h3 className="benefit-title">Seamless Integration</h3>
-                <p className="benefit-description">Designed to work with the Starter Kit out of the box</p>
+                <h3 className="benefit-title">Learn Without Friction</h3>
+                <p className="benefit-description">The free app works directly with your Starter Kit — no subscription required — so you can focus on building and experimenting.</p>
               </div>
             </div>
           </div>

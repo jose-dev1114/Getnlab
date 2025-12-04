@@ -276,7 +276,7 @@ function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontTok
           • Complete your order with an exclusive 10% discount<br />
           • Receive your kit when shipping begins<br /><br />
 
-          <strong>Regular price: $199 | Your price with pre-order: $179.10</strong>
+          <strong>Regular price: <s>$199</s> | Your price with pre-order: $159</strong>
         </div>
 
         <div className="product-controls">

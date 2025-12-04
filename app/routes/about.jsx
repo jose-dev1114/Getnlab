@@ -7,7 +7,7 @@ export const meta = () => {
 export default function About() {
   return (
     <div className="about-page">
-      <section className="about-story">
+      {/* <section className="about-story">
         <div className="about-story-pattern-left">
           <img src="/svg/about_left_pattern.svg" alt="" />
         </div>
@@ -42,7 +42,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="about-makers">
         <div className="about-makers-container">

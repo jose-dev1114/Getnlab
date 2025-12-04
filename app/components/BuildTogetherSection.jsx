@@ -59,10 +59,10 @@ export function BuildTogetherSection() {
               <span className="hidden md:inline">CAREER-READY,<br />PROJECT BY PROJECT</span>
               <span className="md:hidden">CAREER-READY, PROJECT BY PROJECT</span>
             </h3>
-            <a href="https://discord.gg/PTZGpAkj" target="_blank" rel="noopener noreferrer" className="build-card-button">
+            {/* <a href="https://discord.gg/PTZGpAkj" target="_blank" rel="noopener noreferrer" className="build-card-button">
               Join our Discord Community
               <img src="/svg/arrow_right.svg" alt="" className="button-arrow" />
-            </a>
+            </a> */}
 
             <div className="build-card-features">
               <div className="build-feature build-feature-underline">
