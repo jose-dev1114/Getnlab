@@ -273,7 +273,7 @@ function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontTok
           <strong>How it works:</strong><br />
           • Pay $1 now to reserve your kit<br />
           • Get notified when our Kickstarter launches<br />
-          • Complete your order with an exclusive 10% discount<br />
+          • Complete your order with an exclusive 20% discount<br />
           • Receive your kit when shipping begins<br /><br />
 
           <strong>Regular price: <s>$199</s> | Your price with pre-order: $159</strong>

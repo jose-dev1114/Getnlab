@@ -108,7 +108,8 @@ export function Footer() {
 
       <div className="footer-bottom">
         <div className="footer-bottom-content">
-          <p className="footer-copyright">© 2025, nLab All Rights reserved</p>
+          <p className="footer-copyright">Questions? Contact us anytime at founders@getnlab.com</p>
+          <p className="footer-copyright">2025, nLab All Rights Reserved</p>
           <div className="footer-legal-links">
             {/* <a href="/policies/privacy-policy" className="footer-legal-link">Privacy Policy</a>
             <a href="/policies/terms-of-service" className="footer-legal-link">Terms of Service</a>
