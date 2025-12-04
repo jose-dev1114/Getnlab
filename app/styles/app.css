@@ -1418,8 +1418,9 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   }
 
   .early-access-form {
-    padding: 32px 24px;
+    padding: 24px 16px;
     max-width: 100%;
+    gap: 16px;
   }
 
   .form-icon {
@@ -1431,16 +1432,33 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   }
 
   .early-access-form h2 {
-    font-size: clamp(2.5rem, 10vw, 3.5rem);
-    line-height: 1.2;
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    line-height: 1.1;
+  }
+
+  .form-subtitle {
+    font-size: 18px;
+  }
+
+  .form-note {
+    font-size: 14px;
+    margin-bottom: 20px;
   }
 
   .form-group {
     max-width: 100%;
   }
 
+  .form-group input,
+  .form-group select {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
   .submit-button {
     max-width: 100%;
+    padding: 12px 24px;
+    font-size: 16px;
   }
 
   .form-disclaimer {
@@ -3006,7 +3024,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 64px;
+  font-size: clamp(48px, 6vw, 64px);
   line-height: 77px;
   text-transform: uppercase;
   color: #2B2B2B;
@@ -3380,6 +3398,15 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
     display: none;
   }
 
+  .pattern-text-section {
+    align-items: center;
+    text-align: center;
+  }
+
+  .global-usage-lightning {
+    display: none;
+  }
+
   .pattern-bottom-left {
     display: none;
   }
@@ -3539,14 +3566,14 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   }
 
   .grid-item-title {
-    font-size: clamp(24px, 6vw, 32px);
-    line-height: clamp(28px, 7vw, 36px);
+    font-size: clamp(18px, 5vw, 24px);
+    line-height: clamp(22px, 6vw, 28px);
     margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
   }
 
   .grid-item-description {
-    font-size: clamp(16px, 4vw, 20px);
-    line-height: clamp(20px, 5vw, 24px);
+    font-size: clamp(14px, 3.5vw, 18px);
+    line-height: clamp(18px, 4.5vw, 22px);
   }
 }
 
@@ -3798,7 +3825,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 @media (max-width: 767px) {
   .build-together-section {
     min-height: 300px;
-    padding: clamp(12rem, 20vh, 15rem) clamp(1.5rem, 4vw, 2rem) clamp(2rem, 4vh, 3rem);
+    padding: clamp(15rem, 20vh, 15rem) clamp(1.5rem, 4vw, 2rem) clamp(2rem, 4vh, 3rem);
   }
 
   .build-together-pattern {
@@ -5046,7 +5073,6 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   font-family: 'TitlingGothicFB Comp', sans-serif;
   font-weight: 500;
   font-size: clamp(1.5rem, 4vw, 52px);
-  line-height: 77px;
   letter-spacing: 0%;
   text-transform: uppercase;
   color: #2B2B2B;
@@ -5072,6 +5098,29 @@ body:has(.explore-projects-page) .get-early-access-btn:hover {
   color: #2B2B2B;
   margin: 0;
   line-height: 1.2;
+}
+
+.global-usage-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #585858;
+  color: white;
+  padding: clamp(10px, 1.5vw, 12px) clamp(20px, 2.5vw, 24px);
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 8px rgba(43, 43, 43, 0.3);
+  margin-top: 1.5rem;
+}
+
+.global-usage-cta:hover {
+  background: #2B2B2B;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 43, 43, 0.4);
 }
 
 /* Learn by Doing Section */

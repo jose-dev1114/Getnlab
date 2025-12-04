@@ -214,6 +214,9 @@ export function GridSection() {
                   Northwestern - Carnegie Mellon - University of Colorado - Tufts - Johns Hopkins - Technion Israel - Griffith University Australia - University of Lagos, Nigeria - ... and more!
                 </p>
                 <p className="global-usage-title">NOW, FOR THE FIRST TIME, WE'RE BRINGING IT DIRECTLY TO YOU.</p>
+                <Link to="/pre-order" className="global-usage-cta">
+                  <span>Reserve Your Starter Kit for $1!</span>
+                </Link>
               </div>
             </div>
         </div>

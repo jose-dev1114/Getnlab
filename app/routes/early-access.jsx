@@ -626,7 +626,7 @@ export default function EarlyAccess() {
 
             <div className="benefit-item">
               <h4>SAVE AT LAUNCH</h4>
-              <p>Get 10% off your Starter Kit on Kickstarter.</p>
+              <p>Get 20% off your Starter Kit on Kickstarter.</p>
             </div>
 
             <div className="benefit-item">
