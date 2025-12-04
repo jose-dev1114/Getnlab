@@ -491,23 +491,20 @@ export default function EarlyAccess() {
 
   return (
     <div className="early-access-page">
-      <div className="early-access-content">
-        <h1>
-          <span className="hidden md:inline">Get Early Access <br /> FOR 10% Off at Launch</span>
-          <span className="md:hidden">Get Early Access FOR 10% Off at Launch</span>
-        </h1>
-        <p>
-          <span className="hidden md:inline">Be among the first to build, learn, and create with nLab <br /> — now before the Kickstarter goes live.</span>
-          <span className="md:hidden">Be among the first to build, learn, and create with nLab — now before the Kickstarter goes live.</span>
-        </p>
-      </div>
-
-      <div className="early-access-image-container">
+      <div className="early-access-content early-access-hero">
+        <h1>ENTER TO WIN A FREE NLAB</h1>
+        <p className="early-access-subtitle">Delivered to your door before Dec. 25th (U.S. only!)</p>
+        <p className="early-access-or">OR</p>
+        <h2 className="early-access-reserve">RESERVE YOUR KIT FOR $1!</h2>
+        <p className="early-access-discount">Lock in a guaranteed 20% discount when we launch on Kickstarter.</p>
         <img
           src="/svg/blue_light.svg"
           alt=""
-          className="blue-light-overlay"
+          className="early-access-lightning"
         />
+      </div>
+
+      <div className="early-access-image-container">
         <img
           src="/svg/img/access_main.png"
           alt="nLab Electronics Kit"
@@ -517,16 +514,26 @@ export default function EarlyAccess() {
 
       <div className="early-access-description">
         <p className="description-main">
-          nLab isn't a new idea — it's a field-tested system trusted by educators and learners. We've refined it through university classrooms and hundreds of hands-on builds. Now, we're launching it for everyone.
+          <span className="text-cyan">nLab isn't a toy</span> — it's a modular electronics lab built for learning <span className="text-cyan">real, future-proof skills.</span>
         </p>
         <p className="description-secondary">
-          When you join Early Access, you're not just pre-ordering a kit. You're joining a community, shaping the future of STEM learning, and getting in early with perks.
+          In the kit, you get:
+        </p>
+        <p className="description-features">
+          The world's smallest electronics lab <span className="text-cyan">+</span> 200 reusable components <span className="text-cyan">+</span> 12 real-world projects <span className="text-cyan">+</span> the nLab app <span className="text-cyan">+</span> free YouTube tutorials taught by a robotics professor and robotics engineer
         </p>
       </div>
 
-      <div className="early-access-content">
+      <div className="early-access-content early-access-form-wrapper">
+        <img src="/svg/img/left_icon.png" alt="" className="form-icon form-icon-left" />
         <Form method="post" className="early-access-form">
-          <h2>SIGN UP</h2>
+          <h2>ENTER THE NLAB<br />HOLIDAY GIVEAWAY!</h2>
+          <p className="form-subtitle">Join our newsletter for a chance to win!</p>
+          <p className="form-note">
+            Note: Giveaway shipping is currently limited to the U.S.,<br />
+            but everyone can join our newsletter to receive<br />
+            updates, tips, and future giveaways!
+          </p>
 
           {/* Success Message */}
           {actionData?.success && (
@@ -543,26 +550,15 @@ export default function EarlyAccess() {
             </div>
           )}
 
-          <div className="form-group">
-            <label htmlFor="name">Full Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Enter your name"
-              required
-              disabled={isSubmitting}
-              onFocus={() => trackFormInteraction('early-access', 'start')}
-            />
-          </div>
+          {/* Hidden name field with default value for backend compatibility */}
+          <input type="hidden" name="name" value="Giveaway Entry" />
 
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
             <input
               type="email"
               id="email"
               name="email"
-              placeholder="Enter your email"
+              placeholder="Email Address"
               required
               disabled={isSubmitting}
               onFocus={() => trackFormInteraction('early-access', 'start')}
@@ -570,8 +566,8 @@ export default function EarlyAccess() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="interest">What interests you most?</label>
             <select id="interest" name="interest" disabled={isSubmitting}>
+              <option value="">Why are you interested in nLab?</option>
               <option value="1">I want to gain practical skills for high school or college</option>
               <option value="2">I want to build new skills to advance or change my career</option>
               <option value="3">I’m a parent looking for engaging STEM activities</option>
@@ -587,19 +583,32 @@ export default function EarlyAccess() {
             <span>{isSubmitting ? '⏳' : '→'}</span>
           </button>
 
-          <div className="pre-order-cta">
-            <p className="pre-order-text">
-              Want to secure your spot? <strong>Pre-order for just $1</strong>
-            </p>
-            <button onClick={handlePreOrder} className="pre-order-button">
-              Pre-Order Now for $1 →
-            </button>
-          </div>
-
           <p className="form-disclaimer">
-            No spam—just cool builds, perks, and learning inspiration. You can unsubscribe anytime.
+            No spam—just cool builds, perks, and learning inspiration.<br />
+            You can unsubscribe anytime.
           </p>
         </Form>
+        <img src="/svg/img/right_icon.png" alt="" className="form-icon form-icon-right" />
+      </div>
+
+      <div className="form-testimonials">
+        <p className="testimonials-intro">
+          We've tested nLab with <span className="text-cyan">thousands of learners</span> across classrooms, career workshops, and maker events. Here's what we learned:
+        </p>
+        <ol className="testimonials-list">
+          <li>
+            <span className="testimonial-title">Beginners created their <span className="text-cyan">first working circuit in under ten minutes.</span></span>
+            <span className="testimonial-desc">And after building nLab's projects, came away with a college-level understanding of how electronics work.</span>
+          </li>
+          <li>
+            <span className="testimonial-title">People who kept learning with nLab <span className="text-cyan">stood out and advanced faster.</span></span>
+            <span className="testimonial-desc">They walked into classes, bootcamps, and tech jobs with stronger circuit intuition and real hands-on problem-solving skills.</span>
+          </li>
+          <li>
+            <span className="testimonial-title">nLab became their <span className="text-cyan">"always-with-me" tool in the field.</span></span>
+            <span className="testimonial-desc">A quick, reliable kit they grabbed whenever they needed to prototype, diagnose a problem, or test an idea on the spot.</span>
+          </li>
+        </ol>
       </div>
 
       <div className="early-access-features-wrapper">

@@ -750,27 +750,83 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   color: #FFFFFF;
 }
 
+.early-access-hero {
+  position: relative;
+}
+
+.early-access-lightning {
+  position: absolute;
+  right: 20%;
+  top: 20%;
+  transform: translateY(-50%);
+  width: clamp(80px, 10vw, 130px);
+  height: auto;
+  z-index: 2;
+}
+
 .early-access-content h1 {
   font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
   font-size: clamp(1.75rem, 4vw + 0.5rem, 56px);
-  font-weight: 700;
+  /* font-weight: 700; */
   text-transform: uppercase;
   line-height: 1.05;
   margin-bottom: clamp(1rem, 3vh, 1.5rem);
   text-align: center;
   color: #FFFFFF;
-  letter-spacing: -0.02em;
+  /* letter-spacing: -0.02em; */
 }
 
 .early-access-content>p {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 28px;
+  /* font-size: 28px; */
   line-height: 100%;
 
   text-align: center;
   margin-bottom: clamp(2rem, 5vh, 3rem);
   color: #FFFFFF;
   opacity: 0.9;
+}
+
+.early-access-subtitle {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 28px);
+  line-height: 1.2;
+  text-align: center;
+  color: #FFFFFF;
+  opacity: 0.9;
+  margin-bottom: clamp(1rem, 2vh, 1.5rem) !important;
+}
+
+.early-access-or {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 900;
+  text-align: center;
+  color: #00AEEF !important;
+  margin-bottom: clamp(1rem, 2vh, 1.5rem) !important;
+  opacity: 1 !important;
+}
+
+.early-access-reserve {
+  font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-size: clamp(1.75rem, 4vw + 0.5rem, 56px);
+  /* font-weight: 700; */
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+  text-align: center;
+  color: #FFFFFF;
+  /* letter-spacing: -0.02em; */
+}
+
+.early-access-discount {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(1rem, 2vw, 24px);
+  line-height: 1.2;
+  text-align: center;
+  color: #FFFFFF;
+  opacity: 0.9;
+  margin-bottom: clamp(2rem, 5vh, 3rem) !important;
 }
 
 .early-access-image-container {
@@ -802,7 +858,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 }
 
 .early-access-description {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto clamp(3rem, 6vh, 4rem);
   padding: 0 clamp(2rem, 6vw, 4rem);
   text-align: center;
@@ -817,16 +873,57 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   line-height: 1.6;
   color: #FFFFFF;
   margin-bottom: clamp(1.5rem, 3vh, 2rem);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .description-secondary {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-size: clamp(1.2rem, 2.8vw, 1.5rem);
   line-height: 1.6;
   color: #FFFFFF;
-  opacity: 0.9;
-  font-weight: 400;
+  margin-bottom: clamp(1.5rem, 3vh, 2rem);
+  /* opacity: 0.9; */
+  font-weight: 900;
+}
+
+.description-features {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+  line-height: 1.6;
+  color: #FFFFFF;
+  font-weight: 900;
+}
+
+.text-cyan {
+  color: #00AEEF;
+}
+
+.early-access-form-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-icon {
+  position: absolute;
+  width: clamp(180px, 20vw, 420px);
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.form-icon-left {
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.form-icon-right {
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .early-access-form {
@@ -841,18 +938,44 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   background: #FFFFFF;
   box-shadow: 0px 16px 32px -8px rgba(0, 0, 0, 0.2);
   border-radius: 16px;
+  position: relative;
+  z-index: 2;
 }
 
 .early-access-form h2 {
   font-family: 'TitlingGothicFB Comp', sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 70px;
+  font-size: 60px;
   line-height: 77px;
   text-align: center;
   text-transform: uppercase;
   color: #2B2B2B;
-  margin: 0;
+}
+
+.form-subtitle {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  color: #2B2B2B;
+}
+
+.form-note {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  color: #2B2B2B;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.form-divider {
+  width: 100%;
+  max-width: 423px;
+  border-bottom: 2px dashed #00AEEF;
+  margin: 8px 0 16px 0;
 }
 
 .form-group {
@@ -960,8 +1083,70 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   text-align: center;
 
   color: #2B2B2B;
-  max-width: 398px;
   margin: 0;
+}
+
+/* Form Testimonials */
+.form-testimonials {
+  background-color: #3F3F3D;
+  padding: clamp(32px, 5vw, 48px);
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonials-intro {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 500;
+  line-height: 1.5;
+  color: #FFFFFF;
+  margin: 0 0 24px 0;
+}
+
+.testimonials-list {
+  list-style: none;
+  counter-reset: testimonial-counter;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.testimonials-list li {
+  counter-increment: testimonial-counter;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 32px;
+  position: relative;
+}
+
+.testimonials-list li::before {
+  content: counter(testimonial-counter) ".";
+  position: absolute;
+  left: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.testimonial-title {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.4;
+}
+
+.testimonial-desc {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 1.5;
 }
 
 /* Form Messages */
@@ -1235,6 +1420,14 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   .early-access-form {
     padding: 32px 24px;
     max-width: 100%;
+  }
+
+  .form-icon {
+    display: none;
+  }
+
+  .early-access-lightning {
+    display: none;
   }
 
   .early-access-form h2 {
