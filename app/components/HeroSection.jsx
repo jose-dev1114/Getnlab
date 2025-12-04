@@ -15,6 +15,19 @@ export function HeroSection() {
             <img src="/svg/left_small_pattern.svg" alt="Left Small Pattern" />
           </div>
 
+          <p className="hero-description">
+            <span className="hidden md:inline">
+              Prepare for tangible careers that can’t be replaced by AI, and turn your ideas into inventions that make an impact.
+              <br /><br />
+              Perfect for beginners - no prior experience required.
+            </span>
+            <span className="md:hidden">
+              Prepare for tangible careers that can’t be replaced by AI, and turn your ideas into inventions that make an impact.
+              <br /><br />
+              Perfect for beginners - no prior experience required.
+            </span>
+          </p>
+
           {/* White logo instead of CTA button - left aligned */}
           <Link to="/pre-order" className="hero-cta-button hero-cta-prominent">
             <span>Reserve Your Starter Kit for $1!</span>

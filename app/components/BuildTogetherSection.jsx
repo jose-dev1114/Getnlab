@@ -56,8 +56,8 @@ export function BuildTogetherSection() {
           </div>
           <div className="build-card-content">
             <h3 className="build-card-title">
-              <span className="hidden md:inline">CAREER-READY,<br />PROJECT BY PROJECT</span>
-              <span className="md:hidden">CAREER-READY, PROJECT BY PROJECT</span>
+              <span className="hidden md:inline">WHO IT'S FOR</span>
+              <span className="md:hidden">WHO IT'S FOR</span>
             </h3>
             {/* <a href="https://discord.gg/PTZGpAkj" target="_blank" rel="noopener noreferrer" className="build-card-button">
               Join our Discord Community
