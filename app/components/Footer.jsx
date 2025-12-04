@@ -108,7 +108,7 @@ export function Footer() {
 
       <div className="footer-bottom">
         <div className="footer-bottom-content">
-          <p className="footer-copyright">Questions? Contact us anytime at founders@getnlab.com</p>
+          <p className="footer-copyright">Questions? Contact us anytime at <a href="mailto:founders@getnlab.com" className="footer-email-link">founders@getnlab.com</a> <br /></p>
           <p className="footer-copyright">2025, nLab All Rights Reserved</p>
           <div className="footer-legal-links">
             {/* <a href="/policies/privacy-policy" className="footer-legal-link">Privacy Policy</a>

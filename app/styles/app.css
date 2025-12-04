@@ -1745,6 +1745,17 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   margin: 0;
 }
 
+.footer-email-link {
+  color: #00AEEF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-email-link:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
 .footer-legal-link {
   font-family: 'Roboto Condensed', sans-serif;
   font-style: normal;
