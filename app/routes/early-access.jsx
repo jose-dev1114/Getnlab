@@ -527,7 +527,7 @@ export default function EarlyAccess() {
       <div className="early-access-content early-access-form-wrapper">
         <img src="/svg/img/left_icon.png" alt="" className="form-icon form-icon-left" />
         <Form method="post" className="early-access-form">
-          <h2>ENTER THE NLAB<br />HOLIDAY GIVEAWAY!</h2>
+          <h2>ENTER THE NLAB <br />HOLIDAY GIVEAWAY!</h2>
           <p className="form-subtitle">Join our newsletter for a chance to win!</p>
           <p className="form-note">
             Note: Giveaway shipping is currently limited to the U.S.,<br />
