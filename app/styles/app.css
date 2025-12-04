@@ -1724,10 +1724,11 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 
 .footer-bottom-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0;
+  gap: 4px;
   gap: clamp(24px, 4vw, 36px);
   margin: 0 auto;
   width: 100%;
