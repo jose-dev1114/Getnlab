@@ -183,7 +183,7 @@ export default function Download() {
                 data-tab="window"
                 onClick={(e) => switchTab(e, 'window')}
               >
-                Window
+                Windows
               </button>
               <button
                 className="download-tab"
