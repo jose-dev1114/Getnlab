@@ -8,7 +8,7 @@ import {PatternSection} from '~/components/PatternSection';
 import {GridSection} from '~/components/GridSection';
 import {BuildTogetherSection} from '~/components/BuildTogetherSection';
 import {KlaviyoPopup} from '~/components/KlaviyoPopup';
-import {trackPageView} from '~/lib/facebook-pixel';
+import {trackPageView, trackViewContent} from '~/lib/facebook-pixel';
 
 /**
  * @type {Route.MetaFunction}
@@ -78,8 +78,13 @@ export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
 
-  // Track homepage page view
+  // Track ViewContent and homepage page view
   useEffect(() => {
+    trackViewContent('Homepage', {
+      category: 'Landing',
+      content_type: 'homepage'
+    });
+
     trackPageView('homepage', {
       section: 'landing'
     });

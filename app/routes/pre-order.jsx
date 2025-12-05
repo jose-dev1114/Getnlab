@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from 'react-router';
 import { useState, useEffect } from 'react';
-import { trackPreOrder, trackPageView } from '~/lib/facebook-pixel';
+import { trackPreOrder, trackPageView, trackViewContent, trackAddToCart } from '~/lib/facebook-pixel';
 
 export const loader = async ({ context }) => {
   // In Hydrogen deployment, environment variables are accessed through context.env
@@ -201,13 +201,24 @@ function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontTok
       }
 
       if (cart?.checkoutUrl) {
-        // Track Facebook Pixel pre-order event
-        trackPreOrder(
+        // Track Facebook Pixel AddToCart event
+        trackAddToCart(
           {
-            id: productData?.id || shopifyProductId,
+            id: productData?.id,
             name: productData?.title || 'nLab Electronics Kit'
           },
-          1.00, // $1 pre-order
+          parseFloat(price?.amount || 1) * quantity,
+          'USD',
+          quantity
+        );
+
+        // Track Facebook Pixel pre-order/checkout event
+        trackPreOrder(
+          {
+            id: productData?.id,
+            name: productData?.title || 'nLab Electronics Kit'
+          },
+          parseFloat(price?.amount || 1) * quantity,
           'USD'
         );
 
@@ -334,8 +345,16 @@ function ConfigurationError() {
 export default function PreOrder() {
   const { shopifyDomain, shopifyStorefrontToken, shopifyProductId, productData } = useLoaderData();
 
-  // Track page view for pre-order page
+  // Track ViewContent and page view for pre-order page
   useEffect(() => {
+    trackViewContent('Pre-Order Page', {
+      category: 'Product',
+      content_type: 'product',
+      content_ids: [shopifyProductId],
+      value: productData?.variants?.edges?.[0]?.node?.price?.amount || 1.00,
+      currency: 'USD'
+    });
+
     trackPageView('pre-order', {
       product_id: shopifyProductId,
       product_name: productData?.title || 'nLab Electronics Kit'

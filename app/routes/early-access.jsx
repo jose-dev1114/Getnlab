@@ -2,7 +2,7 @@ import {Link, Form, useActionData, useNavigation, useLoaderData} from 'react-rou
 import {data} from 'react-router';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { trackEmailSignup, trackFormInteraction } from '~/lib/facebook-pixel';
+import { trackEmailSignup, trackFormInteraction, trackViewContent } from '~/lib/facebook-pixel';
 
 export const meta = () => {
   return [{title: 'Get Early Access | nLab'}];
@@ -326,6 +326,14 @@ export default function EarlyAccess() {
   const isSubmitting = navigation.state === 'submitting';
   const { shopifyDomain, shopifyStorefrontToken, shopifyProductId } = useLoaderData();
   const [shopifyClient, setShopifyClient] = useState(null);
+
+  // Track ViewContent when page loads
+  useEffect(() => {
+    trackViewContent('Early Access Page', {
+      category: 'Lead Generation',
+      content_type: 'signup_page'
+    });
+  }, []);
 
   // Track Facebook Pixel events on successful form submission
   useEffect(() => {

@@ -31,10 +31,20 @@ export function trackCustomFacebookEvent(eventName, parameters = {}) {
 
 /**
  * Track email signup events (for early access, newsletter, etc.)
+ * Uses 'Subscribe' event as requested for Facebook Ads tracking
  * @param {string} email - User email
  * @param {string} source - Source of signup (e.g., 'early-access', 'popup', 'footer')
  */
 export function trackEmailSignup(email, source = 'unknown') {
+  // Primary: Subscribe event (for Facebook Ads optimization)
+  trackFacebookEvent('Subscribe', {
+    content_name: 'Email Signup',
+    source: source,
+    value: 1.00,
+    currency: 'USD'
+  });
+
+  // Secondary: Lead event for lead generation tracking
   trackFacebookEvent('Lead', {
     content_name: 'Email Signup',
     content_category: 'Lead Generation',
@@ -42,7 +52,7 @@ export function trackEmailSignup(email, source = 'unknown') {
     value: 1.00,
     currency: 'USD'
   });
-  
+
   trackCustomFacebookEvent('EmailSignup', {
     email_hash: hashEmail(email), // Hash for privacy
     source: source,
@@ -51,13 +61,15 @@ export function trackEmailSignup(email, source = 'unknown') {
 }
 
 /**
- * Track pre-order events
+ * Track pre-order / add to cart events
+ * Uses 'AddToCart' for cart actions and 'InitiateCheckout' for checkout
  * @param {Object} product - Product information
  * @param {number} value - Order value
  * @param {string} currency - Currency code
  */
 export function trackPreOrder(product, value, currency = 'USD') {
-  trackFacebookEvent('Purchase', {
+  // Track as InitiateCheckout (more accurate for pre-order flow)
+  trackFacebookEvent('InitiateCheckout', {
     content_ids: [product.id],
     content_name: product.name,
     content_type: 'product',
@@ -66,13 +78,45 @@ export function trackPreOrder(product, value, currency = 'USD') {
     currency: currency,
     num_items: 1
   });
-  
+
   trackCustomFacebookEvent('PreOrder', {
     product_id: product.id,
     product_name: product.name,
     value: value,
     currency: currency,
     timestamp: new Date().toISOString()
+  });
+}
+
+/**
+ * Track Add to Cart events
+ * @param {Object} product - Product information
+ * @param {number} value - Order value
+ * @param {string} currency - Currency code
+ * @param {number} quantity - Quantity added
+ */
+export function trackAddToCart(product, value, currency = 'USD', quantity = 1) {
+  trackFacebookEvent('AddToCart', {
+    content_ids: [product.id],
+    content_name: product.name,
+    content_type: 'product',
+    content_category: 'Electronics Kit',
+    value: value,
+    currency: currency,
+    num_items: quantity
+  });
+}
+
+/**
+ * Track ViewContent for specific pages (e.g., early access, pre-order)
+ * @param {string} pageName - Name of the page
+ * @param {Object} additionalData - Additional page data
+ */
+export function trackViewContent(pageName, additionalData = {}) {
+  trackFacebookEvent('ViewContent', {
+    content_name: pageName,
+    content_category: additionalData.category || 'Page',
+    ...additionalData
   });
 }
 
