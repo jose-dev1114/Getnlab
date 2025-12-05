@@ -4,65 +4,31 @@ export function BuildTogetherSection() {
   return (
     <>
       <section className="build-together-section">
+        <div className="build-together-lightning">
+          <img src="/svg/blue_light.svg" alt="" />
+        </div>
         <div className="build-together-pattern">
           <img src="/svg/right_grey_pattern_two.svg" alt="" />
         </div>
 
         <div className="build-together-content">
-          <h2 className="build-together-title">BUILD TOGETHER</h2>
-          <p className="build-together-description">
-            Supported at every step, through software and community.
+          <h2 className="build-together-title">10,000 STUDENTS AND PROFESSORS USE NLAB GLOBALLY.</h2>
+          <p className="build-together-universities">
+            Northwestern - Carnegie Mellon - University of Colorado - Tufts - Johns Hopkins - Technion Israel - Griffith University Australia - University of Lagos, Nigeria - ... and more!
+          </p>
+          <p className="build-together-tagline">
+            NOW, FOR THE FIRST TIME, WE'RE BRINGING IT DIRECTLY TO YOU.
           </p>
         </div>
       </section>
 
       <section className="build-together-cards">
-        <div className="build-card">
-          <div className="build-card-image">
-            <img src="/svg/img/access_first.png" alt="Your Lab, Powered by Software" />
-          </div>
-          <div className="build-card-content">
-            <h3 className="build-card-title">
-              <span className="hidden md:inline">YOUR LAB,<br />POWERED BY SOFTWARE</span>
-              <span className="md:hidden">YOUR LAB, POWERED BY SOFTWARE</span>
-            </h3>
-            <Link to="/download" className="build-card-button">
-              Learn More About The App
-              <img src="/svg/green-arrow.svg" alt="" className="button-arrow" />
-            </Link>
-
-            <div className="build-card-features">
-              <div className="build-feature">
-                <h4>LIVE DATA</h4>
-                <p>Visualize circuits in real time and understand how they work</p>
-              </div>
-
-              <div className="build-feature">
-                <h4>PROGRESSION PATHS</h4>
-                <p>Beginner, Intermediate, and Advanced tracks</p>
-              </div>
-
-              <div className="build-feature">
-                <h4>SEAMLESS INTEGRATION</h4>
-                <p>Works directly with your Starter Kit</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="build-card">
+        <div className="build-card build-card-row">
           <div className="build-card-image">
             <img src="/svg/img/access_second.png" alt="Career-Ready, Project by Project" />
           </div>
           <div className="build-card-content">
-            <h3 className="build-card-title">
-              <span className="hidden md:inline">WHO IT'S FOR</span>
-              <span className="md:hidden">WHO IT'S FOR</span>
-            </h3>
-            {/* <a href="https://discord.gg/PTZGpAkj" target="_blank" rel="noopener noreferrer" className="build-card-button">
-              Join our Discord Community
-              <img src="/svg/arrow_right.svg" alt="" className="button-arrow" />
-            </a> */}
+            <h3 className="build-card-title">WHO IT'S FOR</h3>
 
             <div className="build-card-features">
               <div className="build-feature build-feature-underline">
@@ -87,6 +53,11 @@ export function BuildTogetherSection() {
             </div>
           </div>
         </div>
+
+        <Link to="/early-access" className="build-card-button build-section-cta">
+          Get Early Access
+          <img src="/svg/green-arrow.svg" alt="" className="button-arrow" />
+        </Link>
       </section>
     </>
   );

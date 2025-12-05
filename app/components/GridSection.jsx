@@ -203,23 +203,7 @@ export function GridSection() {
           </div>
 
         </div>
-        <div className='pattern-text-section'>
-           <div className="global-usage-content">
-              <div className="global-usage-lightning">
-                <img src="/svg/blue_light.svg" alt="" />
-              </div>
-              <div className="global-usage-text">
-                <h2 className="global-usage-title">10,000 STUDENTS AND PROFESSORS USE NLAB GLOBALLY.</h2>
-                <p className="global-usage-universities">
-                  Northwestern - Carnegie Mellon - University of Colorado - Tufts - Johns Hopkins - Technion Israel - Griffith University Australia - University of Lagos, Nigeria - ... and more!
-                </p>
-                <p className="global-usage-title">NOW, FOR THE FIRST TIME, WE'RE BRINGING IT DIRECTLY TO YOU.</p>
-                <Link to="/pre-order" className="global-usage-cta">
-                  <span>Reserve Your Starter Kit for $1!</span>
-                </Link>
-              </div>
-            </div>
-        </div>
+
         {/* <div className="grid-cta-section">
           <div className="trusted-by-content">
             <h2 className="trusted-by-title">NLAB IS IN USE AND TRUSTED BY</h2>
