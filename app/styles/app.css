@@ -1419,6 +1419,37 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   transform: translateX(-4px);
 }
 
+/* Tablet Styles - Adjust decorative icons before they overlap */
+@media (max-width: 1400px) {
+  .early-access-lightning {
+    right: 10%;
+  }
+
+  .form-icon-left {
+    left: 2%;
+  }
+
+  .form-icon-right {
+    right: 2%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .early-access-lightning {
+    right: 5%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .form-icon {
+    display: none;
+  }
+
+  .early-access-lightning {
+    display: none;
+  }
+}
+
 /* Mobile Styles */
 @media (max-width: 767px) {
   .early-access-page {
@@ -1469,14 +1500,6 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
     padding: 24px 16px;
     max-width: 100%;
     gap: 16px;
-  }
-
-  .form-icon {
-    display: none;
-  }
-
-  .early-access-lightning {
-    display: none;
   }
 
   .early-access-form h2 {
