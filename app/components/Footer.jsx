@@ -111,9 +111,7 @@ export function Footer() {
           <p className="footer-copyright">Questions? Contact us anytime at <a href="mailto:founders@getnlab.com" className="footer-email-link">founders@getnlab.com</a> <br /></p>
           <p className="footer-copyright">2025, nLab All Rights Reserved</p>
           <div className="footer-legal-links">
-            {/* <a href="/policies/privacy-policy" className="footer-legal-link">Privacy Policy</a>
-            <a href="/policies/terms-of-service" className="footer-legal-link">Terms of Service</a>
-            <a href="/policies/refund-policy" className="footer-legal-link">Refund Policy</a> */}
+            <a href="/privacy-policy" className="footer-legal-link">Privacy Policy</a>
           </div>
         </div>
       </div>

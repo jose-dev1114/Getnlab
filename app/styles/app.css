@@ -307,6 +307,12 @@ body:not(:has(.starter-kit-page, .community-page, .about-page, .early-access-pag
   content: url('/svg/logo.svg');
 }
 
+/* Yellow/beige logo for policy page - same as early-access */
+body:has(.policy-page) .nlab-logo img {
+  content: url('/svg/logo.svg') !important;
+  filter: none !important;
+}
+
 .nlab-header .header-menu-item {
   color: #2B2B2B;
   text-decoration: none;
@@ -13802,5 +13808,221 @@ body:has(.about-page) .header-menu-mobile a[href="/about"] {
 
   .klaviyo-popup-form {
     gap: 0.75rem;
+  }
+}
+
+/* ============================================
+   PRIVACY POLICY PAGE STYLES
+   ============================================ */
+
+/* Style the header when on policy page - same as early access */
+body:has(.policy-page) .nlab-header {
+  background-color: #3F3F3D;
+  position: relative;
+  justify-content: space-between;
+  padding-left: clamp(1.5rem, 3vw, 3rem);
+}
+
+body:has(.policy-page) .nlab-header>* {
+  position: relative;
+  z-index: 1;
+}
+
+body:has(.policy-page) .nlab-logo {
+  position: static;
+  transform: none;
+  z-index: 2;
+}
+
+body:has(.policy-page) .header-menu-desktop a {
+  color: #ffffff !important;
+}
+
+body:has(.policy-page) .header-menu-mobile a {
+  color: #010101 !important;
+}
+
+body:has(.policy-page) .header-menu-mobile-toggle h3 {
+  color: #FFFFFF;
+  font-weight: 900;
+}
+
+@media (max-width: 767px) {
+  body:has(.policy-page) .nlab-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  body:has(.policy-page) .nlab-header {
+    justify-content: center;
+  }
+
+  body:has(.policy-page) .nlab-header .header-ctas {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+body:has(.policy-page) .header-menu-desktop a:hover,
+body:has(.policy-page) .header-menu-mobile a:hover,
+body:has(.policy-page) .header-menu-item:hover {
+  color: #00AEEF !important;
+}
+
+body:has(.policy-page) .get-early-access-btn {
+  background: transparent;
+  color: #FFFFFF !important;
+  border: 2px solid #FFFFFF;
+}
+
+body:has(.policy-page) .get-early-access-btn:hover {
+  background: #FFFFFF;
+  color: #3F3F3D !important;
+}
+
+.policy-page {
+  min-height: calc(100vh - 80px);
+  background-color: #3F3F3D;
+  padding: 70px 60px;
+  position: relative;
+  border-top: none;
+}
+
+.policy-page::before {
+  content: '';
+  position: absolute;
+  top: 70px;
+  left: 60px;
+  right: 60px;
+  bottom: 70px;
+  background-image:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 29px,
+      rgba(255, 255, 255, 0.03) 29px,
+      rgba(255, 255, 255, 0.03) 30px),
+    repeating-linear-gradient(90deg,
+      transparent,
+      transparent 29px,
+      rgba(255, 255, 255, 0.03) 29px,
+      rgba(255, 255, 255, 0.03) 30px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.policy-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.policy-title {
+  font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+}
+
+.policy-content {
+  color: #CCCCCC;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.policy-intro {
+  font-size: 1.1rem;
+  color: #FFFFFF;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #333;
+}
+
+.policy-section {
+  margin-bottom: 2.5rem;
+}
+
+.policy-section h2 {
+  font-family: 'TitlingGothicFB Comp', 'Roboto Condensed', sans-serif;
+  font-size: 1.5rem;
+  color: #00AEEF;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.policy-section h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.1rem;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.policy-section p {
+  margin-bottom: 1rem;
+}
+
+.policy-section ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.policy-section li {
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.policy-section li::marker {
+  color: #00AEEF;
+}
+
+.policy-section strong {
+  color: #FFFFFF;
+}
+
+.policy-link {
+  color: #00AEEF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.policy-link:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+/* Mobile Styles for Policy Page */
+@media (max-width: 768px) {
+  .policy-page {
+    padding: 50px 30px;
+  }
+
+  .policy-page::before {
+    top: 50px;
+    left: 30px;
+    right: 30px;
+    bottom: 50px;
+  }
+
+  .policy-title {
+    font-size: 2rem;
+  }
+
+  .policy-section h2 {
+    font-size: 1.25rem;
+  }
+
+  .policy-intro {
+    font-size: 1rem;
   }
 }
