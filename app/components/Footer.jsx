@@ -58,6 +58,7 @@ export function Footer() {
           <ul className="footer-links">
             <li><a href="/early-access">Get Early Access</a></li>
             <li><a href="https://www.youtube.com/@get-nlab" target="_blank" rel="noopener noreferrer">Subscribe to YouTube</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
           </ul>
         </div>
 
@@ -110,9 +111,6 @@ export function Footer() {
         <div className="footer-bottom-content">
           <p className="footer-copyright">Questions? Contact us anytime at <a href="mailto:founders@getnlab.com" className="footer-email-link">founders@getnlab.com</a> <br /></p>
           <p className="footer-copyright">2025, nLab All Rights Reserved</p>
-          <div className="footer-legal-links">
-            <a href="/privacy-policy" className="footer-legal-link">Privacy Policy</a>
-          </div>
         </div>
       </div>
     </footer>
