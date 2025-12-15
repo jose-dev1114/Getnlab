@@ -1425,6 +1425,31 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   transform: translateX(-4px);
 }
 
+.early-access-disclaimer {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.early-access-disclaimer p {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.early-access-disclaimer a {
+  color: #00AEEF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.early-access-disclaimer a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
 /* Tablet Styles - Adjust decorative icons before they overlap */
 @media (max-width: 1400px) {
   .early-access-lightning {
