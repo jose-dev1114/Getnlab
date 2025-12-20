@@ -58,7 +58,7 @@ export const loader = async ({ context }) => {
 
           // If there are more profiles, fetch additional pages
           let nextUrl = profilesData.links?.next;
-          while (nextUrl && klaviyoProfiles.length < 500) { // Limit to prevent infinite loop
+          while (nextUrl && klaviyoProfiles.length < 5000) { // Increased limit
             const nextResponse = await fetch(nextUrl, {
               headers: {
                 'Authorization': `Klaviyo-API-Key ${klaviyoApiKey}`,
@@ -127,6 +127,24 @@ export const loader = async ({ context }) => {
   });
 };
 
+// Map interest values to labels
+const interestLabels = {
+  '1': 'High school/college skills',
+  '2': 'Career advancement',
+  '3': 'Parent - STEM activities',
+  '4': 'Fun/creative projects',
+  '5': 'Gift',
+  '6': 'Support Kickstarter',
+  '7': 'Other',
+  'General Interest': 'General Interest',
+  'Not specified': 'Not specified',
+};
+
+const getInterestLabel = (interest) => {
+  if (!interest) return 'Not specified';
+  return interestLabels[interest] || interest;
+};
+
 export default function AdminSignups() {
   const { klaviyoProfiles, shopifyOrders, error, hasKlaviyo, hasShopify, stats } = useLoaderData();
 
@@ -176,7 +194,7 @@ export default function AdminSignups() {
                         {profile.attributes?.properties?.source || 'Unknown'}
                       </td>
                       <td style={{ padding: '0.5rem', border: '1px solid #ddd' }}>
-                        {profile.attributes?.properties?.interest || 'General'}
+                        {getInterestLabel(profile.attributes?.properties?.interest)}
                       </td>
                       <td style={{ padding: '0.5rem', border: '1px solid #ddd' }}>
                         {profile.attributes?.properties?.signup_date ? 
@@ -236,10 +254,10 @@ export default function AdminSignups() {
         {stats?.interestBreakdown && Object.keys(stats.interestBreakdown).length > 0 && (
           <div>
             <h4>Interest Breakdown:</h4>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '0.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.5rem' }}>
               {Object.entries(stats.interestBreakdown).map(([interest, count]) => (
                 <div key={interest} style={{ fontSize: '0.9rem' }}>
-                  <strong>{interest}:</strong> {count}
+                  <strong>{getInterestLabel(interest)}:</strong> {count}
                 </div>
               ))}
             </div>
