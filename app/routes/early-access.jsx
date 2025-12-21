@@ -500,10 +500,10 @@ export default function EarlyAccess() {
   return (
     <div className="early-access-page">
       <div className="early-access-content early-access-hero">
-        <h1>ENTER TO WIN A FREE NLAB</h1>
+        {/* <h1>ENTER TO WIN A FREE NLAB</h1>
         <p className="early-access-subtitle">Delivered to your door before Dec. 25th (U.S. only!)</p>
-        <p className="early-access-or">OR</p>
-        <h2 className="early-access-reserve">RESERVE YOUR KIT FOR $1!</h2>
+        <p className="early-access-or">OR</p> */}
+        <h1 className="early-access-reserve">RESERVE YOUR KIT FOR $1!</h1>
         <p className="early-access-discount">Lock in a guaranteed 20% discount when we launch on Kickstarter.</p>
         <img
           src="/svg/blue_light.svg"
@@ -535,13 +535,13 @@ export default function EarlyAccess() {
       <div className="early-access-content early-access-form-wrapper">
         <img src="/svg/img/left_icon.png" alt="" className="form-icon form-icon-left" />
         <Form method="post" className="early-access-form">
-          <h2>ENTER THE NLAB <br />HOLIDAY GIVEAWAY!</h2>
-          <p className="form-subtitle">Join our newsletter for a chance to win!</p>
-          <p className="form-note">
+          <h2>RESERVE YOUR KIT!</h2>
+          {/* <p className="form-subtitle">Join our newsletter for a chance to win!</p> */}
+          {/* <p className="form-note">
             Note: Giveaway shipping is currently limited to the U.S.,<br />
             but everyone can join our newsletter to receive<br />
             updates, tips, and future giveaways!
-          </p>
+          </p> */}
 
           {/* Success Message */}
           {actionData?.success && (
