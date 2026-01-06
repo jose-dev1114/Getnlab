@@ -47,6 +47,25 @@ export default function Download() {
       }
     };
 
+    const downloadLinuxHandler = async () => {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`);
+        if (!res.ok) throw new Error("Failed to fetch release info");
+        const release = await res.json();
+        const debAsset = release.assets.find(asset => asset.name.endsWith(".deb"));
+        if (!debAsset) {
+          console.error("No .deb file found in the latest release.");
+          alert("Error fetching release info");
+          return;
+        }
+        // Redirect browser to the .deb download
+        window.location.href = debAsset.browser_download_url;
+      } catch (err) {
+        console.error(err);
+        alert("Error fetching release info");
+      }
+    };
+
     const downloadAutoHandler = async () => {
       // Detect user's OS
       const userAgent = navigator.userAgent;
@@ -66,12 +85,16 @@ export default function Download() {
     // Add event listeners
     const macButton = document.getElementById("downloadMac");
     const windowsButton = document.getElementById("downloadWindows");
+    const linuxButton = document.getElementById("downloadLinux");
 
     if (macButton) {
       macButton.addEventListener("click", downloadMacHandler);
     }
     if (windowsButton) {
       windowsButton.addEventListener("click", downloadWindowsHandler);
+    }
+    if (linuxButton) {
+      linuxButton.addEventListener("click", downloadLinuxHandler);
     }
 
     // Cleanup event listeners on unmount
@@ -81,6 +104,9 @@ export default function Download() {
       }
       if (windowsButton) {
         windowsButton.removeEventListener("click", downloadWindowsHandler);
+      }
+      if (linuxButton) {
+        linuxButton.removeEventListener("click", downloadLinuxHandler);
       }
     };
   }, []);
@@ -187,6 +213,13 @@ export default function Download() {
               </button>
               <button
                 className="download-tab"
+                data-tab="linux"
+                onClick={(e) => switchTab(e, 'linux')}
+              >
+                Linux
+              </button>
+              <button
+                className="download-tab"
                 data-tab="nlab-api"
                 onClick={(e) => switchTab(e, 'nlab-api')}
               >
@@ -213,6 +246,16 @@ export default function Download() {
                 </p>
                 <button id="downloadWindows" className="download-platform-button">
                   Download for Windows <img src="/svg/windows.svg" alt="Windows" className="platform-icon" />
+                </button>
+              </div>
+
+              <div className="tab-panel" id="linux-panel">
+                <p className="tab-description">
+                  Get the nLab App on your Linux machine (Ubuntu) to connect your Starter Kit,
+                  follow guided lessons, and see your circuits come to life.
+                </p>
+                <button id="downloadLinux" className="download-platform-button">
+                  Download for Linux <img src="/svg/linux.svg" alt="Linux" className="platform-icon" />
                 </button>
               </div>
 

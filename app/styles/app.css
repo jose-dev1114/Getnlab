@@ -4938,6 +4938,11 @@ body:has(.download-page) .get-early-access-btn {
   height: 20px;
 }
 
+.platform-icon[alt="Linux"] {
+  width: 30px;
+  height: 30px;
+}
+
 /* Mobile Responsive */
 @media (max-width: 767px) {
   .download-features-section {
