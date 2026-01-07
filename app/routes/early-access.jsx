@@ -533,7 +533,7 @@ export default function EarlyAccess() {
       </div>
 
       <div className="early-access-content early-access-form-wrapper">
-        <img src="/svg/img/left_icon.png" alt="" className="form-icon form-icon-left" />
+        {/* <img src="/svg/img/left_icon.png" alt="" className="form-icon form-icon-left" /> */}
         <Form method="post" className="early-access-form">
           <h2>RESERVE YOUR KIT!</h2>
           {/* <p className="form-subtitle">Join our newsletter for a chance to win!</p> */}
@@ -604,7 +604,7 @@ export default function EarlyAccess() {
             Reserve Your Starter Kit for $1!
           </Link>
         </Form>
-        <img src="/svg/img/right_icon.png" alt="" className="form-icon form-icon-right" />
+        {/* <img src="/svg/img/right_icon.png" alt="" className="form-icon form-icon-right" /> */}
       </div>
 
       <div className="form-testimonials">
