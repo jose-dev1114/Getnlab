@@ -952,7 +952,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
   font-family: 'TitlingGothicFB Comp', sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 60px;
+  font-size: 56px;
   line-height: 77px;
   text-align: center;
   text-transform: uppercase;
@@ -961,7 +961,7 @@ body:has(.early-access-page) .header-menu-mobile *:hover {
 
 .form-subtitle {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 24px;
+  font-size: 23px;
   font-weight: 700;
   text-align: center;
   color: #2B2B2B;
