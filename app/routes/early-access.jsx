@@ -536,7 +536,7 @@ export default function EarlyAccess() {
         {/* <img src="/svg/img/left_icon.png" alt="" className="form-icon form-icon-left" /> */}
         <Form method="post" className="early-access-form">
           <h2>Enter the giveaway!</h2>
-          {/* <p className="form-subtitle">Join our newsletter for a chance to win!</p> */}
+          <p className="form-subtitle">And stay up to date on our kickstarter launch!</p>
           {/* <p className="form-note">
             Note: Giveaway shipping is currently limited to the U.S.,<br />
             but everyone can join our newsletter to receive<br />
@@ -592,7 +592,8 @@ export default function EarlyAccess() {
           </button>
 
           <p className="form-disclaimer">
-            and stay up to date on our kickstarter launch.
+            No spam—just cool builds, perks, and learning inspiration.<br />
+            You can unsubscribe anytime.
           </p>
 
           <div className="form-or-divider">
