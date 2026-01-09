@@ -27,8 +27,27 @@ function isSpamEmail(email) {
     'sogetthis.com', 'spamherelots.com', 'superrito.com', 'zoemail.org'
   ];
 
+  // SMS gateway domains (phone number + @carrier domain)
+  const smsGatewayDomains = [
+    'vtext.com', 'txt.att.net', 'tmomail.net', 'messaging.sprintpcs.com',
+    'pm.sprint.com', 'vmobl.com', 'mmst5.tracfone.com', 'mymetropcs.com',
+    'sms.cricketwireless.net', 'msg.fi.google.com', 'text.republicwireless.com',
+    'mailmymobile.net', 'cingularme.com', 'email.uscc.net', 'cspire1.com'
+  ];
+
   const domain = email.toLowerCase().split('@')[1];
-  return spamDomains.includes(domain);
+
+  // Check spam domains
+  if (spamDomains.includes(domain)) return true;
+
+  // Check SMS gateway domains
+  if (smsGatewayDomains.includes(domain)) return true;
+
+  // Check if local part is just numbers (phone number pattern like 5082547892@vtext.com)
+  const localPart = email.toLowerCase().split('@')[0];
+  if (/^\d{10,}$/.test(localPart)) return true;
+
+  return false;
 }
 
 function isSpamName(name) {
