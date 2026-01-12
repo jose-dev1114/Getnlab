@@ -276,13 +276,16 @@ export default function ExploreProjects() {
   const handleThumbnailUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Create a URL for the uploaded file to display as preview
-      const fileUrl = URL.createObjectURL(file);
-      setNewVideoForm({
-        ...newVideoForm,
-        thumbnailFile: file,
-        thumbnail: fileUrl
-      });
+      // Use FileReader to create a data URL for reliable preview
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewVideoForm(prev => ({
+          ...prev,
+          thumbnailFile: file,
+          thumbnail: reader.result
+        }));
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -344,12 +347,16 @@ export default function ExploreProjects() {
   const handleEditThumbnailUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const fileUrl = URL.createObjectURL(file);
-      setEditVideoForm({
-        ...editVideoForm,
-        thumbnailFile: file,
-        thumbnail: fileUrl
-      });
+      // Use FileReader to create a data URL for reliable preview
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setEditVideoForm(prev => ({
+          ...prev,
+          thumbnailFile: file,
+          thumbnail: reader.result
+        }));
+      };
+      reader.readAsDataURL(file);
     }
   };
 
