@@ -597,7 +597,7 @@ export default function EarlyAccess() {
               <option value="">Why are you interested in nLab?</option>
               <option value="1">I want to gain practical skills for high school or college</option>
               <option value="2">I want to build new skills to advance or change my career</option>
-              <option value="3">I’m a parent looking for engaging STEM activities</option>
+              <option value="3">I’m a parent looking for STEM activities for my teen(s)</option>
               <option value="4">I want a fun, creative way to build projects and understand how things work</option>
               <option value="5">I want to give this as a gift</option>
               <option value="6">I want to support the upcoming Kickstarter</option>
