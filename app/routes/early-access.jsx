@@ -734,7 +734,7 @@ export default function EarlyAccess() {
 
       <div className="early-access-disclaimer">
         <p>
-          By entering the nLab Giveaway, you agree to these official rules: open to U.S. residents ages 18 and over, no purchase necessary, one entry per person, giveaway runs Dec 12–Dec 19, 2025, winners will be chosen at random, announced on Dec 20, 2025, and contacted via email. Each winner receives one nLab electronics lab kit; while shipping times may vary, nLab will strive to ensure delivery before Christmas. By entering, you consent to the use of your email to verify entries, notify winners, and send occasional newsletters, and you agree to our <Link to="/privacy-policy">Privacy Policy</Link>.
+          By entering the nLab Giveaway, you agree to these official rules: Open to U.S. residents ages 18 and over. No purchase necessary. Limit one entry per person per giveaway period. Giveaway entry periods, winner selection timing, and prize fulfillment timelines are determined by nLab and may vary. Winners will be selected at random and notified via email using the contact information provided at entry. Each winner will receive one nLab electronics lab kit. Shipping times may vary.By entering, you consent to the use of your email address to verify entries, notify winners, and send occasional newsletters, in accordance with our <Link to="/privacy-policy">Privacy Policy</Link>.
         </p>
       </div>
     </div>
