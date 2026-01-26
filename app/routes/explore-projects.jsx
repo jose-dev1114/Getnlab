@@ -29,6 +29,34 @@ function renderBadge(type, text) {
   );
 }
 
+// Default project cards data
+function getDefaultProjectCards() {
+  return [
+    { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/explore_led.png', videoId: '_OU6WcBfDhw', title: 'LIGHT AN LED', description: 'Turn on your very first circuit by powering an LED. In this beginner project, you\'ll learn how current flows through a simple loop, how resistors control current, and why polarity matters when working with electronic components. By the end, you\'ll have a working light – and the confidence to build your next circuit.', whatYoullLearn: 'How to use a breadboard to connect components. Why resistors are essential to protect LEDs. How to identify polarity and orient components correctly. The basics of current and voltage in a circuit.', duration: '13:45' },
+    { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/explore_first.png', videoId: 'a4OCApcuBT8', title: 'MAKE YOUR FIRST CIRCUIT BETTER', description: 'Extend your circuit with wire. Learn how the breadboard works, and use wire stripping tools to spread the components of your LED circuit around the breadboard.', whatYoullLearn: 'How a breadboard is wired. How to cut and strip a wire. The importance of color coding your wires.' },
+    { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/explore_fourth.png', title: 'CIRCUIT BUILDING SKILLS', description: 'A deep dive into the breadboard and wire. Where did the breadboard come from, and how does it work? Learn about the different types of wire and the best way to use it in a breadboard.', whatYoullLearn: 'The origin of the breadboard. How the breadboard connects wires. Solid vs stranded wire. Common wire color coding.' },
+    { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/explore_main.png', title: 'HOW TO USE THE NLAB AND APP', description: 'A look at the nLab: an oscilloscope, a power supply, and a function generator. Using the nLab app, you can see you signal, power it, and create signals to work with.', whatYoullLearn: 'How to zoom in in time and voltage. How to read voltage from an oscilloscope. How the power supply works. How to set the nLab output signals.' },
+    { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/soon.webp', title: 'CODING WITH NLAB', description: 'Using Python, you can get access to your nLab to build your own interface. Read voltages and set outputs for your specific project, like a data logger, a game, or a control system.', whatYoullLearn: 'How to get the nLab api. The basic api functions. Make a data logger. Make a game in pygame zero.' },
+    { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/soon.webp', title: 'THE SCIENCE BEHIND ELECTRONICS', description: 'What is electricity? In this video, explore the concepts of voltage, current, and power, using easy to understand analogies.', whatYoullLearn: 'Voltage is pressure. Current is like flow.' },
+    { badge: { type: 'intermediate', text: 'INTERMEDIATE' }, image: '/svg/img/soon.webp', title: 'SERIES AND PARALLEL CIRCUITS', description: 'Circuit components are wired in ways that share voltage and current. The properties of voltage, "across", and current, "through", are used to design circuits with just a few easy rules. In this video, see how resistors, LEDs, and buttons can be placed for different effects.', whatYoullLearn: 'Voltage is a property that is across a component. Current is a property that goes through. Components connect at nodes. Resistors can be combined in series and parallel to make new resistors.' },
+    { badge: { type: 'intermediate', text: 'INTERMEDIATE' }, image: '/svg/img/soon.webp', title: 'OHM\'S LAW AND CIRCUIT DESIGN', description: 'Resistors obey Ohm\'s Law, a simple equation relating voltage, current, and resistance. Combined with series and parallel rules, you can find the voltage at every point and the current through every component!', whatYoullLearn: 'Ohm\'s Law, V=IR. Summing voltage around a circuit. Current cannot accumulate at a node.' },
+    { badge: { type: 'intermediate', text: 'INTERMEDIATE' }, image: '/svg/img/soon.webp', title: 'BUILD A SENSING CIRCUIT', description: 'Design circuits that detect light, temperature, and sound.', whatYoullLearn: 'Phototransistors for sensing light. Thermistors for sensing temperature. Microphones for sensing sound.' },
+    { badge: { type: 'intermediate', text: 'INTERMEDIATE' }, image: '/svg/img/soon.webp', title: 'DESIGN CIRCUITS BY STACKING THEM LIKE BLOCKS', description: 'We\'ve designed a few small circuits. By stacking them, we can build more complicated functions. But sometimes this doesn\'t work, unless we consider how they interact with each other.', whatYoullLearn: 'Impedance rules.' },
+    { badge: { type: 'intermediate', text: 'INTERMEDIATE' }, image: '/svg/img/soon.webp', title: 'CAPACITORS IN CIRCUITS', description: 'See how charging capacitors can be used to change how circuits react over time', whatYoullLearn: 'Capacitors are not resistors. How to charge a capacitor. Using capacitors with resistors to change how circuits react.' },
+    { badge: { type: 'intermediate', text: 'INTERMEDIATE' }, image: '/svg/img/soon.webp', title: 'OPERATIONAL AMPLIFIER CIRCUITS', description: 'It is time to super charge our circuits with chips! Operational amplifiers are integrated circuits that use power to solve many of the design challenges we\'ve seen in circuit design. Op amps are used to make decisions, fix impedance problems, and perform math. In this video, see how they are used and add to your list of circuit blocks.', whatYoullLearn: 'Happy opamp theory. Op amps as comparators. Different op amp circuits for math.' },
+    { badge: { type: 'intermediate', text: 'INTERMEDIATE' }, image: '/svg/img/soon.webp', title: 'TRANSISTOR CIRCUITS', description: 'Learn how transistors created the electronics revolution. In this video, use transistors as switches and amplifiers.', whatYoullLearn: 'The transistor equation. Transistors as amplifiers. Transistors as switches. Transistor power considerations.' },
+    { badge: { type: 'coding', text: 'CODING' }, image: '/svg/img/soon.webp', title: 'RECORD AND PLOT NLAB DATA', description: 'Sometimes you want to get your data into a file for use later. In the nLab app, you can save your data as a screenshot and as a .csv file. See how to use the file to plot your data in a spreadsheet and in Python.', whatYoullLearn: 'Saving data. Plotting a .csv file in a spreadsheet. Plotting a .csv file in Python.' },
+    { badge: { type: 'coding', text: 'CODING' }, image: '/svg/img/soon.webp', title: 'DESIGN YOUR OWN GAME WITH NLAB', description: 'Circuits are way more fun when you get to interact with them. Now that you can design functional circuits, let\'s get their data into the computer and do something. Let\'s make a game! Pygame Zero is a great platform to use with the nLab api to quickly get going.', whatYoullLearn: 'The engineering design process. Designing, building, testing, and iterating. Making graphics and sound with Python. Modern coding techniques with AI assistance.' },
+    { badge: { type: 'advanced', text: 'ADVANCED' }, image: '/svg/img/soon.webp', title: 'BUILDING A MICROPHONE', description: 'Project: how to detect sound with a circuit', whatYoullLearn: 'Amplifiers. Filters.' },
+    { badge: { type: 'advanced', text: 'ADVANCED' }, image: '/svg/img/soon.webp', title: 'AN OPTICAL PULSE SENSOR', description: 'Project: use light to detect your pulse, the way a smart watch does', whatYoullLearn: 'Biosensing. Amplifiers. Filters.' },
+    { badge: { type: 'extra-parts', text: 'REQUIRES EXTRA PARTS' }, image: '/svg/img/soon.webp', title: 'MAKE AN ECG', description: 'Project: detect your pulse with electrodes', whatYoullLearn: 'Biosensing. Amplifiers. Filters.' },
+    { badge: { type: 'advanced', text: 'ADVANCED' }, image: '/svg/img/soon.webp', title: 'BUILD A THERMOMETER', description: 'Project: design a circuit to sense temperature and display the data to a user', whatYoullLearn: 'Amplifiers. Comparators. The design process.' },
+    { badge: { type: 'advanced', text: 'ADVANCED' }, image: '/svg/img/soon.webp', title: 'BUILD A MOTION DETECTOR', description: 'Project: use light to detect when people are in a room', whatYoullLearn: 'Amplifiers. Filters. Active sensing.' },
+    { badge: { type: 'advanced', text: 'ADVANCED' }, image: '/svg/img/soon.webp', title: 'INVENT A MUSICAL INSTRUMENT', description: 'Project: invent a new way to make music', whatYoullLearn: 'Amplifiers. Filters. The design process. Interactive design.' },
+    { badge: { type: 'extra-parts', text: 'REQUIRES EXTRA PARTS' }, image: '/svg/img/soon.webp', title: 'MAKE AN EMG CONTROLLER', description: 'Project: detect your muscle activity level with EMG', whatYoullLearn: 'Biosensing. Amplifiers, Filters. Rectifiers.' }
+  ];
+}
+
 // Simple circle play SVG component
 function CirclePlayIcon() {
   return (
@@ -93,188 +121,29 @@ export default function ExploreProjects() {
   // Delete confirmation modal state
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
 
-  // All project cards data - as state so updates trigger re-renders
-  const [allProjectCards, setAllProjectCards] = useState([
-    // Card 1 - Light an LED
-    {
-      badge: { type: 'beginner', text: 'BEGINNER' },
-      image: '/svg/img/explore_led.png',
-      videoId: '_OU6WcBfDhw',
-      title: 'LIGHT AN LED',
-      description: 'Turn on your very first circuit by powering an LED. In this beginner project, you\'ll learn how current flows through a simple loop, how resistors control current, and why polarity matters when working with electronic components. By the end, you\'ll have a working light – and the confidence to build your next circuit.',
-      whatYoullLearn: 'How to use a breadboard to connect components. Why resistors are essential to protect LEDs. How to identify polarity and orient components correctly. The basics of current and voltage in a circuit.',
-      duration: '13:45'
-    },
-    // Card 2 - Make your first circuit better
-    {
-      badge: { type: 'beginner', text: 'BEGINNER' },
-      image: '/svg/img/explore_first.png',
-      videoId: 'a4OCApcuBT8',
-      title: 'MAKE YOUR FIRST CIRCUIT BETTER',
-      description: 'Extend your circuit with wire. Learn how the breadboard works, and use wire stripping tools to spread the components of your LED circuit around the breadboard.',
-      whatYoullLearn: 'How a breadboard is wired. How to cut and strip a wire. The importance of color coding your wires.'
-    },
-    // Card 3 - Circuit building skills
-    {
-      badge: { type: 'beginner', text: 'BEGINNER' },
-      image: '/svg/img/explore_fourth.png',
-      title: 'CIRCUIT BUILDING SKILLS',
-      description: 'A deep dive into the breadboard and wire. Where did the breadboard come from, and how does it work? Learn about the different types of wire and the best way to use it in a breadboard.',
-      whatYoullLearn: 'The origin of the breadboard. How the breadboard connects wires. Solid vs stranded wire. Common wire color coding.'
-    },
-    // Card 4 - How to use the nLab and app
-    {
-      badge: { type: 'beginner', text: 'BEGINNER' },
-      image: '/svg/img/explore_main.png',
-      title: 'HOW TO USE THE NLAB AND APP',
-      description: 'A look at the nLab: an oscilloscope, a power supply, and a function generator. Using the nLab app, you can see you signal, power it, and create signals to work with.',
-      whatYoullLearn: 'How to zoom in in time and voltage. How to read voltage from an oscilloscope. How the power supply works. How to set the nLab output signals.'
-    },
-    // Card 5 - Coding with nLab
-    {
-      badge: { type: 'beginner', text: 'BEGINNER' },
-      image: '/svg/img/soon.webp',
-      title: 'CODING WITH NLAB',
-      description: 'Using Python, you can get access to your nLab to build your own interface. Read voltages and set outputs for your specific project, like a data logger, a game, or a control system.',
-      whatYoullLearn: 'How to get the nLab api. The basic api functions. Make a data logger. Make a game in pygame zero.'
-    },
-    // Card 6 - The science behind electronics
-    {
-      badge: { type: 'beginner', text: 'BEGINNER' },
-      image: '/svg/img/soon.webp',
-      title: 'THE SCIENCE BEHIND ELECTRONICS',
-      description: 'What is electricity? In this video, explore the concepts of voltage, current, and power, using easy to understand analogies.',
-      whatYoullLearn: 'Voltage is pressure. Current is like flow.'
-    },
-    // Card 7 - Series and Parallel Circuits
-    {
-      badge: { type: 'intermediate', text: 'INTERMEDIATE' },
-      image: '/svg/img/soon.webp',
-      title: 'SERIES AND PARALLEL CIRCUITS',
-      description: 'Circuit components are wired in ways that share voltage and current. The properties of voltage, "across", and current, "through", are used to design circuits with just a few easy rules. In this video, see how resistors, LEDs, and buttons can be placed for different effects.',
-      whatYoullLearn: 'Voltage is a property that is across a component. Current is a property that goes through. Components connect at nodes. Resistors can be combined in series and parallel to make new resistors.'
-    },
-    // Card 8 - Ohm's Law and Circuit Design
-    {
-      badge: { type: 'intermediate', text: 'INTERMEDIATE' },
-      image: '/svg/img/soon.webp',
-      title: 'OHM\'S LAW AND CIRCUIT DESIGN',
-      description: 'Resistors obey Ohm\'s Law, a simple equation relating voltage, current, and resistance. Combined with series and parallel rules, you can find the voltage at every point and the current through every component!',
-      whatYoullLearn: 'Ohm\'s Law, V=IR. Summing voltage around a circuit. Current cannot accumulate at a node.'
-    },
-    // Card 9 - Build a sensing circuit
-    {
-      badge: { type: 'intermediate', text: 'INTERMEDIATE' },
-      image: '/svg/img/soon.webp',
-      title: 'BUILD A SENSING CIRCUIT',
-      description: 'Design circuits that detect light, temperature, and sound.',
-      whatYoullLearn: 'Phototransistors for sensing light. Thermistors for sensing temperature. Microphones for sensing sound.'
-    },
-    // Card 10 - Design circuits by stacking them like blocks
-    {
-      badge: { type: 'intermediate', text: 'INTERMEDIATE' },
-      image: '/svg/img/soon.webp',
-      title: 'DESIGN CIRCUITS BY STACKING THEM LIKE BLOCKS',
-      description: 'We\'ve designed a few small circuits. By stacking them, we can build more complicated functions. But sometimes this doesn\'t work, unless we consider how they interact with each other.',
-      whatYoullLearn: 'Impedance rules.'
-    },
-    // Card 11 - Capacitors in circuits
-    {
-      badge: { type: 'intermediate', text: 'INTERMEDIATE' },
-      image: '/svg/img/soon.webp',
-      title: 'CAPACITORS IN CIRCUITS',
-      description: 'See how charging capacitors can be used to change how circuits react over time',
-      whatYoullLearn: 'Capacitors are not resistors. How to charge a capacitor. Using capacitors with resistors to change how circuits react.'
-    },
-    // Card 12 - Operational Amplifier Circuits
-    {
-      badge: { type: 'intermediate', text: 'INTERMEDIATE' },
-      image: '/svg/img/soon.webp',
-      title: 'OPERATIONAL AMPLIFIER CIRCUITS',
-      description: 'It is time to super charge our circuits with chips! Operational amplifiers are integrated circuits that use power to solve many of the design challenges we\'ve seen in circuit design. Op amps are used to make decisions, fix impedance problems, and perform math. In this video, see how they are used and add to your list of circuit blocks.',
-      whatYoullLearn: 'Happy opamp theory. Op amps as comparators. Different op amp circuits for math.'
-    },
-    // Card 13 - Transistor Circuits
-    {
-      badge: { type: 'intermediate', text: 'INTERMEDIATE' },
-      image: '/svg/img/soon.webp',
-      title: 'TRANSISTOR CIRCUITS',
-      description: 'Learn how transistors created the electronics revolution. In this video, use transistors as switches and amplifiers.',
-      whatYoullLearn: 'The transistor equation. Transistors as amplifiers. Transistors as switches. Transistor power considerations.'
-    },
-    // Card 14 - Record and plot nLab data
-    {
-      badge: { type: 'coding', text: 'CODING' },
-      image: '/svg/img/soon.webp',
-      title: 'RECORD AND PLOT NLAB DATA',
-      description: 'Sometimes you want to get your data into a file for use later. In the nLab app, you can save your data as a screenshot and as a .csv file. See how to use the file to plot your data in a spreadsheet and in Python.',
-      whatYoullLearn: 'Saving data. Plotting a .csv file in a spreadsheet. Plotting a .csv file in Python.'
-    },
-    // Card 15 - Design your own game with nLab
-    {
-      badge: { type: 'coding', text: 'CODING' },
-      image: '/svg/img/soon.webp',
-      title: 'DESIGN YOUR OWN GAME WITH NLAB',
-      description: 'Circuits are way more fun when you get to interact with them. Now that you can design functional circuits, let\'s get their data into the computer and do something. Let\'s make a game! Pygame Zero is a great platform to use with the nLab api to quickly get going.',
-      whatYoullLearn: 'The engineering design process. Designing, building, testing, and iterating. Making graphics and sound with Python. Modern coding techniques with AI assistance.'
-    },
-    // Card 16 - Building a microphone
-    {
-      badge: { type: 'advanced', text: 'ADVANCED' },
-      image: '/svg/img/soon.webp',
-      title: 'BUILDING A MICROPHONE',
-      description: 'Project: how to detect sound with a circuit',
-      whatYoullLearn: 'Amplifiers. Filters.'
-    },
-    // Card 17 - An optical pulse sensor
-    {
-      badge: { type: 'advanced', text: 'ADVANCED' },
-      image: '/svg/img/soon.webp',
-      title: 'AN OPTICAL PULSE SENSOR',
-      description: 'Project: use light to detect your pulse, the way a smart watch does',
-      whatYoullLearn: 'Biosensing. Amplifiers. Filters.'
-    },
-    // Card 18 - Make an ECG
-    {
-      badge: { type: 'extra-parts', text: 'REQUIRES EXTRA PARTS' },
-      image: '/svg/img/soon.webp',
-      title: 'MAKE AN ECG',
-      description: 'Project: detect your pulse with electrodes',
-      whatYoullLearn: 'Biosensing. Amplifiers. Filters.'
-    },
-    // Card 19 - Build a thermometer
-    {
-      badge: { type: 'advanced', text: 'ADVANCED' },
-      image: '/svg/img/soon.webp',
-      title: 'BUILD A THERMOMETER',
-      description: 'Project: design a circuit to sense temperature and display the data to a user',
-      whatYoullLearn: 'Amplifiers. Comparators. The design process.'
-    },
-    // Card 20 - Build a motion detector
-    {
-      badge: { type: 'advanced', text: 'ADVANCED' },
-      image: '/svg/img/soon.webp',
-      title: 'BUILD A MOTION DETECTOR',
-      description: 'Project: use light to detect when people are in a room',
-      whatYoullLearn: 'Amplifiers. Filters. Active sensing.'
-    },
-    // Card 21 - Invent a musical instrument
-    {
-      badge: { type: 'advanced', text: 'ADVANCED' },
-      image: '/svg/img/soon.webp',
-      title: 'INVENT A MUSICAL INSTRUMENT',
-      description: 'Project: invent a new way to make music',
-      whatYoullLearn: 'Amplifiers. Filters. The design process. Interactive design.'
-    },
-    // Card 22 - Make an EMG controller
-    {
-      badge: { type: 'extra-parts', text: 'REQUIRES EXTRA PARTS' },
-      image: '/svg/img/soon.webp',
-      title: 'MAKE AN EMG CONTROLLER',
-      description: 'Project: detect your muscle activity level with EMG',
-      whatYoullLearn: 'Biosensing. Amplifiers, Filters. Rectifiers.'
+  // All project cards data - initialized from localStorage or default data
+  const [allProjectCards, setAllProjectCards] = useState(() => {
+    // Only run on client side
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('nlab-project-cards');
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          console.error('Error parsing saved cards:', e);
+        }
+      }
     }
-  ]);
+    // Return default cards if no saved data
+    return getDefaultProjectCards();
+  });
+
+  // Save to localStorage whenever allProjectCards changes
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('nlab-project-cards', JSON.stringify(allProjectCards));
+    }
+  }, [allProjectCards]);
 
   // Hacking screen state
   const [showHackingScreen, setShowHackingScreen] = useState(false);
