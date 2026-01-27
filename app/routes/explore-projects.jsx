@@ -32,8 +32,8 @@ function renderBadge(type, text) {
 // Default project cards data
 function getDefaultProjectCards() {
   return [
-    { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/explore_led.png', videoId: '_OU6WcBfDhw', title: 'LIGHT AN LED', description: 'Turn on your very first circuit by powering an LED. In this beginner project, you\'ll learn how current flows through a simple loop, how resistors control current, and why polarity matters when working with electronic components. By the end, you\'ll have a working light – and the confidence to build your next circuit.', whatYoullLearn: 'How to use a breadboard to connect components. Why resistors are essential to protect LEDs. How to identify polarity and orient components correctly. The basics of current and voltage in a circuit.', duration: '13:45' },
-    { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/explore_first.png', videoId: 'a4OCApcuBT8', title: 'MAKE YOUR FIRST CIRCUIT BETTER', description: 'Extend your circuit with wire. Learn how the breadboard works, and use wire stripping tools to spread the components of your LED circuit around the breadboard.', whatYoullLearn: 'How a breadboard is wired. How to cut and strip a wire. The importance of color coding your wires.' },
+    { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/thumbnail1.png', videoId: '_OU6WcBfDhw', title: 'BUILD YOUR FIRST CIRCUIT IN TEN MINUTES', description: 'Turn on your very first circuit by powering an LED. In this beginner project, you\'ll learn how current flows through a simple loop, how resistors control current, and why polarity matters when working with electronic components. By the end, you\'ll have a working light – and the confidence to build your next circuit.', whatYoullLearn: 'How to use a breadboard to connect components. Why resistors are essential to protect LEDs. How to identify polarity and orient components correctly. The basics of current and voltage in a circuit.', duration: '13:45' },
+    { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/thumbnail2.png', videoId: 'a4OCApcuBT8', title: 'HOW TO USE WIRE TO CUSTOMIZE YOUR CIRCUITS', description: 'Extend your circuit with wire. Learn how the breadboard works, and use wire stripping tools to spread the components of your LED circuit around the breadboard.', whatYoullLearn: 'How a breadboard is wired. How to cut and strip a wire. The importance of color coding your wires.' },
     { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/explore_fourth.png', title: 'CIRCUIT BUILDING SKILLS', description: 'A deep dive into the breadboard and wire. Where did the breadboard come from, and how does it work? Learn about the different types of wire and the best way to use it in a breadboard.', whatYoullLearn: 'The origin of the breadboard. How the breadboard connects wires. Solid vs stranded wire. Common wire color coding.' },
     { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/explore_main.png', title: 'HOW TO USE THE NLAB AND APP', description: 'A look at the nLab: an oscilloscope, a power supply, and a function generator. Using the nLab app, you can see you signal, power it, and create signals to work with.', whatYoullLearn: 'How to zoom in in time and voltage. How to read voltage from an oscilloscope. How the power supply works. How to set the nLab output signals.' },
     { badge: { type: 'beginner', text: 'BEGINNER' }, image: '/svg/img/soon.webp', title: 'CODING WITH NLAB', description: 'Using Python, you can get access to your nLab to build your own interface. Read voltages and set outputs for your specific project, like a data logger, a game, or a control system.', whatYoullLearn: 'How to get the nLab api. The basic api functions. Make a data logger. Make a game in pygame zero.' },
@@ -622,7 +622,7 @@ export default function ExploreProjects() {
               <div className="project-video">
                 {renderBadge('beginner', 'BEGINNER')}
                 <img
-                  src="/svg/img/explore_led.png"
+                  src="/svg/img/thumbnail1.png"
                   alt="Light an LED Project"
                   className="project-thumbnail"
                   onClick={() => openVideoModal('_OU6WcBfDhw')}
@@ -632,7 +632,7 @@ export default function ExploreProjects() {
                 </div>
               </div>
               <div className="explore-info">
-                <h3 className="explore-title">LIGHT AN LED</h3>
+                <h3 className="explore-title">BUILD YOUR FIRST CIRCUIT IN TEN MINUTES</h3>
                 <div className="explore-duration">13:45</div>
                 <p className="explore-description mb-3">
                   Turn on your very first circuit by powering an LED. In this
