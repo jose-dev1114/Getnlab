@@ -295,7 +295,7 @@ export default function ExploreProjects() {
     };
   }, [isModalOpen, showAdminDashboard]);
 
-  // Function to open video modal
+ 
   const openVideoModal = (videoId) => {
     console.log('Opening video modal with ID:', videoId);
     setCurrentVideoId(videoId);
