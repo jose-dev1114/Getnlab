@@ -63,7 +63,7 @@ export default async function handleRequest(
     imgSrc: [
       "'self'",
       'data:',
-      'https://www.facebook.com',
+      'https:',
     ],
   });
 

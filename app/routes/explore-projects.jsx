@@ -460,7 +460,7 @@ export default function ExploreProjects() {
       description: video.description,
       whatYoullLearn: video.whatYoullLearn,
       youtubeUrl: `https://www.youtube.com/watch?v=${video.videoId}`,
-      thumbnailUrl: video.image.startsWith('/svg/') || video.image.includes('youtube.com') ? '' : video.image,
+      thumbnailUrl: video.image || '',
       level: video.badge.type
     });
     setEditModalOpen(true);
@@ -572,6 +572,10 @@ export default function ExploreProjects() {
             alt={cardData.title}
             className="project-thumbnail"
             onClick={() => handleCardClick(cardData)}
+            onError={(e) => {
+              // Fallback to default image if URL fails to load
+              e.target.src = '/svg/img/soon.webp';
+            }}
           />
           <div className="circle-play" onClick={() => handleCardClick(cardData)}>
             <CirclePlayIcon />
@@ -1009,10 +1013,25 @@ export default function ExploreProjects() {
                       className="admin-input"
                     />
                     {newVideoForm.thumbnailUrl && (
-                      <div className="thumbnail-preview" style={{marginTop: '10px'}}>
-                        <img src={newVideoForm.thumbnailUrl} alt="Thumbnail preview" style={{maxWidth: '200px', borderRadius: '8px'}} />
+                      <div className="thumbnail-preview" style={{marginTop: '10px', padding: '10px', background: '#1a1a1a', borderRadius: '8px'}}>
+                        <p style={{color: '#0f0', fontSize: '12px', marginBottom: '8px'}}>Preview:</p>
+                        <img
+                          src={newVideoForm.thumbnailUrl}
+                          alt="Thumbnail preview"
+                          style={{maxWidth: '200px', maxHeight: '150px', borderRadius: '8px', border: '1px solid #333', display: 'block'}}
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.nextSibling.style.display = 'block';
+                          }}
+                        />
+                        <p style={{color: '#f55', fontSize: '11px', display: 'none'}}>
+                          ⚠ Image failed to load - URL may be invalid
+                        </p>
                       </div>
                     )}
+                    <p style={{color: '#888', fontSize: '11px', marginTop: '5px'}}>
+                      Leave empty to use YouTube's auto-generated thumbnail
+                    </p>
                   </div>
 
                   <div className="form-group">
@@ -1157,10 +1176,25 @@ export default function ExploreProjects() {
                   className="admin-input"
                 />
                 {editVideoForm.thumbnailUrl && (
-                  <div className="thumbnail-preview" style={{marginTop: '10px'}}>
-                    <img src={editVideoForm.thumbnailUrl} alt="Thumbnail preview" style={{maxWidth: '200px', borderRadius: '8px'}} />
+                  <div className="thumbnail-preview" style={{marginTop: '10px', padding: '10px', background: '#1a1a1a', borderRadius: '8px'}}>
+                    <p style={{color: '#0f0', fontSize: '12px', marginBottom: '8px'}}>Current thumbnail:</p>
+                    <img
+                      src={editVideoForm.thumbnailUrl}
+                      alt="Thumbnail preview"
+                      style={{maxWidth: '200px', maxHeight: '150px', borderRadius: '8px', border: '1px solid #333', display: 'block'}}
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <p style={{color: '#f55', fontSize: '11px', display: 'none'}}>
+                      ⚠ Image failed to load - URL may be invalid
+                    </p>
                   </div>
                 )}
+                <p style={{color: '#888', fontSize: '11px', marginTop: '5px'}}>
+                  Leave empty to use YouTube's auto-generated thumbnail
+                </p>
               </div>
 
               <div className="form-group">
