@@ -1,4 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLoaderData, useFetcher, data } from 'react-router';
+
+// Loader to fetch project cards from JSONbin
+export async function loader({ context }) {
+  // Get JSONbin credentials from environment variables
+  const binId = context?.env?.JSONBIN_BIN_ID || process.env.JSONBIN_BIN_ID;
+  const masterKey = context?.env?.JSONBIN_MASTER_KEY || process.env.JSONBIN_MASTER_KEY;
+
+  if (!binId || !masterKey) {
+    console.error('JSONbin credentials not configured');
+    return { projectCards: getDefaultProjectCards() };
+  }
+
+  const apiUrl = `https://api.jsonbin.io/v3/b/${binId}`;
+
+  try {
+    const response = await fetch(`${apiUrl}/latest`, {
+      headers: {
+        'X-Master-Key': masterKey,
+      },
+    });
+
+    if (!response.ok) {
+      console.error('Failed to fetch from JSONbin:', response.status);
+      return { projectCards: getDefaultProjectCards() };
+    }
+
+    const responseData = await response.json();
+    return { projectCards: responseData.record || getDefaultProjectCards() };
+  } catch (error) {
+    console.error('Error fetching project cards:', error);
+    return { projectCards: getDefaultProjectCards() };
+  }
+}
+
+// Action to update project cards in JSONbin
+export async function action({ request, context }) {
+  // Get JSONbin credentials from environment variables
+  const binId = context?.env?.JSONBIN_BIN_ID || process.env.JSONBIN_BIN_ID;
+  const masterKey = context?.env?.JSONBIN_MASTER_KEY || process.env.JSONBIN_MASTER_KEY;
+
+  if (!binId || !masterKey) {
+    return data({ success: false, error: 'JSONbin credentials not configured' }, { status: 500 });
+  }
+
+  const apiUrl = `https://api.jsonbin.io/v3/b/${binId}`;
+  const formData = await request.formData();
+  const cardsJson = formData.get('cards');
+
+  try {
+    const cards = JSON.parse(cardsJson);
+
+    const response = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': masterKey,
+      },
+      body: JSON.stringify(cards),
+    });
+
+    if (!response.ok) {
+      return data({ success: false, error: 'Failed to save to JSONbin' }, { status: 500 });
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error saving to JSONbin:', error);
+    return data({ success: false, error: error.message }, { status: 500 });
+  }
+}
 
 export const meta = () => {
   return [{ title: 'Explore Projects | nLab' }];
@@ -82,6 +153,10 @@ function CirclePlayIcon() {
 }
 
 export default function ExploreProjects() {
+  // Get data from loader
+  const { projectCards: initialCards } = useLoaderData();
+  const fetcher = useFetcher();
+
   // State for video modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentVideoId, setCurrentVideoId] = useState('');
@@ -121,28 +196,26 @@ export default function ExploreProjects() {
   // Delete confirmation modal state
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
 
-  // All project cards data - initialized from localStorage or default data
-  const [allProjectCards, setAllProjectCards] = useState(() => {
-    // Only run on client side
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('nlab-project-cards');
-      if (saved) {
-        try {
-          return JSON.parse(saved);
-        } catch (e) {
-          console.error('Error parsing saved cards:', e);
-        }
-      }
-    }
-    // Return default cards if no saved data
-    return getDefaultProjectCards();
-  });
+  // All project cards data - initialized from JSONbin via loader
+  const [allProjectCards, setAllProjectCards] = useState(initialCards);
 
-  // Save to localStorage whenever allProjectCards changes
-  React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('nlab-project-cards', JSON.stringify(allProjectCards));
+  // Sync with loader data when it changes (e.g., after navigation)
+  useEffect(() => {
+    setAllProjectCards(initialCards);
+  }, [initialCards]);
+
+  // Save to JSONbin whenever allProjectCards changes (after initial load)
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  useEffect(() => {
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+      return;
     }
+
+    // Save to JSONbin using fetcher
+    const formData = new FormData();
+    formData.append('cards', JSON.stringify(allProjectCards));
+    fetcher.submit(formData, { method: 'post' });
   }, [allProjectCards]);
 
   // Hacking screen state
