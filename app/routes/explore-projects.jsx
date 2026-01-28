@@ -61,12 +61,11 @@ export async function action({ request, context }) {
     });
 
     if (!response.ok) {
-      return data({ success: false, error: 'Failed to save to JSONbin' }, { status: 500 });
+      return data({ success: false, error: `JSONbin API error: ${response.status}` }, { status: 500 });
     }
 
     return { success: true };
   } catch (error) {
-    console.error('Error saving to JSONbin:', error);
     return data({ success: false, error: error.message }, { status: 500 });
   }
 }
@@ -175,8 +174,7 @@ export default function ExploreProjects() {
     description: '',
     whatYoullLearn: '',
     youtubeUrl: '',
-    thumbnail: '',
-    thumbnailFile: null,
+    thumbnailUrl: '',
     level: 'beginner'
   });
 
@@ -188,8 +186,7 @@ export default function ExploreProjects() {
     description: '',
     whatYoullLearn: '',
     youtubeUrl: '',
-    thumbnail: '',
-    thumbnailFile: null,
+    thumbnailUrl: '',
     level: 'beginner'
   });
 
@@ -204,19 +201,32 @@ export default function ExploreProjects() {
     setAllProjectCards(initialCards);
   }, [initialCards]);
 
-  // Save to JSONbin whenever allProjectCards changes (after initial load)
+  // Track if we need to save (only after user makes changes)
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  // Mark as having unsaved changes when allProjectCards changes (after initial load)
   useEffect(() => {
     if (isInitialLoad) {
       setIsInitialLoad(false);
       return;
     }
-
-    // Save to JSONbin using fetcher
-    const formData = new FormData();
-    formData.append('cards', JSON.stringify(allProjectCards));
-    fetcher.submit(formData, { method: 'post' });
+    setHasUnsavedChanges(true);
   }, [allProjectCards]);
+
+  // Debounced save - wait 1.5 seconds after last change before saving
+  useEffect(() => {
+    if (!hasUnsavedChanges) return;
+
+    const timeoutId = setTimeout(() => {
+      const formData = new FormData();
+      formData.append('cards', JSON.stringify(allProjectCards));
+      fetcher.submit(formData, { method: 'post' });
+      setHasUnsavedChanges(false);
+    }, 1500); // Wait 1.5 seconds
+
+    return () => clearTimeout(timeoutId); // Cancel if another change happens
+  }, [hasUnsavedChanges, allProjectCards]);
 
   // Hacking screen state
   const [showHackingScreen, setShowHackingScreen] = useState(false);
@@ -335,7 +345,6 @@ export default function ExploreProjects() {
 
       if (shouldStartHacking) {
         event.preventDefault();
-        console.log('🔑 Admin hacking sequence triggered');
         startHackingSequence();
       }
 
@@ -370,7 +379,6 @@ export default function ExploreProjects() {
 
  
   const openVideoModal = (videoId) => {
-    console.log('Opening video modal with ID:', videoId);
     setCurrentVideoId(videoId);
     setIsModalOpen(true);
   };
@@ -397,21 +405,10 @@ export default function ExploreProjects() {
     return match ? match[1] : '';
   };
 
-  // Handle thumbnail file upload
-  const handleThumbnailUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      // Use FileReader to create a data URL for reliable preview
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setNewVideoForm(prev => ({
-          ...prev,
-          thumbnailFile: file,
-          thumbnail: reader.result
-        }));
-      };
-      reader.readAsDataURL(file);
-    }
+  // Get YouTube thumbnail URL from video ID
+  const getYouTubeThumbnail = (videoId) => {
+    if (!videoId) return '';
+    return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   };
 
   const handleAddVideo = (e) => {
@@ -423,12 +420,15 @@ export default function ExploreProjects() {
       return;
     }
 
+    // Use custom thumbnail URL, YouTube auto-thumbnail, or default
+    const thumbnailImage = newVideoForm.thumbnailUrl || getYouTubeThumbnail(videoId) || '/svg/img/soon.webp';
+
     const newCard = {
       badge: {
         type: newVideoForm.level,
         text: newVideoForm.level.toUpperCase().replace('-', ' ')
       },
-      image: newVideoForm.thumbnail || '/svg/img/soon.webp',
+      image: thumbnailImage,
       videoId: videoId,
       title: newVideoForm.title.toUpperCase(),
       description: newVideoForm.description,
@@ -444,8 +444,7 @@ export default function ExploreProjects() {
       description: '',
       whatYoullLearn: '',
       youtubeUrl: '',
-      thumbnail: '',
-      thumbnailFile: null,
+      thumbnailUrl: '',
       level: 'beginner'
     });
 
@@ -461,28 +460,10 @@ export default function ExploreProjects() {
       description: video.description,
       whatYoullLearn: video.whatYoullLearn,
       youtubeUrl: `https://www.youtube.com/watch?v=${video.videoId}`,
-      thumbnail: video.image === '/svg/img/soon.webp' ? '' : video.image,
-      thumbnailFile: null,
+      thumbnailUrl: video.image.startsWith('/svg/') || video.image.includes('youtube.com') ? '' : video.image,
       level: video.badge.type
     });
     setEditModalOpen(true);
-  };
-
-  // Handle thumbnail upload for edit form
-  const handleEditThumbnailUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      // Use FileReader to create a data URL for reliable preview
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setEditVideoForm(prev => ({
-          ...prev,
-          thumbnailFile: file,
-          thumbnail: reader.result
-        }));
-      };
-      reader.readAsDataURL(file);
-    }
   };
 
   // Handle updating video
@@ -495,12 +476,15 @@ export default function ExploreProjects() {
       return;
     }
 
+    // Use custom thumbnail URL, YouTube auto-thumbnail, or default
+    const thumbnailImage = editVideoForm.thumbnailUrl || getYouTubeThumbnail(videoId) || '/svg/img/soon.webp';
+
     const updatedCard = {
       badge: {
         type: editVideoForm.level,
         text: editVideoForm.level.toUpperCase().replace('-', ' ')
       },
-      image: editVideoForm.thumbnail || '/svg/img/soon.webp',
+      image: thumbnailImage,
       videoId: videoId,
       title: editVideoForm.title.toUpperCase(),
       description: editVideoForm.description,
@@ -522,8 +506,7 @@ export default function ExploreProjects() {
       description: '',
       whatYoullLearn: '',
       youtubeUrl: '',
-      thumbnail: '',
-      thumbnailFile: null,
+      thumbnailUrl: '',
       level: 'beginner'
     });
 
@@ -800,7 +783,6 @@ export default function ExploreProjects() {
                 allowFullScreen
                 referrerPolicy="strict-origin-when-cross-origin"
                 onError={() => {
-                  console.log('Iframe failed to load, opening YouTube in new tab');
                   window.open(`https://www.youtube.com/watch?v=${currentVideoId}`, '_blank');
                   closeVideoModal();
                 }}
@@ -1018,36 +1000,19 @@ export default function ExploreProjects() {
                   </div>
 
                   <div className="form-group">
-                    <label>Thumbnail Upload (optional):</label>
-                    <div className="thumbnail-upload-container">
-                      <input
-                        type="file"
-                        id="thumbnail-upload"
-                        accept="image/*"
-                        onChange={handleThumbnailUpload}
-                        className="thumbnail-file-input"
-                      />
-                      <label htmlFor="thumbnail-upload" className="thumbnail-upload-button">
-                        <span className="upload-icon">�</span>
-                        Choose Image
-                      </label>
-                      {newVideoForm.thumbnail && (
-                        <div className="thumbnail-preview">
-                          <img src={newVideoForm.thumbnail} alt="Thumbnail preview" />
-                          <button
-                            type="button"
-                            onClick={() => setNewVideoForm({
-                              ...newVideoForm,
-                              thumbnail: '',
-                              thumbnailFile: null
-                            })}
-                            className="remove-thumbnail"
-                          >
-                            ✕
-                          </button>
-                        </div>
-                      )}
-                    </div>
+                    <label>Thumbnail URL (optional - uses YouTube thumbnail if empty):</label>
+                    <input
+                      type="url"
+                      value={newVideoForm.thumbnailUrl}
+                      onChange={(e) => setNewVideoForm({...newVideoForm, thumbnailUrl: e.target.value})}
+                      placeholder="https://example.com/image.jpg"
+                      className="admin-input"
+                    />
+                    {newVideoForm.thumbnailUrl && (
+                      <div className="thumbnail-preview" style={{marginTop: '10px'}}>
+                        <img src={newVideoForm.thumbnailUrl} alt="Thumbnail preview" style={{maxWidth: '200px', borderRadius: '8px'}} />
+                      </div>
+                    )}
                   </div>
 
                   <div className="form-group">
@@ -1183,36 +1148,19 @@ export default function ExploreProjects() {
               </div>
 
               <div className="form-group">
-                <label>Thumbnail Upload (optional):</label>
-                <div className="thumbnail-upload-container">
-                  <input
-                    type="file"
-                    id="edit-thumbnail-upload"
-                    accept="image/*"
-                    onChange={handleEditThumbnailUpload}
-                    className="thumbnail-file-input"
-                  />
-                  <label htmlFor="edit-thumbnail-upload" className="thumbnail-upload-button">
-                    <span className="upload-icon">�</span>
-                    Choose Image
-                  </label>
-                  {editVideoForm.thumbnail && (
-                    <div className="thumbnail-preview">
-                      <img src={editVideoForm.thumbnail} alt="Thumbnail preview" />
-                      <button
-                        type="button"
-                        onClick={() => setEditVideoForm({
-                          ...editVideoForm,
-                          thumbnail: '',
-                          thumbnailFile: null
-                        })}
-                        className="remove-thumbnail"
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  )}
-                </div>
+                <label>Thumbnail URL (optional - uses YouTube thumbnail if empty):</label>
+                <input
+                  type="url"
+                  value={editVideoForm.thumbnailUrl}
+                  onChange={(e) => setEditVideoForm({...editVideoForm, thumbnailUrl: e.target.value})}
+                  placeholder="https://example.com/image.jpg"
+                  className="admin-input"
+                />
+                {editVideoForm.thumbnailUrl && (
+                  <div className="thumbnail-preview" style={{marginTop: '10px'}}>
+                    <img src={editVideoForm.thumbnailUrl} alt="Thumbnail preview" style={{maxWidth: '200px', borderRadius: '8px'}} />
+                  </div>
+                )}
               </div>
 
               <div className="form-group">
@@ -1380,8 +1328,6 @@ function switchFilterTab(event, filterName) {
   if (targetPanel) {
     targetPanel.classList.add('active');
   }
-
-  console.log('Filter selected:', filterName);
 }
 
 // Mobile filter switching function
@@ -1403,6 +1349,4 @@ function switchMobileFilter(event) {
   if (targetPanel) {
     targetPanel.classList.add('active');
   }
-
-  console.log('Mobile filter selected:', filterName);
 }
