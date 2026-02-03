@@ -44,6 +44,8 @@ export default async function handleRequest(
       'https://api.github.com',
       'https://connect.facebook.net',
       'https://www.facebook.com',
+      'https://www.google-analytics.com',
+      'https://www.googletagmanager.com',
     ],
     scriptSrc: [
       "'self'",
@@ -51,6 +53,7 @@ export default async function handleRequest(
       'https://cdn.shopify.com',
       'https://shopifycloud.com',
       'https://connect.facebook.net',
+      'https://www.googletagmanager.com',
       "'unsafe-inline'",
     ],
     frameSrc: [

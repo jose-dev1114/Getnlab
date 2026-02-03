@@ -406,12 +406,20 @@ export function Layout({children, facebookPixelId}) {
         <link rel="stylesheet" href={tailwindCss}></link>
         <link rel="stylesheet" href={resetStyles}></link>
         <link rel="stylesheet" href={appStyles}></link>
-        <script nonce={nonce} dangerouslySetInnerHTML={{__html: `console.log('🧪 Test script loaded in Layout');`}} />
       </head>
       <body>
         {children}
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
+
+        {/* Google Analytics 4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVNXY9CFNB" nonce={nonce}></script>
+        <script nonce={nonce} dangerouslySetInnerHTML={{__html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SVNXY9CFNB');
+        `}} />
       </body>
     </html>
   );
