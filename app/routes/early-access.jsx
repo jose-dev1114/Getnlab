@@ -346,6 +346,27 @@ export default function EarlyAccess() {
   const { shopifyDomain, shopifyStorefrontToken, shopifyProductId } = useLoaderData();
   const [shopifyClient, setShopifyClient] = useState(null);
 
+  // UTM parameters state
+  const [utmParams, setUtmParams] = useState({
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: ''
+  });
+
+  // Capture UTM parameters from URL on page load
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      setUtmParams({
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        utm_term: params.get('utm_term') || ''
+      });
+    }
+  }, []);
+
   // Track ViewContent when page loads
   useEffect(() => {
     trackViewContent('Early Access Page', {
@@ -354,11 +375,22 @@ export default function EarlyAccess() {
     });
   }, []);
 
-  // Track Facebook Pixel events on successful form submission
+  // Track Facebook Pixel events and push dataLayer on successful form submission
   useEffect(() => {
     if (actionData?.success && actionData?.trackFacebookPixel) {
       const { email, source } = actionData.trackFacebookPixel;
       trackEmailSignup(email, source);
+
+      // Push dataLayer event for GTM
+      if (typeof window !== 'undefined') {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "early_access_form_submit",
+          email: email,
+          form_id: "early_access_form",
+          form_name: "Early Access Form"
+        });
+      }
     }
   }, [actionData]);
 
@@ -579,6 +611,12 @@ export default function EarlyAccess() {
 
           {/* Hidden name field with default value for backend compatibility */}
           <input type="hidden" name="name" value="Giveaway Entry" />
+
+          {/* UTM tracking hidden fields */}
+          <input type="hidden" name="utm_source" value={utmParams.utm_source} />
+          <input type="hidden" name="utm_medium" value={utmParams.utm_medium} />
+          <input type="hidden" name="utm_campaign" value={utmParams.utm_campaign} />
+          <input type="hidden" name="utm_term" value={utmParams.utm_term} />
 
           <div className="form-group">
             <input

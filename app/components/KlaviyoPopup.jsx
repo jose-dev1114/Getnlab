@@ -91,6 +91,27 @@ export function KlaviyoPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
+  // UTM parameters state
+  const [utmParams, setUtmParams] = useState({
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: ''
+  });
+
+  // Capture UTM parameters from URL on component mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      setUtmParams({
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        utm_term: params.get('utm_term') || ''
+      });
+    }
+  }, []);
+
   useEffect(() => {
     // Check if popup has been shown before (use localStorage for persistence across sessions)
     const hasSeenPopup = localStorage.getItem('nlab-popup-shown');
@@ -175,6 +196,12 @@ export function KlaviyoPopup() {
       formDataToSend.append('email', email);
       formDataToSend.append('interest', 'Kickstarter Popup'); // Track source
 
+      // Append UTM parameters
+      formDataToSend.append('utm_source', utmParams.utm_source);
+      formDataToSend.append('utm_medium', utmParams.utm_medium);
+      formDataToSend.append('utm_campaign', utmParams.utm_campaign);
+      formDataToSend.append('utm_term', utmParams.utm_term);
+
       console.log('📤 Sending API request to /early-access...');
 
       const response = await fetch('/early-access', {
@@ -192,6 +219,17 @@ export function KlaviyoPopup() {
 
         // Track Facebook Pixel event for popup email signup
         trackEmailSignup(email, 'popup');
+
+        // Push dataLayer event for GTM
+        if (typeof window !== 'undefined') {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "newsletter_form_submit",
+            email: email,
+            form_id: "klaviyo_popup_form",
+            form_name: "Kickstarter Popup Form"
+          });
+        }
 
         // Show congratulations message
         setShowSuccess(true);
