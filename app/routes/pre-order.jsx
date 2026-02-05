@@ -121,6 +121,37 @@ function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontTok
     }
   ];
 
+  // Extract product ID from Shopify GID (e.g., "gid://shopify/Product/123" -> "123")
+  const extractProductId = (gid) => {
+    if (!gid) return '';
+    const match = gid.match(/\/(\d+)$/);
+    return match ? match[1] : gid;
+  };
+
+  // Push view_item event to dataLayer when product loads
+  useEffect(() => {
+    if (productData && typeof window !== 'undefined') {
+      const variant = productData.variants.edges[0]?.node;
+      const price = parseFloat(variant?.price?.amount || 0);
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ ecommerce: null }); // Clear previous ecommerce data
+      window.dataLayer.push({
+        event: "view_item",
+        ecommerce: {
+          currency: variant?.price?.currencyCode || "USD",
+          value: price,
+          items: [{
+            item_id: extractProductId(productData.id),
+            item_name: productData.title,
+            price: price,
+            quantity: 1
+          }]
+        }
+      });
+    }
+  }, [productData]);
+
   if (!productData) {
     return (
       <div className="product-loading">
@@ -132,6 +163,9 @@ function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontTok
 
   const variant = productData.variants.edges[0]?.node;
   const price = variant?.price;
+
+  // Helper to extract product ID
+  const productId = extractProductId(productData.id);
 
   const handleQuantityChange = (change) => {
     setQuantity(prev => Math.max(1, prev + change));
@@ -201,6 +235,24 @@ function CustomProductDisplay({ productData, shopifyDomain, shopifyStorefrontTok
       }
 
       if (cart?.checkoutUrl) {
+        // Push add_to_cart event to GTM dataLayer
+        const itemPrice = parseFloat(price?.amount || 0);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ ecommerce: null }); // Clear previous ecommerce data
+        window.dataLayer.push({
+          event: "add_to_cart",
+          ecommerce: {
+            currency: price?.currencyCode || "USD",
+            value: itemPrice * quantity,
+            items: [{
+              item_id: productId,
+              item_name: productData?.title,
+              price: itemPrice,
+              quantity: quantity
+            }]
+          }
+        });
+
         // Track Facebook Pixel AddToCart event
         trackAddToCart(
           {
