@@ -15,16 +15,30 @@ export function Footer() {
     utm_term: ''
   });
 
-  // Capture UTM parameters from URL on component mount
+  // Read UTM parameters from source_query cookie
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      setUtmParams({
-        utm_source: params.get('utm_source') || '',
-        utm_medium: params.get('utm_medium') || '',
-        utm_campaign: params.get('utm_campaign') || '',
-        utm_term: params.get('utm_term') || ''
-      });
+      // Get source_query cookie
+      const cookies = document.cookie.split(';');
+      let sourceQuery = '';
+      for (const cookie of cookies) {
+        const [name, value] = cookie.trim().split('=');
+        if (name === 'source_query') {
+          sourceQuery = decodeURIComponent(value || '');
+          break;
+        }
+      }
+
+      // Parse UTM params from cookie value
+      if (sourceQuery) {
+        const params = new URLSearchParams(sourceQuery);
+        setUtmParams({
+          utm_source: params.get('utm_source') || '',
+          utm_medium: params.get('utm_medium') || '',
+          utm_campaign: params.get('utm_campaign') || '',
+          utm_term: params.get('utm_term') || ''
+        });
+      }
     }
   }, []);
 

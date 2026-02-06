@@ -398,6 +398,13 @@ export function Layout({children, facebookPixelId}) {
           })(window,document,'script','dataLayer','GTM-TS6GFQZ5');
         `}} />
 
+        {/* UTM Cookie Script - saves query string to cookie when URL contains utm */}
+        <script nonce={nonce} dangerouslySetInnerHTML={{__html: `
+          if (window.location.search.indexOf('utm') > -1) {
+            document.cookie = "source_query=" + window.location.search + "; expires=" + new Date(Date.now() + 99 * 864e5).toUTCString() + "; path=/";
+          }
+        `}} />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" nonce={nonce} />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" nonce={nonce} />
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" nonce={nonce} />
