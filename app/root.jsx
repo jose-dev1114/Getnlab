@@ -428,6 +428,39 @@ export function Layout({children, facebookPixelId}) {
         {children}
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
+
+        {/* UTM Hidden Fields Filler - runs on DOM ready */}
+        <script nonce={nonce} dangerouslySetInnerHTML={{__html: `
+          document.addEventListener('DOMContentLoaded', function() {
+            function getCookie(name) {
+              var cookieArr = document.cookie.match(new RegExp("(^|;)\\\\s*" + name + "\\\\s*=\\\\s*([^;]+)"));
+              return cookieArr ? cookieArr[2] : undefined;
+            }
+
+            var sourceQuery = getCookie('source_query');
+
+            var inputElements = {
+              "utm_source": 'input[name="utm_source"]',
+              "utm_medium": 'input[name="utm_medium"]',
+              "utm_campaign": 'input[name="utm_campaign"]',
+              "utm_term": 'input[name="utm_term"]'
+            };
+
+            var urlParams = new URLSearchParams(sourceQuery);
+
+            for (var key in inputElements) {
+              if (urlParams.has(key)) {
+                var value = urlParams.get(key);
+                var inputFields = document.querySelectorAll(inputElements[key]);
+                inputFields.forEach(function(inputField) {
+                  if (inputField) {
+                    inputField.value = value;
+                  }
+                });
+              }
+            }
+          });
+        `}} />
       </body>
     </html>
   );

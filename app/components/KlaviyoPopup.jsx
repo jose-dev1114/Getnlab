@@ -91,41 +91,6 @@ export function KlaviyoPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
-  // UTM parameters state
-  const [utmParams, setUtmParams] = useState({
-    utm_source: '',
-    utm_medium: '',
-    utm_campaign: '',
-    utm_term: ''
-  });
-
-  // Read UTM parameters from source_query cookie
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Get source_query cookie
-      const cookies = document.cookie.split(';');
-      let sourceQuery = '';
-      for (const cookie of cookies) {
-        const [name, value] = cookie.trim().split('=');
-        if (name === 'source_query') {
-          sourceQuery = decodeURIComponent(value || '');
-          break;
-        }
-      }
-
-      // Parse UTM params from cookie value
-      if (sourceQuery) {
-        const params = new URLSearchParams(sourceQuery);
-        setUtmParams({
-          utm_source: params.get('utm_source') || '',
-          utm_medium: params.get('utm_medium') || '',
-          utm_campaign: params.get('utm_campaign') || '',
-          utm_term: params.get('utm_term') || ''
-        });
-      }
-    }
-  }, []);
-
   useEffect(() => {
     // Check if popup has been shown before (use localStorage for persistence across sessions)
     const hasSeenPopup = localStorage.getItem('nlab-popup-shown');
@@ -204,17 +169,25 @@ export function KlaviyoPopup() {
     }
 
     try {
+      // Get UTM params from cookie
+      function getCookie(name) {
+        const cookieArr = document.cookie.match(new RegExp("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)"));
+        return cookieArr ? cookieArr[2] : '';
+      }
+      const sourceQuery = getCookie('source_query');
+      const urlParams = new URLSearchParams(sourceQuery);
+
       // Use the same logic as early access form - send as form data
       const formDataToSend = new FormData();
       formDataToSend.append('name', fullName);
       formDataToSend.append('email', email);
       formDataToSend.append('interest', 'Kickstarter Popup'); // Track source
 
-      // Append UTM parameters
-      formDataToSend.append('utm_source', utmParams.utm_source);
-      formDataToSend.append('utm_medium', utmParams.utm_medium);
-      formDataToSend.append('utm_campaign', utmParams.utm_campaign);
-      formDataToSend.append('utm_term', utmParams.utm_term);
+      // Append UTM parameters from cookie
+      formDataToSend.append('utm_source', urlParams.get('utm_source') || '');
+      formDataToSend.append('utm_medium', urlParams.get('utm_medium') || '');
+      formDataToSend.append('utm_campaign', urlParams.get('utm_campaign') || '');
+      formDataToSend.append('utm_term', urlParams.get('utm_term') || '');
 
       console.log('📤 Sending API request to /early-access...');
 

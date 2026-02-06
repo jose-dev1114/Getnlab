@@ -1,46 +1,11 @@
 import {Form, useActionData, useNavigation} from 'react-router';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import { trackEmailSignup, trackFormInteraction } from '~/lib/facebook-pixel';
 
 export function Footer() {
   const actionData = useActionData();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-
-  // UTM parameters state
-  const [utmParams, setUtmParams] = useState({
-    utm_source: '',
-    utm_medium: '',
-    utm_campaign: '',
-    utm_term: ''
-  });
-
-  // Read UTM parameters from source_query cookie
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Get source_query cookie
-      const cookies = document.cookie.split(';');
-      let sourceQuery = '';
-      for (const cookie of cookies) {
-        const [name, value] = cookie.trim().split('=');
-        if (name === 'source_query') {
-          sourceQuery = decodeURIComponent(value || '');
-          break;
-        }
-      }
-
-      // Parse UTM params from cookie value
-      if (sourceQuery) {
-        const params = new URLSearchParams(sourceQuery);
-        setUtmParams({
-          utm_source: params.get('utm_source') || '',
-          utm_medium: params.get('utm_medium') || '',
-          utm_campaign: params.get('utm_campaign') || '',
-          utm_term: params.get('utm_term') || ''
-        });
-      }
-    }
-  }, []);
 
   // Track Facebook Pixel events and push dataLayer on successful form submission
   useEffect(() => {
@@ -138,12 +103,12 @@ export function Footer() {
               </div>
             )}
 
-            {/* Hidden fields for backend compatibility and UTM tracking */}
+            {/* Hidden fields for backend compatibility and UTM tracking - filled by DOM script from cookie */}
             <input type="hidden" name="name" value="Footer Subscriber" />
-            <input type="hidden" name="utm_source" value={utmParams.utm_source} />
-            <input type="hidden" name="utm_medium" value={utmParams.utm_medium} />
-            <input type="hidden" name="utm_campaign" value={utmParams.utm_campaign} />
-            <input type="hidden" name="utm_term" value={utmParams.utm_term} />
+            <input type="hidden" name="utm_source" defaultValue="" />
+            <input type="hidden" name="utm_medium" defaultValue="" />
+            <input type="hidden" name="utm_campaign" defaultValue="" />
+            <input type="hidden" name="utm_term" defaultValue="" />
 
             <div className="footer-newsletter-input-group">
               <input
