@@ -1,5 +1,6 @@
 import {Await, useLoaderData, Link} from 'react-router';
 import {Suspense, useEffect} from 'react';
+import favicon from '~/assets/favicon.svg';
 import {Image} from '@shopify/hydrogen';
 import {ProductItem} from '~/components/ProductItem';
 import {HeroSection} from '~/components/HeroSection';
@@ -108,7 +109,7 @@ export default function Homepage() {
  */
 function FeaturedCollection({collection}) {
   if (!collection) return null;
-  const image = collection?.image;
+  const image = favicon;
   return (
     <Link
       className="featured-collection"
