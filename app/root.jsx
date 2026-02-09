@@ -429,15 +429,15 @@ export function Layout({children, facebookPixelId}) {
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
 
-        {/* UTM Hidden Fields Filler - runs after React hydration */}
+        {/* UTM Hidden Fields Filler - runs on page load and SPA navigation */}
         <script nonce={nonce} dangerouslySetInnerHTML={{__html: `
-          (function fillUtmFields() {
+          (function() {
             function getCookie(name) {
               var match = document.cookie.match(new RegExp("(^|;)\\\\s*" + name + "=([^;]*)"));
               return match ? decodeURIComponent(match[2]) : "";
             }
 
-            function doFill() {
+            function fillUtmFields() {
               var sourceQuery = getCookie("source_query");
               if (!sourceQuery) return;
 
@@ -454,15 +454,28 @@ export function Layout({children, facebookPixelId}) {
               });
             }
 
-            // Run immediately
-            doFill();
-            // Run after DOM ready
+            // Run on initial load
+            fillUtmFields();
             if (document.readyState === "loading") {
-              document.addEventListener("DOMContentLoaded", doFill);
+              document.addEventListener("DOMContentLoaded", fillUtmFields);
             }
-            // Run after a delay to catch React hydration
-            setTimeout(doFill, 500);
-            setTimeout(doFill, 1500);
+            setTimeout(fillUtmFields, 500);
+
+            // Listen for SPA navigation (history changes)
+            var lastUrl = location.href;
+            new MutationObserver(function() {
+              if (location.href !== lastUrl) {
+                lastUrl = location.href;
+                setTimeout(fillUtmFields, 100);
+                setTimeout(fillUtmFields, 500);
+              }
+            }).observe(document.body, { childList: true, subtree: true });
+
+            // Also listen for popstate (back/forward navigation)
+            window.addEventListener("popstate", function() {
+              setTimeout(fillUtmFields, 100);
+              setTimeout(fillUtmFields, 500);
+            });
           })();
         `}} />
       </body>
