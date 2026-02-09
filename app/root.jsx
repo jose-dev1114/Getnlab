@@ -429,37 +429,41 @@ export function Layout({children, facebookPixelId}) {
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
 
-        {/* UTM Hidden Fields Filler - runs on DOM ready */}
+        {/* UTM Hidden Fields Filler - runs after React hydration */}
         <script nonce={nonce} dangerouslySetInnerHTML={{__html: `
-          document.addEventListener('DOMContentLoaded', function() {
+          (function fillUtmFields() {
             function getCookie(name) {
-              var cookieArr = document.cookie.match(new RegExp("(^|;)\\\\s*" + name + "\\\\s*=\\\\s*([^;]+)"));
-              return cookieArr ? cookieArr[2] : undefined;
+              var match = document.cookie.match(new RegExp("(^|;)\\\\s*" + name + "=([^;]*)"));
+              return match ? decodeURIComponent(match[2]) : "";
             }
 
-            var sourceQuery = getCookie('source_query');
+            function doFill() {
+              var sourceQuery = getCookie("source_query");
+              if (!sourceQuery) return;
 
-            var inputElements = {
-              "utm_source": 'input[name="utm_source"]',
-              "utm_medium": 'input[name="utm_medium"]',
-              "utm_campaign": 'input[name="utm_campaign"]',
-              "utm_term": 'input[name="utm_term"]'
-            };
+              var urlParams = new URLSearchParams(sourceQuery);
+              var fields = ["utm_source", "utm_medium", "utm_campaign", "utm_term"];
 
-            var urlParams = new URLSearchParams(sourceQuery);
-
-            for (var key in inputElements) {
-              if (urlParams.has(key)) {
-                var value = urlParams.get(key);
-                var inputFields = document.querySelectorAll(inputElements[key]);
-                inputFields.forEach(function(inputField) {
-                  if (inputField) {
-                    inputField.value = value;
-                  }
-                });
-              }
+              fields.forEach(function(field) {
+                var value = urlParams.get(field);
+                if (value) {
+                  document.querySelectorAll('input[name="' + field + '"]').forEach(function(input) {
+                    input.value = value;
+                  });
+                }
+              });
             }
-          });
+
+            // Run immediately
+            doFill();
+            // Run after DOM ready
+            if (document.readyState === "loading") {
+              document.addEventListener("DOMContentLoaded", doFill);
+            }
+            // Run after a delay to catch React hydration
+            setTimeout(doFill, 500);
+            setTimeout(doFill, 1500);
+          })();
         `}} />
       </body>
     </html>
