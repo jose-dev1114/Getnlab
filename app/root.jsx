@@ -8,9 +8,10 @@ import {
   Scripts,
   ScrollRestoration,
   useRouteLoaderData,
+  useLocation,
   data,
 } from 'react-router';
-import {useEffect} from 'react';
+import {useEffect, useCallback} from 'react';
 import favicon from '~/assets/favicon.svg';
 import {FOOTER_QUERY, HEADER_QUERY} from '~/lib/fragments';
 import resetStyles from '~/styles/reset.css?url';
@@ -429,58 +430,52 @@ export function Layout({children, facebookPixelId}) {
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
 
-        {/* UTM Hidden Fields Filler - runs on page load and SPA navigation */}
-        <script nonce={nonce} dangerouslySetInnerHTML={{__html: `
-          (function() {
-            function getCookie(name) {
-              var match = document.cookie.match(new RegExp("(^|;)\\\\s*" + name + "=([^;]*)"));
-              return match ? decodeURIComponent(match[2]) : "";
-            }
 
-            function fillUtmFields() {
-              var sourceQuery = getCookie("source_query");
-              if (!sourceQuery) return;
-
-              var urlParams = new URLSearchParams(sourceQuery);
-              var fields = ["utm_source", "utm_medium", "utm_campaign", "utm_term"];
-
-              fields.forEach(function(field) {
-                var value = urlParams.get(field);
-                if (value) {
-                  document.querySelectorAll('input[name="' + field + '"]').forEach(function(input) {
-                    input.value = value;
-                  });
-                }
-              });
-            }
-
-            // Run on initial load
-            fillUtmFields();
-            if (document.readyState === "loading") {
-              document.addEventListener("DOMContentLoaded", fillUtmFields);
-            }
-            setTimeout(fillUtmFields, 500);
-
-            // Listen for SPA navigation (history changes)
-            var lastUrl = location.href;
-            new MutationObserver(function() {
-              if (location.href !== lastUrl) {
-                lastUrl = location.href;
-                setTimeout(fillUtmFields, 100);
-                setTimeout(fillUtmFields, 500);
-              }
-            }).observe(document.body, { childList: true, subtree: true });
-
-            // Also listen for popstate (back/forward navigation)
-            window.addEventListener("popstate", function() {
-              setTimeout(fillUtmFields, 100);
-              setTimeout(fillUtmFields, 500);
-            });
-          })();
-        `}} />
       </body>
     </html>
   );
+}
+
+// Component to fill UTM hidden fields on route changes
+function UtmFieldFiller() {
+  const location = useLocation();
+
+  const fillUtmFields = useCallback(() => {
+    if (typeof document === 'undefined') return;
+
+    // Get cookie
+    const match = document.cookie.match(/(^|;)\s*source_query=([^;]*)/);
+    const sourceQuery = match ? decodeURIComponent(match[2]) : '';
+    if (!sourceQuery) return;
+
+    const urlParams = new URLSearchParams(sourceQuery);
+    const fields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term'];
+
+    fields.forEach((field) => {
+      const value = urlParams.get(field);
+      if (value) {
+        document.querySelectorAll(`input[name="${field}"]`).forEach((input) => {
+          input.value = value;
+        });
+      }
+    });
+  }, []);
+
+  // Run on every route change
+  useEffect(() => {
+    // Small delay to ensure React has rendered the new page
+    const timer1 = setTimeout(fillUtmFields, 100);
+    const timer2 = setTimeout(fillUtmFields, 300);
+    const timer3 = setTimeout(fillUtmFields, 600);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
+  }, [location.pathname, fillUtmFields]);
+
+  return null;
 }
 
 export default function App() {
@@ -509,7 +504,12 @@ export default function App() {
   }, [data?.facebookPixelId]);
 
   if (!data) {
-    return <Outlet />;
+    return (
+      <>
+        <UtmFieldFiller />
+        <Outlet />
+      </>
+    );
   }
 
   return (
@@ -518,6 +518,7 @@ export default function App() {
       shop={data.shop}
       consent={data.consent}
     >
+      <UtmFieldFiller />
       <FacebookPixelRouteTracker pixelId={data.facebookPixelId} />
       <PageLayout {...data}>
         <Outlet />
