@@ -178,6 +178,10 @@ export default function AdminSignups() {
                     <th style={{ padding: '0.5rem', border: '1px solid #ddd', textAlign: 'left' }}>Name</th>
                     <th style={{ padding: '0.5rem', border: '1px solid #ddd', textAlign: 'left' }}>Source</th>
                     <th style={{ padding: '0.5rem', border: '1px solid #ddd', textAlign: 'left' }}>Interest</th>
+                    <th style={{ padding: '0.5rem', border: '1px solid #ddd', textAlign: 'left' }}>UTM Source</th>
+                    <th style={{ padding: '0.5rem', border: '1px solid #ddd', textAlign: 'left' }}>UTM Medium</th>
+                    <th style={{ padding: '0.5rem', border: '1px solid #ddd', textAlign: 'left' }}>UTM Campaign</th>
+                    <th style={{ padding: '0.5rem', border: '1px solid #ddd', textAlign: 'left' }}>UTM Term</th>
                     <th style={{ padding: '0.5rem', border: '1px solid #ddd', textAlign: 'left' }}>Date</th>
                   </tr>
                 </thead>
@@ -197,8 +201,20 @@ export default function AdminSignups() {
                         {getInterestLabel(profile.attributes?.properties?.interest)}
                       </td>
                       <td style={{ padding: '0.5rem', border: '1px solid #ddd' }}>
-                        {profile.attributes?.properties?.signup_date ? 
-                          new Date(profile.attributes.properties.signup_date).toLocaleDateString() : 
+                        {profile.attributes?.properties?.utm_source || '-'}
+                      </td>
+                      <td style={{ padding: '0.5rem', border: '1px solid #ddd' }}>
+                        {profile.attributes?.properties?.utm_medium || '-'}
+                      </td>
+                      <td style={{ padding: '0.5rem', border: '1px solid #ddd' }}>
+                        {profile.attributes?.properties?.utm_campaign || '-'}
+                      </td>
+                      <td style={{ padding: '0.5rem', border: '1px solid #ddd' }}>
+                        {profile.attributes?.properties?.utm_term || '-'}
+                      </td>
+                      <td style={{ padding: '0.5rem', border: '1px solid #ddd' }}>
+                        {profile.attributes?.properties?.signup_date ?
+                          new Date(profile.attributes.properties.signup_date).toLocaleDateString() :
                           'N/A'
                         }
                       </td>

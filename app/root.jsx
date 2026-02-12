@@ -112,7 +112,13 @@ export async function action({request, context}) {
   const formData = await request.formData();
   const email = formData.get('email');
 
-  console.log('📝 Footer newsletter subscription:', { email });
+  // Extract UTM parameters
+  const utm_source = formData.get('utm_source') || '';
+  const utm_medium = formData.get('utm_medium') || '';
+  const utm_campaign = formData.get('utm_campaign') || '';
+  const utm_term = formData.get('utm_term') || '';
+
+  console.log('📝 Footer newsletter subscription:', { email, utm_source, utm_medium, utm_campaign, utm_term });
 
   // Validate required fields
   if (!email) {
@@ -229,6 +235,11 @@ export async function action({request, context}) {
           properties: {
             source: 'Footer Newsletter',
             signup_date: new Date().toISOString(),
+            // UTM tracking parameters
+            utm_source: utm_source || undefined,
+            utm_medium: utm_medium || undefined,
+            utm_campaign: utm_campaign || undefined,
+            utm_term: utm_term || undefined,
           },
         },
       },

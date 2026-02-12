@@ -144,7 +144,13 @@ export async function action({request, context}) {
   const email = formData.get('email');
   const interest = formData.get('interest');
 
-  console.log('📝 Early access form submission:', { name, email, interest });
+  // Extract UTM parameters
+  const utm_source = formData.get('utm_source') || '';
+  const utm_medium = formData.get('utm_medium') || '';
+  const utm_campaign = formData.get('utm_campaign') || '';
+  const utm_term = formData.get('utm_term') || '';
+
+  console.log('📝 Early access form submission:', { name, email, interest, utm_source, utm_medium, utm_campaign, utm_term });
 
   // Validate required fields
   if (!name || !email) {
@@ -250,6 +256,11 @@ export async function action({request, context}) {
             interest: isPopupSubmission ? 'General Interest' : (interest || 'Not specified'),
             source: source,
             signup_date: new Date().toISOString(),
+            // UTM tracking parameters
+            utm_source: utm_source || undefined,
+            utm_medium: utm_medium || undefined,
+            utm_campaign: utm_campaign || undefined,
+            utm_term: utm_term || undefined,
           },
         },
       },
