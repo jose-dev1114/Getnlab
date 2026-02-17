@@ -137,6 +137,33 @@ function isValidHumanName(name) {
   return true;
 }
 
+// Helper function to parse UTM params from cookie
+function getUtmFromCookie(cookieHeader) {
+  if (!cookieHeader) return {};
+
+  // Find source_query cookie
+  const cookies = cookieHeader.split(';');
+  let sourceQuery = '';
+  for (const cookie of cookies) {
+    const [name, value] = cookie.trim().split('=');
+    if (name === 'source_query') {
+      sourceQuery = decodeURIComponent(value || '');
+      break;
+    }
+  }
+
+  if (!sourceQuery) return {};
+
+  // Parse UTM params from query string
+  const params = new URLSearchParams(sourceQuery);
+  return {
+    utm_source: params.get('utm_source') || '',
+    utm_medium: params.get('utm_medium') || '',
+    utm_campaign: params.get('utm_campaign') || '',
+    utm_term: params.get('utm_term') || '',
+  };
+}
+
 // Action function to handle form submission
 export async function action({request, context}) {
   const formData = await request.formData();
@@ -144,11 +171,15 @@ export async function action({request, context}) {
   const email = formData.get('email');
   const interest = formData.get('interest');
 
-  // Extract UTM parameters
-  const utm_source = formData.get('utm_source') || '';
-  const utm_medium = formData.get('utm_medium') || '';
-  const utm_campaign = formData.get('utm_campaign') || '';
-  const utm_term = formData.get('utm_term') || '';
+  // Extract UTM parameters from cookie (server-side, more reliable)
+  const cookieHeader = request.headers.get('Cookie');
+  const utmFromCookie = getUtmFromCookie(cookieHeader);
+
+  // Use form data first, fallback to cookie
+  const utm_source = formData.get('utm_source') || utmFromCookie.utm_source || '';
+  const utm_medium = formData.get('utm_medium') || utmFromCookie.utm_medium || '';
+  const utm_campaign = formData.get('utm_campaign') || utmFromCookie.utm_campaign || '';
+  const utm_term = formData.get('utm_term') || utmFromCookie.utm_term || '';
 
   console.log('📝 Early access form submission:', { name, email, interest, utm_source, utm_medium, utm_campaign, utm_term });
 
